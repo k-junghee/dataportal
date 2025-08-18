@@ -43,6 +43,7 @@ html[data-theme="dark"] header:after{
     height: 2px;
     width: 100%;
     background: linear-gradient(to right, transparent 0%, #81D3FF 50%, transparent 100%);
+    z-index: -1;
 }
 header .header_inner {
     display: flex;
@@ -94,7 +95,7 @@ html[data-theme="dark"] .logo_wrap a{
     display: block;
     font-size:17px;
     font-weight: 500;
-    color: var(--ft-color-normal);
+    color: var(--bg-dark-02);
     line-height: 1;
 }
 .gnb_item:hover > .dr_menu_wrap{
@@ -126,10 +127,11 @@ html[data-theme="dark"] .logo_wrap a{
     top: 20px;
     left: 0;
     padding-top: 32px;
+    z-index: 1;
 }
 .dr_menu {
     padding: 8px;
-    background-color: var(--bg-gray-01);
+    background-color: var(--bg-dark-01);
     box-shadow: 0 0 12px 0 rgba(29, 29, 29, 0.15);
     border-radius: 8px;
 }
@@ -350,7 +352,7 @@ header:has(.menu-trigger.mo){
     min-width:152px;
     box-sizing: border-box;
     padding: 8px;
-    background-color: var(--bg-gray-01);
+    background-color: var(--bg-dark-01);
     box-shadow: 0 0 12px 0 rgba(29, 29, 29, 0.15);
     border-radius: 8px;
     z-index: 1;

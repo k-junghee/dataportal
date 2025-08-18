@@ -36,7 +36,7 @@ label.mgl_bb {
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    border: 2px solid var(--bg-gray-01);
+    border: 2px solid var(--bg-dark-03);
     border-radius: 12px;
     background-color: var(--bg-gray-01);
     padding: 12px;
@@ -94,6 +94,12 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
 }
 .bb_tit .data_pop:hover {
     background: url("../assets/images/more_on.svg") no-repeat;
+}
+html[data-theme="dark"] .bb_tit .data_pop{
+    background: url("../assets/images/more_on.svg") no-repeat;
+}
+html[data-theme="dark"] .bb_tit .data_pop:hover{
+    background: url("../assets/images/more_off.svg") no-repeat;
 }
 .bb_bot .title {
     font-size: 13px;

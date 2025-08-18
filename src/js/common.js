@@ -1,4 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // theme.js
+    (function() {
+        const lightBg = 'linear-gradient(to bottom, #f5f6fb, #f5f6fb)';
+        const darkBg = 'linear-gradient(to bottom, #002B41, #000D14)';
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.style.backgroundImage = theme === 'dark' ? darkBg : lightBg;
+            localStorage.setItem('theme', theme);
+        }
+
+        function setupThemeToggle() {
+            const btn = document.getElementById('themeToggle');
+            if (!btn) return;
+
+            const toggleTheme = () => {
+                const current = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = current === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+                btn.setAttribute('aria-pressed', newTheme === 'dark');
+                btn.classList.toggle('dark', newTheme === 'dark');
+            };
+
+            btn.addEventListener('click', toggleTheme);
+
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const handleMediaChange = (e) => {
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                    btn.setAttribute('aria-pressed', e.matches);
+                    btn.classList.toggle('dark', e.matches);
+                }
+            };
+
+            if (mediaQuery.addEventListener) {
+                mediaQuery.addEventListener('change', handleMediaChange);
+            } else if (mediaQuery.addListener) {
+                mediaQuery.addListener(handleMediaChange);
+            }
+
+            const savedTheme = localStorage.getItem('theme') || (mediaQuery.matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+            btn.setAttribute('aria-pressed', savedTheme === 'dark');
+            btn.classList.toggle('dark', savedTheme === 'dark');
+        }
+
+        window.addEventListener('load', setupThemeToggle);
+    })();
+
     // **** header **** //
     fetch('header.html')
         .then(response => response.text())

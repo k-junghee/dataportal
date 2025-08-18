@@ -312,6 +312,10 @@ textarea {
     --bg-gray-07: #eeeeee;
     --bg-gray-08: #f5f7fa;
 
+    --bg-dark-01: #ffffff;
+    --bg-dark-02: #555555;
+    --bg-dark-03: #ffffff;
+
 
 }
 
@@ -327,9 +331,14 @@ html[data-theme="dark"] {
 
     --ft-color-normal: #ffffff;
     --bg-gray-01: transparent;
+    --bg-gray-02: #1d1d1d;
     --bg-gray-03: #ffffff;
     --bg-gray-04: #ffffff;
     --bg-gray-07: #1d1d1d;
+
+    --bg-dark-01: #234257;
+    --bg-dark-02: #8e8e8e;
+    --bg-dark-03: rgba(128,223,255,.3);
 }
 .theme-ready * { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, fill 180ms ease; }
 
