@@ -1,0 +1,384 @@
+/**** [v1] reset ****/
+
+/* font : Pretendard */
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 900;
+    font-display: swap;
+    src: local("Pretendard Black"),
+    url(../../src/assets/fonts/woff2/Pretendard-Black.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Black.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 800;
+    font-display: swap;
+    src: local("Pretendard ExtraBold"),
+    url(../../src/assets/fonts/woff2/Pretendard-ExtraBold.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-ExtraBold.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 700;
+    font-display: swap;
+    src: local("Pretendard Bold"),
+    url(../../src/assets/fonts/woff2/Pretendard-Bold.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Bold.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 600;
+    font-display: swap;
+    src: local("Pretendard SemiBold"),
+    url(../../src/assets/fonts/woff2/Pretendard-SemiBold.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-SemiBold.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 500;
+    font-display: swap;
+    src: local("Pretendard Medium"),
+    url(../../src/assets/fonts/woff2/Pretendard-Medium.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Medium.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 400;
+    font-display: swap;
+    src: local("Pretendard Regular"),
+    url(../../src/assets/fonts/woff2/Pretendard-Regular.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Regular.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 300;
+    font-display: swap;
+    src: local("Pretendard Light"),
+    url(../../src/assets/fonts/woff2/Pretendard-Light.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Light.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 200;
+    font-display: swap;
+    src: local("Pretendard ExtraLight"),
+    url(../../src/assets/fonts/woff2/Pretendard-ExtraLight.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-ExtraLight.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 100;
+    font-display: swap;
+    src: local("Pretendard Thin"),
+    url(../../src/assets/fonts/woff2/Pretendard-Thin.woff2) format("woff2"),
+    url(../../src/assets/fonts/woff/Pretendard-Thin.woff) format("woff");
+}
+
+/* font : Roboto */
+@font-face {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-display: swap;
+    src: local("Roboto Bold"),
+    url(../../src/assets/fonts/roboto/Roboto-Bold.woff2) format("woff2"),
+    url(../../src/assets/fonts/roboto/Roboto-Bold.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-display: swap;
+    src: local("Roboto Medium"),
+    url(../../src/assets/fonts/roboto/Roboto-Medium.woff2) format("woff2"),
+    url(../../src/assets/fonts/roboto/Roboto-Medium.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 400;
+    font-display: swap;
+    src: local("Roboto Regular"),
+    url(../../src/assets/fonts/roboto/Roboto-Regular.woff2) format("woff2"),
+    url(../../src/assets/fonts/roboto/Roboto-Regular.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 300;
+    font-display: swap;
+    src: local("Roboto Light"),
+    url(../../src/assets/fonts/roboto/Roboto-Light.woff2) format("woff2"),
+    url(../../src/assets/fonts/roboto/Roboto-Light.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 100;
+    font-display: swap;
+    src: local("Roboto Thin"),
+    url(../../src/assets/fonts/roboto/Roboto-Thin.woff2) format("woff2"),
+    url(../../src/assets/fonts/roboto/Roboto-Thin.woff) format("woff");
+}
+
+/* Reset */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+p,
+blockquote,
+pre,
+code,
+address,
+ul,
+ol,
+li,
+nav,
+section,
+article,
+header,
+footer,
+main,
+aside,
+dl,
+dt,
+dd,
+table,
+thead,
+tbody,
+tfoot,
+label,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+hr,
+input,
+button,
+textarea,
+object,
+figure,
+figcaption {
+    margin: 0;
+    padding: 0;
+}
+body,
+input,
+select,
+textarea,
+button,
+img,
+fieldset {
+    border: none;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+address,
+cite,
+code,
+em,
+i {
+    font-style: normal;
+    font-weight: normal;
+}
+label,
+img,
+input,
+select,
+textarea,
+button,
+a {
+    vertical-align: middle;
+}
+u,
+ins,
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+
+/* Normalize */
+body {
+    font-family: "Pretendard", "Noto Sans KR", sans-serif;
+}
+select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+select::-ms-expand {
+    display: none;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration,
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="number"],
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius: 0;
+    outline: 0;
+}
+textarea {
+    resize: none;
+}
+
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 100%;
+    font-family: var(--ft-basic);
+}
+
+:root {
+    --bg: #ffffff;
+    --bg-tp: #ffffff;
+
+    --bg-cm-gray: #f5f6fb;
+    --ft-basic: "Pretendard", "Noto Sans KR", sans-serif;
+    --ft-numb: "Roboto";
+
+    --pt-cl-01: #6100de;
+    --pt-cl-02: #FF8A8A;
+    --pt-cl-03: #f44336;
+    --pt-cl-04: #A5D6A7;
+    --pt-cl-05: #4caf50;
+    --pt-cl-06: #5000c8; /* point color hover */
+
+    --ft-color-normal: #555555;
+    /*--ft-cl-lightgray: #c1c1c0;*/
+    --ft-cl-gray: #1d1d1d;
+    --light-cl-01: #b9bcdd;
+    --light-cl-02: #ddb9d5;
+    --light-cl-03: #dddab9;
+    --light-cl-04: #b9ddc4;
+    --light-cl-05: #ddb9b9;
+
+    --bg-gray-01: #ffffff;
+    --bg-gray-02: #f4ecff;
+    --bg-gray-03: #c8c8c8;
+    --bg-gray-04: #8e8e8e;
+    --bg-gray-05: #e4e4e4;
+    --bg-gray-06: #999999;
+    --bg-gray-07: #eeeeee;
+    --bg-gray-08: #f5f7fa;
+
+
+}
+
+/* dark */
+html[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: linear-gradient(to bottom, #002B41, #000D14);
+    --bg-tp: transparent;
+
+    --pt-cl-01: #ffffff;
+
+    --ft-color-normal: #ffffff;
+    --bg-gray-03: #ffffff;
+}
+.theme-ready * { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, fill 180ms ease; }
+
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /*background-color: var(--bg-cm-gray);*/
+    color: var(--ft-color-normal);
+}
+
+.layout {
+    padding: 86px 20px 16px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* checkbox */
+[type="checkbox"] {
+    /*width: 50px;*/
+    /*height: 50px;*/
+    accent-color: var(--pt-cl-01);
+}
+
+/* 4) 토글 버튼 */
+.theme-toggle {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+    background-color: transparent;
+
+
+
+    appearance: none;
+    color: var(--text); padding: 10px 14px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px; font-size: 14px; line-height: 1;
+}
+/*.theme-toggle:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }*/
+.icon { width: 18px; height: 18px; display: block; }
+.label { user-select: none; }
+
+/* 아이콘 교차 페이드 */
+.sun, .moon { transition: opacity 180ms ease, transform 180ms ease; }
+html[data-theme="light"] .sun { opacity: 1; transform: rotate(0deg) scale(1); }
+html[data-theme="light"] .moon { opacity: 0; transform: rotate(-30deg) scale(.9); }
+html[data-theme="dark"] .sun { opacity: 0; transform: rotate(30deg) scale(.9); color: #fff; }
+html[data-theme="dark"] .moon { opacity: 1; transform: rotate(0deg) scale(1); color: #fff; }
+
+/* 스위치형 보조 UI (선택사항) */
+.switch-track { width: 40px; height: 22px; border-radius: 999px; background: var(--ring); position: relative; flex: none; }
+.switch-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--bg-gray-01); position: absolute; top: 2px; left: 2px; transition: left 180ms ease; }
+html[data-theme="dark"] .switch-thumb { left: 20px; }
+
+

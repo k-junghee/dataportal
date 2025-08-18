@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<!--    <link rel="stylesheet" href="./src/css/common.css">-->
+    <link rel="stylesheet" href="src/css/type3D.css">
+<!--    <script src="./src/js/common.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./src/js/type3D.js"></script>
+</head>
+<body>
+<!-- header -->
+<!--<div id="header" class="header_3d"></div> &lt;!&ndash; 3d type 에서는 .header_3d 클래스 추가 &ndash;&gt;-->
+<!--<script>-->
+<!--    setTimeout(() => {-->
+<!--        document.getElementById('status-link').classList.add('active'); /* 현황판 active */-->
+<!--    }, 50);-->
+<!--</script>-->
+<!-- //header -->
+<section>
+    <!-- type 3D -->
+    <div class="type_3d_wrap layout">
+        <div class="title">
+            <h1>서울특별시 은평구 사망 인구수</h1>
+        </div>
+        <div class="cont_3d">
+            <div class="item_wrap left">
+                <div class="item_3d">
+                    <div class="item_amount">
+                        <div class="area">서울특별시 은평구</div>
+                        <div class="bottom">
+                            <div class="tit">총 인구수</div>
+                            <div class="value">
+                                <span class="num">459,248</span>
+                                <span class="unit">명</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item_3d no-bg">
+                    <div class="item_slider">
+                        <div class="is_top">
+                            <div class="sel_toggle">
+                                <div class="st"><button type="button">단위</button></div>
+                                <div class="st"><button type="button">비율</button></div>
+                            </div>
+                            <div class="date_info">
+                                2025년 5월 기준
+                            </div>
+                        </div>
+                        <div class="is_con">
+                            <div class="swiper-data">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move active">
+                                                <div class="tit">총 세대수</div>
+                                                <div class="cont">
+                                                    <div class="percent nor">0%</div>
+                                                    <div class="value">
+                                                        <span class="num">4,498,871</span>
+                                                        <span class="unit">세대</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">세대당 인구</div>
+                                                <div class="cont">
+                                                    <div class="percent nor">0%</div>
+                                                    <div class="value">
+                                                        <span class="num">2.1</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">출생</div>
+                                                <div class="cont">
+                                                    <div class="percent down">5.75%</div>
+                                                    <div class="value">
+                                                        <span class="num">3,709</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">사망</div>
+                                                <div class="cont">
+                                                    <div class="percent down">4.24%</div>
+                                                    <div class="value">
+                                                        <span class="num">4,224</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">전입인구</div>
+                                                <div class="cont">
+                                                    <div class="percent up">0.17%</div>
+                                                    <div class="value">
+                                                        <span class="num">6,432</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">전출인구</div>
+                                                <div class="cont">
+                                                    <div class="percent up">0.17%</div>
+                                                    <div class="value">
+                                                        <span class="num">5,770</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">총 세대수</div>
+                                                <div class="cont">
+                                                    <div class="percent nor">0%</div>
+                                                    <div class="value">
+                                                        <span class="num">5,498,871</span>
+                                                        <span class="unit">세대</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">세대당 인구</div>
+                                                <div class="cont">
+                                                    <div class="percent down">5.75%</div>
+                                                    <div class="value">
+                                                        <span class="num">2.1</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">출생</div>
+                                                <div class="cont">
+                                                    <div class="percent nor">0%</div>
+                                                    <div class="value">
+                                                        <span class="num">2,709</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">사망</div>
+                                                <div class="cont">
+                                                    <div class="percent down">4.24%</div>
+                                                    <div class="value">
+                                                        <span class="num">1,224</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">전입인구</div>
+                                                <div class="cont">
+                                                    <div class="percent up">0.17%</div>
+                                                    <div class="value">
+                                                        <span class="num">1,432</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="data_box">
+                                            <a href="javascript:;" class="move">
+                                                <div class="tit">전출인구</div>
+                                                <div class="cont">
+                                                    <div class="percent down">0.17%</div>
+                                                    <div class="value">
+                                                        <span class="num">6,770</span>
+                                                        <span class="unit">명</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 250715 - s -->
+                <div class="item_3d">
+                    <div class="item_comn">
+                        <div class="comn_tit">
+                            <p class="tit">서울특별시 은평구 연령별 분포 3D Pie & 3D Bar chart</p>
+                        </div>
+                        <div class="graph_area">
+                            <div class="tab_btn">
+                                <button type="button" class="tbtn t01 active" data-tab="0"></button>
+                                <button type="button" class="tbtn t02" data-tab="1"></button>
+                            </div>
+                            <div class="tab_cont">
+                                <div class="graph_area tab_panel active">
+                                    <img src="./src/assets/img_3d/img_graph01.png" alt="그래프 이미지"/>
+                                </div>
+                                <div class="graph_area tab_panel">
+                                    <img src="./src/assets/img_3d/img_graph02.png" alt="그래프 이미지"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 250715 - e -->
+            </div>
+            <div class="item_wrap right">
+                <div class="item_3d">
+                    <div class="item_comn">
+                        <div class="comn_tit">
+                            <p class="tit">총 인구수 3D graph</p>
+                            <div class="option_box">
+                                <button type="button" class="btn_opt"></button>
+                                <div class="cont_opt">
+                                    <div class="tit">데이터값 선택</div>
+                                    <div class="cont">
+                                        <div class="option df">
+                                            <div class="opt_tit">데이터 종류1</div>
+                                            <div class="opt_area">
+                                                <div class="custom-select">
+                                                    <div class="select-trigger">인구 및 세대</div>
+                                                    <div class="select-options">
+                                                        <div class="s-option">인구 및 세대</div>
+                                                        <div class="s-option">성별&middot;연령별</div>
+                                                        <div class="s-option">세대당인구</div>
+                                                        <div class="s-option">출생인구</div>
+                                                        <div class="s-option">사망인구</div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="option df">
+                                            <div class="opt_tit">데이터 종류2</div>
+                                            <div class="opt_area">
+                                                <div class="custom-select">
+                                                    <div class="select-trigger">총 인구수</div>
+                                                    <div class="select-options">
+                                                        <div class="s-option">총 인구수</div>
+                                                        <div class="s-option">총 세대수</div>
+                                                        <div class="s-option">세대당인구</div>
+                                                        <div class="s-option">남자인구수</div>
+                                                        <div class="s-option">여자인구수</div>
+                                                        <div class="s-option">외국인 거소&middot;거주</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="option">
+                                            <div class="opt_tit">단위/비율</div>
+                                            <div class="opt_area">
+                                                <div class="sel_toggle">
+                                                    <div class="st"><button type="button">인구 및 세대수(명/세대)</button></div>
+                                                    <div class="st"><button type="button">비중(%)</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="option">
+                                            <div class="opt_tit">지역 단위</div>
+                                            <div class="opt_area">
+                                                <div class="sel_toggle">
+                                                    <div class="st"><button type="button">읍면동(ALL)</button></div>
+                                                    <div class="st"><button type="button">시군구</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="option">
+                                            <div class="opt_tit">단위/비율</div>
+                                            <div class="opt_area">
+                                                <div class="sel_toggle">
+                                                    <div class="st"><button type="button">날짜-구분</button></div>
+                                                    <div class="st"><button type="button">구분-날짜</button></div>
+                                                    <div class="st"><button type="button">지역-날짜</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="option">
+                                            <div class="opt_tit">축 정렬</div>
+                                            <div class="opt_area">
+                                                <div class="sel_toggle">
+                                                    <div class="st"><button type="button">기본</button></div>
+                                                    <div class="st"><button type="button">X-정렬</button></div>
+                                                    <div class="st"><button type="button">Y-정렬</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graph_area">
+                            <img src="./src/assets/img_3d/img_graph03.png" alt="그래프 이미지"/>
+                            <div class="control_btn">
+                                <div class="btn_top">
+                                    <button type="button" class="btn_full"></button>
+                                </div>
+                                <div class="btn_bottom">
+                                    <button type="button" class="btn_play"></button>
+                                    <button type="button" class="btn_zoom"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="item_3d">-->
+<!--                    <div class="item_comn">-->
+<!--                        <div class="comn_tit">-->
+<!--                            <p class="tit">연령별인구 3D graph</p>-->
+<!--                            <div class="option_box">-->
+<!--                                <button type="button" class="btn_opt"></button>-->
+<!--                                <div class="cont_opt">-->
+<!--                                    <div class="tit">데이터값 선택</div>-->
+<!--                                    <div class="cont">-->
+<!--                                        <div class="option df">-->
+<!--                                            <div class="opt_tit">데이터 종류1</div>-->
+<!--                                            <div class="opt_area">-->
+<!--                                                <div class="custom-select">-->
+<!--                                                    <div class="select-trigger">인구 및 세대</div>-->
+<!--                                                    <div class="select-options">-->
+<!--                                                        <div class="s-option">인구 및 세대</div>-->
+<!--                                                        <div class="s-option">성별&middot;연령별</div>-->
+<!--                                                        <div class="s-option">세대당인구</div>-->
+<!--                                                        <div class="s-option">출생인구</div>-->
+<!--                                                        <div class="s-option">사망인구</div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="option">-->
+<!--                                            <div class="opt_tit">단위/비율</div>-->
+<!--                                            <div class="opt_area">-->
+<!--                                                <div class="sel_toggle">-->
+<!--                                                    <div class="st"><button type="button">날짜-구분</button></div>-->
+<!--                                                    <div class="st"><button type="button">구분-날짜</button></div>-->
+<!--                                                    <div class="st"><button type="button">지역-날짜</button></div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="option">-->
+<!--                                            <div class="opt_tit">축 정렬</div>-->
+<!--                                            <div class="opt_area">-->
+<!--                                                <div class="sel_toggle">-->
+<!--                                                    <div class="st"><button type="button">기본</button></div>-->
+<!--                                                    <div class="st"><button type="button">X-정렬</button></div>-->
+<!--                                                    <div class="st"><button type="button">Y-정렬</button></div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="graph_area">-->
+<!--                            <img src="./src/assets/img_3d/img_graph03.png" alt="그래프 이미지"/>-->
+<!--                            <div class="control_btn">-->
+<!--                                <div class="btn_top">-->
+<!--                                    <button type="button" class="btn_full"></button>-->
+<!--                                </div>-->
+<!--                                <div class="btn_bottom">-->
+<!--                                    <button type="button" class="btn_play"></button>-->
+<!--                                    <button type="button" class="btn_zoom"></button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+        <!-- layer popup-->
+        <div class="layer_full">
+            <div class="layer_inner">
+                <button type="button" class="btn_close"></button>
+                <div class="tit">서울특별시 은평구 총 인구수 3D graph</div>
+                <div class="layer_content">
+                    <img src="./src/assets/img_3d/img_graph04.png" alt="확대 그래프">
+                </div>
+                <div class="side_control_btn fb04"><!-- 250724 .fb04 클래스 추가(버튼4개인 경우에만 고정높이값) -->
+                    <div class="sc_btn">
+                        <button type="button" class="sc_tog sc_play"></button> <!-- 250721 .sc_tog 클래스 추가 -->
+                    </div>
+                    <div class="option_box">
+                        <button type="button" class="btn_opt sc01"></button>
+                        <div class="cont_opt">
+                            <div class="tit">데이터값 선택</div>
+                            <div class="cont">
+                                <div class="option df">
+                                    <div class="opt_tit">데이터 종류1</div>
+                                    <div class="opt_area">
+                                        <div class="custom-select">
+                                            <div class="select-trigger">인구 및 세대</div>
+                                            <div class="select-options">
+                                                <div class="s-option">인구 및 세대</div>
+                                                <div class="s-option">성별&middot;연령별</div>
+                                                <div class="s-option">세대당인구</div>
+                                                <div class="s-option">출생인구</div>
+                                                <div class="s-option">사망인구</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="option df">
+                                    <div class="opt_tit">데이터 종류2</div>
+                                    <div class="opt_area">
+                                        <div class="custom-select">
+                                            <div class="select-trigger">총 인구수</div>
+                                            <div class="select-options">
+                                                <div class="s-option">총 인구수</div>
+                                                <div class="s-option">총 세대수</div>
+                                                <div class="s-option">세대당인구</div>
+                                                <div class="s-option">남자인구수</div>
+                                                <div class="s-option">여자인구수</div>
+                                                <div class="s-option">외국인 거소&middot;거주</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="option">
+                                    <div class="opt_tit">단위/비율</div>
+                                    <div class="opt_area">
+                                        <div class="sel_toggle">
+                                            <div class="st"><button type="button">인구 및 세대수(명/세대)</button></div>
+                                            <div class="st"><button type="button">비중(%)</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="option">
+                                    <div class="opt_tit">지역 단위</div>
+                                    <div class="opt_area">
+                                        <div class="sel_toggle">
+                                            <div class="st"><button type="button">읍면동(ALL)</button></div>
+                                            <div class="st"><button type="button">시군구</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option_box">
+                        <button type="button" class="btn_opt sc02"></button>
+                        <div class="cont_opt">
+                            <div class="tit">차트유형</div>
+                            <div class="cont">
+                                <div class="option">
+                                    <div class="type_list sel_toggle">
+                                        <button type="button" class="tl01 st">4D 플로어</button>
+                                        <button type="button" class="tl02 st">3D 파이1</button>
+                                        <button type="button" class="tl03 st">3D 파이2</button>
+                                        <button type="button" class="tl04 st">3D 히트맵</button>
+                                        <button type="button" class="tl05 st">3D 스캐터</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 250721 - s -->
+                    <div class="sc_btn">
+                        <button type="button" class="sc_tog sc_2d"></button>
+                    </div>
+                    <!-- 250721 - e -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <!-- //type 3D -->
+    <!-- graph layer 250718 - s -->
+    <div class="gl_pop high"> <!--- 상위 1, 2, 3위  .high 클래스 추가 --->
+        <div class="tit">
+            <div class="ranking">1위</div>
+            <div class="label">송파구 30대</div>
+        </div>
+        <div class="list">
+            <dl>
+                <dt class="bold">총 인구수</dt>
+                <dd class="bold"><span class="num">106,002</span><span class="unit">명</span></dd>
+            </dl>
+            <dl>
+                <dt>남자 인구수</dt>
+                <dd><span class="num">50,811</span><span class="unit">명</span></dd>
+            </dl>
+            <dl>
+                <dt>여자 인구수</dt>
+                <dd><span class="num">55,191</span><span class="unit">명</span></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="gl_pop">
+        <div class="tit">
+            <div class="ranking">25위</div>
+            <div class="label">강북구 30대</div>
+        </div>
+        <div class="list">
+            <dl>
+                <dt>총 인구수</dt>
+                <dd><span class="num">106,002</span><span class="unit">명</span></dd>
+            </dl>
+            <dl>
+                <dt>남자 인구수</dt>
+                <dd><span class="num">50,811</span><span class="unit">명</span></dd>
+            </dl>
+            <dl>
+                <dt>여자 인구수</dt>
+                <dd><span class="num">55,191</span><span class="unit">명</span></dd>
+            </dl>
+        </div>
+    </div>
+    <!-- graph layer 250718 - e -->
+</section>
+
+
+</body>
+<script>
+</script>
+</html>
