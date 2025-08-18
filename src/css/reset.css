@@ -323,8 +323,13 @@ html[data-theme="dark"] {
 
     --pt-cl-01: #ffffff;
 
+    --ft-cl-gray: #ffffff;
+
     --ft-color-normal: #ffffff;
+    --bg-gray-01: transparent;
     --bg-gray-03: #ffffff;
+    --bg-gray-04: #ffffff;
+    --bg-gray-07: #1d1d1d;
 }
 .theme-ready * { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, fill 180ms ease; }
 
@@ -377,8 +382,8 @@ html[data-theme="dark"] .sun { opacity: 0; transform: rotate(30deg) scale(.9); c
 html[data-theme="dark"] .moon { opacity: 1; transform: rotate(0deg) scale(1); color: #fff; }
 
 /* 스위치형 보조 UI (선택사항) */
-.switch-track { width: 40px; height: 22px; border-radius: 999px; background: var(--ring); position: relative; flex: none; }
-.switch-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--bg-gray-01); position: absolute; top: 2px; left: 2px; transition: left 180ms ease; }
+.switch-track { width: 40px; height: 22px; border-radius: 999px; background: var(--bg-gray-07); position: relative; flex: none; }
+.switch-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--pt-cl-01); position: absolute; top: 2px; left: 2px; transition: left 180ms ease; }
 html[data-theme="dark"] .switch-thumb { left: 20px; }
 
 

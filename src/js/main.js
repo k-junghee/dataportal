@@ -1,42 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
     // theme.js
-    (function() {
-        const lightBg = 'linear-gradient(to bottom, #f5f6fb, #f5f6fb)';
-        const darkBg = 'linear-gradient(to bottom, #002B41, #000D14)';
+(function() {
+    const lightBg = 'linear-gradient(to bottom, #f5f6fb, #f5f6fb)';
+    const darkBg = 'linear-gradient(to bottom, #002B41, #000D14)';
 
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            document.body.style.background = theme === 'dark' ? darkBg : lightBg;
-            localStorage.setItem('theme', theme);
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.body.style.backgroundImage = theme === 'dark' ? darkBg : lightBg;
+        localStorage.setItem('theme', theme);
+    }
+
+    function setupThemeToggle() {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+
+        const toggleTheme = () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+            btn.setAttribute('aria-pressed', newTheme === 'dark');
+            btn.classList.toggle('dark', newTheme === 'dark');
+        };
+
+        btn.addEventListener('click', toggleTheme);
+
+        // 시스템 다크모드 반영
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const handleMediaChange = (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+                btn.setAttribute('aria-pressed', e.matches);
+                btn.classList.toggle('dark', e.matches);
+            }
+        };
+
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleMediaChange);
+        } else if (mediaQuery.addListener) {
+            mediaQuery.addListener(handleMediaChange);
         }
 
-        function setupThemeToggle() {
-            const btn = document.getElementById('themeToggle');
-            if (!btn) return;
+        // 초기 테마 적용
+        const savedTheme = localStorage.getItem('theme') || (mediaQuery.matches ? 'dark' : 'light');
+        applyTheme(savedTheme);
+        btn.setAttribute('aria-pressed', savedTheme === 'dark');
+        btn.classList.toggle('dark', savedTheme === 'dark');
+    }
 
-            const toggleTheme = () => {
-                const current = document.documentElement.getAttribute('data-theme') || 'light';
-                applyTheme(current === 'dark' ? 'light' : 'dark');
-                btn.setAttribute('aria-pressed', current !== 'dark');
-            };
+    window.addEventListener('load', setupThemeToggle);
+})();
 
-            btn.addEventListener('click', toggleTheme);
-
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            mediaQuery.addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    applyTheme(e.matches ? 'dark' : 'light');
-                }
-            });
-
-            // 초기 버튼 상태, 기본 모드를 light로 설정
-            const initialTheme = localStorage.getItem('theme') || 'light';
-            applyTheme(initialTheme);
-            btn.setAttribute('aria-pressed', initialTheme === 'dark');
-        }
-
-        window.addEventListener('load', setupThemeToggle);
-    })();
 
 
 
