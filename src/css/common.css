@@ -118,16 +118,17 @@ html[data-theme="dark"] .logo_wrap a{
     right: -3px;
 }
 
-.dr:hover .dr_menu {
+.gnb_item:hover > .dr_menu_wrap,
+.gnb_item .dr_menu_wrap:hover {
     display: block;
 }
 .dr_menu_wrap{
     display: none;
     position: absolute;
-    top: 20px;
+    top: 100%; /* 👈 부모 a의 바로 아래 붙이기 */
     left: 0;
-    padding-top: 32px;
-    z-index: 1;
+    padding-top: 30px; /* 살짝 간격 줄거면 */
+    z-index: 10;
 }
 .dr_menu {
     padding: 8px;

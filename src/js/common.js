@@ -45,17 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.classList.toggle('dark', savedTheme === 'dark');
         }
 
-        window.addEventListener('load', setupThemeToggle);
+        window._setupThemeToggle = setupThemeToggle;
     })();
 
-    // **** header **** //
-    fetch('header.html')
+    
+
+   // **** header **** //
+    fetch('header.inc')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
 
-            // 헤더가 로드된 후, 이벤트 리스너를 추가합니다.
-            // header select
+            // 헤더 로드 후 실행해야 하는 코드들
+
+            // select box
             const buttons = document.querySelectorAll('.btn_dr');
             buttons.forEach((btn) => {
                 btn.addEventListener('click', () => {
@@ -78,11 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-            // **** gnb mobile **** //
+            // gnb mobile
             const burgers = document.querySelectorAll('.menu-trigger');
             const nav = document.querySelectorAll('.gnb');
             const siteMap = document.querySelectorAll('.site-map');
-
 
             burgers.forEach(function(burger, index) {
                 burger.addEventListener('click', function(e) {
@@ -98,10 +100,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
+            // theme
+            function handleThemeToggleVisibility() {
+                const themeToggle = document.querySelector('.theme-toggle');
+                const siteMapEl = document.querySelector('.site-map');
+                if (!themeToggle) return;
 
+                const isMobile = window.innerWidth <= 1110;
+                const scrolled = window.scrollY > 0;
+                const siteMapOpen = siteMapEl && siteMapEl.classList.contains('show');
+
+                if (isMobile && (scrolled || siteMapOpen)) {
+                    themeToggle.style.display = 'none';
+                } else {
+                    themeToggle.style.display = '';
+                }
+            }
+            window.addEventListener('scroll', handleThemeToggleVisibility);
+            window.addEventListener('resize', handleThemeToggleVisibility);
+            const siteMapEl = document.querySelector('.site-map');
+            if (siteMapEl) {
+                const observer = new MutationObserver(handleThemeToggleVisibility);
+                observer.observe(siteMapEl, { attributes: true, attributeFilter: ['class'] });
+            }
+            handleThemeToggleVisibility();
+
+
+            if (window._setupThemeToggle) {
+                window._setupThemeToggle();
+            }
         })
         .catch(error => console.error('Error loading header:', error));
-
     // 로컬에서 확인 시
     // header select
     // const buttons = document.querySelectorAll('.btn_dr');
