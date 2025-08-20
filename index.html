@@ -20,7 +20,7 @@
       max-width: 720px;
       margin: 0 auto;
       background: #fff;
-      border-radius: 12px;
+      border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       overflow: hidden;
     }
@@ -63,26 +63,42 @@
     nav.toc li:hover {
       background: #f3f4f6;
     }
+   @media (max-width: 1024px) {
+      body{
+        padding: 0;
+      }
+      nav.toc{
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
   </style>
 <body>
 <nav class="toc">
     <h1>대시보드 현황판 목차</h1>
     <ol>
-      <li><a href="main.html">대시보드현황판 종합 <span class="file">(main.html)</span></a></li>
-      <li><a href="dashboard-population.html">대시보드현황판 인구 <span class="file">(dashboard-population.html)</span></a></li>
-      <li><a href="dashboard-education.html">대시보드현황판 교육 <span class="file">(dashboard-education.html)</span></a></li>
-      <li><a href="dashboard-medical.html">대시보드현황판 의료 <span class="file">(dashboard-medical.html)</span></a></li>
-      <li><a href="dashboard-housing.html">대시보드현황판 주거 <span class="file">(dashboard-housing.html)</span></a></li>
-      <li><a href="dashboard-culture.html">대시보드현황판 문화 <span class="file">(dashboard-culture.html)</span></a></li>
-      <li><a href="dashboard-weather.html">대시보드현황판 날씨 <span class="file">(dashboard-weather.html)</span></a></li>
-      <li><a href="dashboard-finance.html">대시보드현황판 재정 <span class="file">(dashboard-finance.html)</span></a></li>
-      <li><a href="dashboard-corporate.html">대시보드현황판 법인사업장 <span class="file">(dashboard-corporate.html)</span></a></li>
-      <li><a href="dashboard-permit.html">대시보드현황판 지자체 인허가 현황 <span class="file">(dashboard-permit.html)</span></a></li>
-      <li><a href="dashboard-sme.html">대시보드현황판 소상공인 현황 <span class="file">(dashboard-sme.html)</span></a></li>
-      <li><a href="dashboard-er.html">대시보드현황판 실시간 응급의료 <span class="file">(dashboard-er.html)</span></a></li>
-      <li><a href="dashboard-crowd.html">대시보드현황판 실시간 인구혼잡도 <span class="file">(dashboard-crowd.html)</span></a></li>
-      <li><a href="dashboard-subsidy.html">정부보조금 맞춤형 현황판 <span class="file">(dashboard-subsidy.html)</span></a></li>
-      <li><a href="dashboard-lifecycle.html">생애주기별 맞춤정보 <span class="file">(dashboard-lifecycle.html)</span></a></li>
+      <li><a href="main.html">01. 대시보드현황판 / 종합 <span class="file">(main.html)</span></a></li>
+      <li><a href="db-population.html">02. 인구 <span class="file">(db-population.html)</span></a></li>
+      <li><a href="db-education.html">03. 교육 <span class="file">(db-education.html)</span></a></li>
+      <li><a href="db-medical.html">04. 의료 <span class="file">(db-medical.html)</span></a></li>
+      <li><a href="db-housing.html">05. 주거 <span class="file">(db-housing.html)</span></a></li>
+      <li><a href="db-culture.html">06. 문화 <span class="file">(db-culture.html)</span></a></li>
+      <li><a href="db-weather.html">07. 날씨 <span class="file">(db-weather.html)</span></a></li>
+      <li><a href="db-finance.html">08. 재정 <span class="file">(db-finance.html)</span></a></li>
+      <li><a href="db-corporate.html">09. 법인사업장 <span class="file">(db-corporate.html)</span></a></li>
+      <li><a href="db-subsidy01.html">10. 정부보조금24_일반 사용자<span class="file">(db-subsidy01.html)</span></a></li>
+      <li><a href="db-subsidy02.html">11. 정부보조금24_담당 실무자<span class="file">(db-subsidy02.html)</span></a></li>
+      <li><a href="db-lifecycle01.html">12. 생애주기별 맞춤정보 <span class="file">(db-lifecycle01.html)</span></a></li>
+      <li><a href="db-lifecycle02.html">13. 생애주기별 맞춤정보_담당공무원용 화면  <span class="file">(db-lifecycle02.html)</span></a></li>
+      <li><a href="db-social.html">14. 사회안전망 현황<span class="file">(db-social.html)</span></a></li>
+      <li><a href="db-permit.html">15. 지자체 인허가 현황 <span class="file">(db-permit.html)</span></a></li>
+      <li><a href="db-sme.html">16. 소상공인 현황 <span class="file">(db-sme.html)</span></a></li>
+      <li><a href="db-er.html">17. 실시간 응급의료 <span class="file">(db-er.html)</span></a></li>
+      <li><a href="db-.html">18. 대시보드현황판 / 실시간 응급 의료 현황판_응급실 병상 현황<span class="file">(db-.html)</span></a></li>
+      <li><a href="db-.html">19. 대시보드현황판 / 실시간 응급 의료 현황판_의료재정<span class="file">(db-.html)</span></a></li>
+      <li><a href="db-crowd.html">20. 대시보드현황판 / 실시간 인구 혼잡도 현황판<span class="file">(db-.html)</span></a></li>
+      <li><a href="db-crowd.html">21. 대시보드현황판 / 실시간 인구 혼잡도 현황판2<span class="file">(db-.html)</span></a></li>
+      
     </ol>
   </nav>
 

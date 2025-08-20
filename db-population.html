@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Portal</title>
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <link rel="stylesheet" href="./src/css/common.css">
+    <link rel="stylesheet" href="src/css/typeA.css">
+    <script src="./src/js/common.js" defer></script>
+    <script src="./src/js/typeA.js"></script>
+</head>
+<body>
+<!-- header -->
+<div id="header"></div>
+<script>
+    setTimeout(() => {
+        document.getElementById('population-link').classList.add('active'); /* 인구통계 active */
+    }, 50);
+</script>
+<!-- //header -->
+<section>
+    <h1 class="blind">서울특별시 인구 증감율</h1>
+    <!-- type A -->
+    <div class="type_a_wrap layout">
+        <div class="type_a_gird">
+            <div class="a_colum a_left ac3">
+                <div class="type_list">
+                    <div class="title sb">
+                        <p class="tit">인구 현황</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <script src="https://code.highcharts.com/highcharts.js"></script>
+                        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+                        <div id="container"></div>
+                        <script>
+                        Highcharts.chart('container', {
+                            chart: {
+                                type: 'pie',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 45,
+                                    beta: 0
+                                },
+                                height: 200
+                            },
+                            title: null,
+                            subtitle: null,
+                            plotOptions: {
+                                pie: {
+                                    innerSize: 100,   // 도넛 두께
+                                    depth: 45,        // 원통 높이
+                                    //startAngle: -90,  // 시작 각도 (위쪽 반 잘라냄)
+                                    //endAngle: 90,     // 끝 각도
+                                    //center: ['50%', '75%'] // 아래쪽으로 내림
+                                }
+                            },
+                            series: [{
+                                data: [
+                                    ['10대', 12],
+                                    ['20대', 19],
+                                    ['30대', 14],
+                                    ['40대', 18],
+                                    ['50대', 22],
+                                    ['60대', 15]
+                                ]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
+                </div>
+                <div class="type_list">
+                    <div class="title sb">
+                        <p class="tit">서울특별시 구 단위별 인구 증감율</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="data_area">
+                        <!-- <canvas id="lineChart"></canvas>
+                        <script>
+                            const ctx3 = document.getElementById('lineChart');
+                            new Chart(ctx3, {
+                            type: 'line',
+                            data: {
+                                labels: ['2018','2019','2020','2021','2022','2023','2024'],
+                                datasets: [{
+                                label: '강남구',
+                                data: [500, 520, 510, 530, 540, 560, 570],
+                                borderColor: '#36a2eb',
+                                fill: false
+                                },{
+                                label: '송파구',
+                                data: [400, 420, 410, 415, 430, 440, 450],
+                                borderColor: '#ff6384',
+                                fill: false
+                                }]
+                            },
+                            options: { responsive: true }
+                            });
+                        </script> -->
+                    </div>
+                </div>
+                <div class="type_list">
+                    <div class="title sb">
+                        <p class="tit">인구현황</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="data_area">
+                        <!-- <canvas id="barChart"></canvas>
+                        <script>
+                        const ctx2 = document.getElementById('barChart');
+                        new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                            labels: ['서울', '부산', '대구', '인천', '광주'],
+                            datasets: [{
+                            label: '남자',
+                            data: [120, 150, 180, 90, 60],
+                            backgroundColor: '#36a2eb'
+                            },{
+                            label: '여자',
+                            data: [130, 140, 170, 100, 70],
+                            backgroundColor: '#ff6384'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: { legend: { position: 'top' } },
+                            scales: { y: { beginAtZero: true } }
+                        }
+                        });
+                        </script> -->
+                    </div>
+                </div>
+            </div>
+            <div class="a_colum a_center ac2">
+                <div class="type_list list_map">
+                    <div class="title">
+                        <p class="tit">map</p>
+                        <div class="info_box">
+                            <span class="info_icon"></span>
+                            <p class="info_tag">각 지역을 클릭하시면, 해당 지역의 데이터를 확인하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="data_area map_data">
+                        
+                    </div>
+                </div>
+                <div class="type_list list_stats">
+                    <div class="title sb">
+                        <p class="tit">graph</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="data_area">
+
+                    </div>
+                </div>
+            </div>
+            <div class="a_colum a_right ac3">
+                <div class="type_list news">
+                    <div class="title sb">
+                        <p class="tit">서울특별시 출생인구</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="data_area video_data">
+                    </div>
+                </div>
+                <div class="type_list left">
+                    <div class="title sb">
+                        <p class="tit">인구현황</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="box_cont"></div>
+                </div>
+                <div class="type_list right">
+                    <div class="title sb">
+                        <p class="tit">연령대별 분포도</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="box_cont"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //type A -->
+</section>
+
+
+</body>
+<script>
+    //popup
+    function showPopup() {
+        const popupW = 1200;
+        const popupH = 730;
+        const left = Math.ceil((window.screen.width - popupW)/2);
+        const top = Math.ceil((window.screen.height - popupH)/2);
+        window.open('./html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
+    }
+</script>
+</html>
