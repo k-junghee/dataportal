@@ -60,7 +60,11 @@
                             <p class="info_tag">각 지역을 클릭하시면, 해당 지역의 데이터를 확인하실 수 있습니다.</p>
                         </div>
                     </div>
-                    <div class="data_area map_data"></div>
+                    <div class="data_area map_data">
+                        <!-- smaple data : img -->
+                        <img src="../src/assets/images/map01.png" alt="map" style="display: block;width: 100%; height: 100%;"/>
+                        <!-- //smaple data : img -->
+                    </div>
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
@@ -96,7 +100,7 @@
         const popupH = 730;
         const left = Math.ceil((window.screen.width - popupW)/2);
         const top = Math.ceil((window.screen.height - popupH)/2);
-        window.open('./html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
+        window.open('../html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
     }
 </script>
 </html>
