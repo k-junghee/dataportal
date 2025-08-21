@@ -9,26 +9,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     //test data map
-    const radios = document.querySelectorAll('input.mgl_bubble[type="radio"]');
-    const imageEl = document.querySelector('.map_data img');
-
-    radios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            if (this.checked) {
-                const images = ['map01.png', 'map02.png', 'map03.png'];
-                const randomImg = images[Math.floor(Math.random() * images.length)];
-                imageEl.src = '../src/assets/images/' + randomImg; // 실제 이미지 경로에 맞게 수정
-            }
-        });
+    document.querySelectorAll('.main_grid_list').forEach(gridList => {
+    const radios = gridList.querySelectorAll('input.mgl_bubble[type="radio"]');
+    const imageEl = gridList.querySelector('.map_data img');
+    if (!radios.length || !imageEl) return;
+        const images = ['map01.png', 'map02.png', 'map03.png'];
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.checked) {
+                    const randomImg = images[Math.floor(Math.random() * images.length)];
+                    imageEl.src = '../src/assets/images/' + randomImg;
+                }
+            });
+    });
+    const initialChecked = gridList.querySelector('input.mgl_bubble[type="radio"]:checked');
+        if (initialChecked) {
+            const randomImg = images[Math.floor(Math.random() * images.length)];
+            imageEl.src = '../src/assets/images/' + randomImg;
+        }
     });
 
-    const initialChecked = document.querySelector('input.mgl_bubble[type="radio"]:checked');
-    if (initialChecked) {
-        const images = ['map01.png', 'map02.png', 'map03.png'];
-        const randomImg = images[Math.floor(Math.random() * images.length)];
-        document.querySelector('.map_data img').src = '../src/assets/images/' + randomImg;
-    }
 
+
+
+
+    // 대시보드 샘플에서 사용 하지 않을경우 삭제 - s
     //test graph height
     const bars = document.querySelectorAll('.graph_area span');
     for (let i = 0; i < bars.length; i += 2) {
@@ -62,6 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltip.style.display = 'none';
         });
     });
-
+    // 대시보드 샘플에서 사용 하지 않을경우 삭제 - e
 
 });

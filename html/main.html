@@ -7,9 +7,93 @@
     <link rel="stylesheet" href="../src/css/reset.css">
     <link rel="stylesheet" href="../src/css/common.css">
     <link rel="stylesheet" href="../src/css/main.css">
-    <script src="../src/js/common.js" defer></script>
-    <script src="../src/js/main.js"></script>
+    <script src="../src/js/common.js"></script>
+    <!-- <script src="../src/js/main.js"></script> -->
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    //main grid height
+    const windowHeight = window.innerHeight;
+    const remainingHeight = windowHeight - 168;
+    const contentHeight = remainingHeight / 6;
+    const mgl = document.querySelectorAll('.mgl');
+    mgl.forEach(content => {
+        content.style.minHeight = contentHeight + 'px';
+    });
+
+    //test data map
+    const radios = document.querySelectorAll('input.mgl_bubble[type="radio"]');
+    const imageEl = document.querySelector('.map_data img');
+
+    radios.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (this.checked) {
+                const images = ['map01.png', 'map02.png', 'map03.png'];
+                const randomImg = images[Math.floor(Math.random() * images.length)];
+                imageEl.src = '../src/assets/images/' + randomImg;
+            }
+        });
+    });
+
+    const initialChecked = document.querySelector('input.mgl_bubble[type="radio"]:checked');
+    if (initialChecked) {
+        const images = ['map01.png', 'map02.png', 'map03.png'];
+        const randomImg = images[Math.floor(Math.random() * images.length)];
+        document.querySelector('.map_data img').src = '../src/assets/images/' + randomImg;
+    }
+
+    // test graph : data 넣기
+    const allGraphData = [
+        // 01
+        [5350000, 2250000, 3200000, 4150000, 1386705,
+        5350000, 3310000, 4280000, 2250000, 3200000,
+        4150000, 1386705, 5350000, 2250000, 3200000,
+        4150000, 8100000],
+
+        // 02
+        [9476, 10500, 9200, 8900, 9500, 10200, 9800, 10000,
+        9700, 9600, 9900, 10100, 9400, 9700, 9800, 9600, 10200],
+
+        // 03
+        [5350000, 2250000, 3200000, 4150000, 1386705,
+        5350000, 3310000, 4280000, 2250000, 3200000,
+        4150000, 1386705, 5350000, 2250000, 3200000,
+        4150000, 8100000],
+
+        // 필요하면 카드 30개까지 추가
+    ];
+
+    // tooltip
+    const tooltip = document.getElementById('tooltip');
+    const allGraphAreas = document.querySelectorAll('.graph_area');
+    allGraphAreas.forEach((graphArea, graphIndex) => {
+        const bars = graphArea.querySelectorAll('span');
+        const data = allGraphData[graphIndex]; 
+        const maxValue = Math.max(...data); 
+
+        bars.forEach((bar, index) => {
+            const value = data[index] || 0;
+            bar.style.height = `${(value / maxValue) * 100}%`;
+            bar.dataset.value = value;
+            bar.addEventListener('mouseenter', () => {
+                tooltip.style.display = 'block';
+                tooltip.textContent = `${value.toLocaleString()}명`;
+            });
+
+            bar.addEventListener('mousemove', (e) => {
+                tooltip.style.left = `${e.clientX + 10}px`;
+                tooltip.style.top = `${e.clientY + 10}px`;
+            });
+
+            bar.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        });
+    });
+
+});
+</script>
 <body>
 <!-- header -->
 <div id="header"></div>
@@ -879,7 +963,7 @@
         const popupH = 730;
         const left = Math.ceil((window.screen.width - popupW)/2);
         const top = Math.ceil((window.screen.height - popupH)/2);
-        window.open('../html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
+        window.open('./html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
     }
 </script>
 </html>
