@@ -95,6 +95,47 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
 .bb_tit .data_pop:hover {
     background: url("../assets/images/more_on.svg") no-repeat;
 }
+.main_grid_list.crowd .mgl{
+    position: relative;
+}
+.main_grid_list.crowd label.mgl_bb{
+    justify-content: center;
+}
+
+.bb_tit.only_txt{
+    position:inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bb_tit.only_txt .level{
+    font-size: 25px;
+    font-weight: 700;
+}
+.bb_tit.only_txt .level.nor{
+    color: var(--ft-color-normal);
+}
+.bb_tit.only_txt .level.lit{
+    color: var(--pt-cl-05);
+}
+.bb_tit.only_txt .level.mor{
+    color: var(--pt-cl-03);
+}
+.bb_tit.only_txt .value .number{
+    font-size: 17px;
+    font-weight: 500;
+    max-width: 100%;
+}
+.bb_tit.only_txt .place{
+    font-size: 14px;
+    font-weight: 500;
+    /* margin-top: 10px; */
+}
+.bb_tit.only_txt .data_pop{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
 html[data-theme="dark"] .bb_tit .data_pop{
     background: url("../assets/images/more_on.svg") no-repeat;
 }
@@ -285,6 +326,34 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
 .map_area .info_icon:hover + .info_tag {
     display: block;
 }
+
+.swiper.main_slider{
+    margin-left: -20px;
+    margin-right: -20px;
+    width: calc(100% + 40px);
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.swiper.main_slider .swiper-button-prev,
+.swiper.main_slider .swiper-button-next{
+    display: block;
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 0 8px 0 rgba(29, 29, 29, 0.15);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+.swiper.main_slider .swiper-button-prev{
+    background:url(../assets/images/btn_prev.svg) no-repeat;
+}
+.swiper.main_slider .swiper-button-next{
+    background:url(../assets/images/btn_next.svg) no-repeat;
+}
+.swiper.main_slider .swiper-button-prev:after,
+.swiper.main_slider .swiper-button-next:after{
+    display: none;
+}
+
 
 /*/////////////////////////////////*/
 /*/////////// 반응형 쿼리 ///////////*/
