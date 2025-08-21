@@ -129,7 +129,6 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
 .bb_tit.only_txt .place{
     font-size: 14px;
     font-weight: 500;
-    margin-top: 10px;
 }
 .bb_tit.only_txt .data_pop{
     position: absolute;

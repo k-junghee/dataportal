@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
 </head>
 <body>
 <!-- header -->
@@ -31,7 +33,7 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        table
                     </div>
                 </div>
                 <div class="type_list list_keyword">
@@ -39,7 +41,71 @@
                         <p class="tit">서울시 문화관광 재정지출</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="bar-container" style="width: 55%; height: 200px;"></div>
+                            <div id="donut-container02" style="width: 40%; height: 200px;"></div>
+                        </div>
+                        <script>
+                        // 왼쪽: 바 차트
+                        Highcharts.chart('bar-container', {
+                        chart: { type: 'bar' , backgroundColor: 'transparent'},
+                        // title: { text: '서울시 급식 인력' },
+                        title: null,
+                        xAxis: {
+                            categories: ['외지인', '현지인', '외국인'],
+                            title: { text: null }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '명', align: 'high' }
+                        },
+                        plotOptions: {
+                            bar: {
+                            dataLabels: { enabled: true }
+                            }
+                        },
+                        series: [{
+                            name: '인원',
+                            data: [23521, 5007, 5540]  // 샘플 값
+                        }]
+                        });
+
+                        // 오른쪽: 3D 도넛
+                        Highcharts.chart('donut-container02', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45
+                            }
+                        },
+                        // title: { text: '급식 인력 비율' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.percentage:.1f} %'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            ['외지인', 23521],
+                            ['현지인', 5007],
+                            ['외국인', 5540]
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -74,6 +140,7 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area video_data">
+                        <img src="../src/assets/images/news_enpyeonggu.gif">
                     </div>
                 </div>
                 <div class="type_list left">
@@ -81,14 +148,68 @@
                         <p class="tit">서울시 공연 정보</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        table
+                    </div>
                 </div>
                 <div class="type_list right">
                     <div class="title sb">
                         <p class="tit">서울시 방문자 현황</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="line-container" style="width: 55%; height: 200px;"></div>
+                            <div id="donut-container" style="width: 40%; height: 200px;"></div>
+                        </div>
+                        <script>
+                        // 왼쪽: 라인 그래프
+                        Highcharts.chart('line-container', {
+                        chart: { type: 'line', backgroundColor: 'transparent' },
+                        // title: { text: '학생·교사 현황 (추세)' },
+                        title: null,
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
+                        yAxis: { title: { text: '명' } },
+                        series: [{
+                            name: '학생수',
+                            data: [1400000, 1350000, 1300000, 1250000, 1200000, 1150000, 1100000, 1050000, 1000000, 950000]
+                        }, {
+                            name: '교원수',
+                            data: [95000, 94000, 92000, 91000, 90000, 89000, 88000, 87000, 86500, 86165]
+                        }]
+                        });
+
+                        // 오른쪽: 3D 도넛 (원통형)
+                        Highcharts.chart('donut-container', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45,
+                            beta: 0
+                            }
+                        },
+                        // title: { text: '교원 1인당 학생수' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            ['학생', 1335257],
+                            ['교원', 89165]
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script> <!-- sample data -->
 </head>
 <body>
 <!-- header -->
@@ -31,22 +35,149 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="bar-container" style="width: 55%; height: 200px;"></div>
+                            <div id="donut-container" style="width: 40%; height: 200px;"></div>
+                        </div>
+                        <script>
+                        // 왼쪽: 바 차트
+                        Highcharts.chart('bar-container', {
+                        chart: { type: 'bar' , backgroundColor: 'transparent'},
+                        // title: { text: '서울시 급식 인력' },
+                        title: null,
+                        xAxis: {
+                            categories: ['감기', '눈병', '식중독'],
+                            title: { text: null }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '%', align: 'high' }
+                        },
+                        plotOptions: {
+                            bar: {
+                            dataLabels: { enabled: true }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [23521, 5007, 5540]  // 샘플 값
+                        }]
+                        });
 
+                        // 오른쪽: 3D 도넛
+                        Highcharts.chart('donut-container', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45
+                            }
+                        },
+                        // title: { text: '급식 인력 비율' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.percentage:.1f} %'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            ['감기', 23521],
+                            ['눈병', 5007],
+                            ['식중독', 5540]
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
-                <div class="type_list list_keyword">
+                <div class="type_list">
                     <div class="title sb">
                         <p class="tit">서울시 장애 유형(명)</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                         <div id="bar-chart" style="width: 100%; height: 200px;"></div>
+
+                        <script>
+                        Highcharts.chart('bar-chart', {
+                        chart: { type: 'bar', backgroundColor: 'transparent' },
+                        // title: { text: '서울시 장애 유형' },
+                        title: null,
+                        xAxis: {
+                            categories: [
+                            '언어', '뇌전증', '호흡기', '간', '강직', '언어',
+                            '자폐성', '정신', '신장', '지적', '뇌병변', '시각', '청각', '지체'
+                            ],
+                            title: { text: null }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '인원 수 (명)', align: 'high' },
+                            labels: { overflow: 'justify' }
+                        },
+                        tooltip: { valueSuffix: ' 명' },
+                        plotOptions: {
+                            bar: {
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:,.0f} 명'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '장애인구',
+                            data: [
+                            394, 1204, 2021, 2800, 3410, 3251,
+                            8716, 16419, 19086, 28786, 30892, 40403, 65172, 157799
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
-                <div class="type_list list_graph">
+                <div class="type_list">
                     <div class="title sb">
                         <p class="tit">서울시 응급실 현황(명)</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area graph_data"></div>
+                    <div class="data_area graph_data">
+                        <!-- sample data : highcharts.js -->
+                        <div id="container03"></div>
+                        <script>
+                        Highcharts.chart('container03', {
+                        chart: { type: 'bar',
+                            backgroundColor: 'transparent',
+                            height: 200
+                         },
+                        // title: { text: '학생수 변동 현황' },
+                        title: null,
+                        xAxis: {
+                            categories: ['응급실 일반', '응급실 소아', '입원실', '중환자실']
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '학생수 (명)' }
+                        },
+                        series: [{
+                            name: '2024년',
+                            data: [205784, 195738, 363157, 61128]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -70,7 +201,29 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        <!-- sample data : echarts.js -->
+                        <div id="3dBar" style="width:600px;height:330px;"></div>
+                        <script>
+                        var chart = echarts.init(document.getElementById('3dBar'));
+                        chart.setOption({
+                            tooltip: {},
+                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
+                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
+                            zAxis3D: { type: 'value' },
+                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
+                            series: [{
+                                type: 'bar3D',
+                                data: [
+                                    [0,0,12], [0,1,18], [0,2,15],
+                                    [1,0,9],  [1,1,14], [1,2,20],
+                                    [2,0,8],  [2,1,16], [2,2,10]
+                                ],
+                                shading: 'lambert'
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
                     </div>
                 </div>
             </div>
@@ -81,6 +234,7 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area video_data">
+                        <img src="../src/assets/images/news_enpyeonggu.gif">
                     </div>
                 </div>
                 <div class="type_list left">
@@ -88,14 +242,91 @@
                         <p class="tit">의약품 비용</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont scroll">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="lineChart1" class="chartBox"></div>
+                            <div id="lineChart2" class="chartBox"></div>
+                            <div id="lineChart3" class="chartBox"></div>
+                            <div id="lineChart4" class="chartBox"></div>
+                            <div id="lineChart5" class="chartBox"></div>
+                            <div id="lineChart6" class="chartBox"></div>
+                        </div>
+
+                        <script>
+                        const allChartData = [
+                            [12, 19, 14, 18, 22, 15],   // lineChart1
+                            [8, 11, 17, 13, 9, 16],     // lineChart2
+                            [20, 14, 18, 12, 15, 10],   // lineChart3
+                            [5, 9, 12, 8, 11, 7],       // lineChart4
+                            [14, 16, 13, 19, 17, 15],   // lineChart5
+                            [10, 12, 8, 14, 9, 11]      // lineChart6
+                        ];
+
+                        const chartIds = ['lineChart1','lineChart2','lineChart3','lineChart4','lineChart5','lineChart6'];
+
+                        chartIds.forEach((chartId, idx) => {
+                            Highcharts.chart(chartId, {
+                                chart: { type: 'areaspline', backgroundColor: 'transparent' },
+                                // title: { text: '연령대별 추세 (샘플)' },
+                                title: null,
+                                xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], gridLineWidth: 0 },
+                                yAxis: { title: { text: '인구 수 (천명)' }, gridLineWidth: 0 },
+                                tooltip: { valueSuffix: '천명' },
+                                plotOptions: { areaspline: { fillOpacity: 0.4, marker: { enabled: true, radius: 4 }, lineWidth: 3 } },
+                                series: [{ name: '2024', data: allChartData[idx], color: '#4FC3F7' }]
+                            });
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
                 <div class="type_list right">
                     <div class="title sb">
                         <p class="tit">서울시 의료기관</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : highcharts.js -->
+                         <div id="bar-chart02" style="width: 100%; height: 200px;"></div>
+
+                        <script>
+                        Highcharts.chart('bar-chart02', {
+                        chart: { type: 'bar', backgroundColor: 'transparent' },
+                        // title: { text: '서울시 장애 유형' },
+                        title: null,
+                        xAxis: {
+                            categories: [
+                            '상급종합병원', '종합병원', '병원', '요양병원', '의원', '치과병원',
+                            '치과의원', '조산원', '보건기관', '한방병원', '한의원', '약국', '청각', '지체'
+                            ],
+                            title: { text: null }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '인원 수 (명)', align: 'high' },
+                            labels: { overflow: 'justify' }
+                        },
+                        tooltip: { valueSuffix: ' 명' },
+                        plotOptions: {
+                            bar: {
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:,.0f} 명'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '서울시 의료기관',
+                            data: [
+                            394, 1204, 2021, 2800, 3410, 3251,
+                            8716, 16419, 19086, 28786, 30892, 40403, 65172, 157799
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
         </div>

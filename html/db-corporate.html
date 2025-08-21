@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -30,7 +34,9 @@
                         <p class="tit">업종 및 산업군 분석</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        table
+                    </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
@@ -38,16 +44,109 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div id="container-bar" style=" height:200px;"></div>
 
+                        <script>
+                            Highcharts.chart('container-bar', {
+                            chart: {
+                                type: 'column',   // 막대 그래프 (bar)
+                                backgroundColor: 'transparent'
+                            },
+                            title: {
+                                text: '기본 막대 그래프',
+                                style: { color: '#ffffff' }
+                            },
+                            xAxis: {
+                                categories: ['A', 'B', 'C', 'D', 'E', 'F'],
+                                labels: { style: { color: '#ffffff' } }
+                            },
+                            yAxis: {
+                                title: { text: '값', style: { color: '#ffffff' } },
+                                labels: { style: { color: '#ffffff' } }
+                            },
+                            tooltip: {
+                                valueSuffix: ' 개'
+                            },
+                            series: [{
+                                name: '데이터',
+                                data: [12, 23, 18, 34, 45, 20],
+                                color: '#66ccff'
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="bar-container" style="width: 55%; height: 200px;"></div>
+                            <div id="donut-container02" style="width: 40%; height: 200px;"></div>
+                        </div>
+                        <script>
+                        // 왼쪽: 바 차트
+                        Highcharts.chart('bar-container', {
+                        chart: { type: 'bar' , backgroundColor: 'transparent'},
+                        // title: { text: '서울시 급식 인력' },
+                        title: null,
+                        xAxis: {
+                            categories: ['외지인', '현지인', '외국인'],
+                            title: { text: null }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '명', align: 'high' }
+                        },
+                        plotOptions: {
+                            bar: {
+                            dataLabels: { enabled: true }
+                            }
+                        },
+                        series: [{
+                            name: '인원',
+                            data: [23521, 5007, 5540]  // 샘플 값
+                        }]
+                        });
 
+                        // 오른쪽: 3D 도넛
+                        Highcharts.chart('donut-container02', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45
+                            }
+                        },
+                        // title: { text: '급식 인력 비율' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.percentage:.1f} %'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            ['외지인', 23521],
+                            ['현지인', 5007],
+                            ['외국인', 5540]
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -72,7 +171,62 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : echarts.js -->
+                        <div id="multiline" style="width: 100%; height: 100%;"></div>
 
+                        <script>
+                            var chart = echarts.init(document.getElementById('multiline'));
+
+                            var option = {
+                            // backgroundColor: '#000022',
+                            // title: {
+                            //     text: '서울 은평구 업종 분포',
+                            //     left: 'center',
+                            //     top: 10,
+                            //     textStyle: { color: '#fff' }
+                            // },
+                            series: [
+                                {
+                                type: 'graph',
+                                layout: 'force',
+                                roam: true,
+                                label: {
+                                    show: true,
+                                    color: '#1d1d1d',
+                                    fontSize: 12
+                                },
+                                force: {
+                                    repulsion: 400,
+                                    edgeLength: [100, 200]
+                                },
+                                data: [
+                                    { name: '서울 은평구\n1,618업종 / 10,951명', value: 100, symbolSize: 90, itemStyle: { color: '#66ccff' } },
+                                    { name: '개인과세사업자\n409 (25.3%)', value: 60, symbolSize: 70, itemStyle: { color: '#ff9966' } },
+                                    { name: '법인 본점\n456 (28.2%)', value: 50, symbolSize: 60, itemStyle: { color: '#ffaa00' } },
+                                    { name: '다단계판매\n243 (15.0%)', value: 40, symbolSize: 55, itemStyle: { color: '#cc6699' } },
+                                    { name: '비영리법인\n238 (14.7%)', value: 40, symbolSize: 55, itemStyle: { color: '#66ffcc' } },
+                                    { name: '개인면세사업자\n173 (10.7%)', value: 30, symbolSize: 50, itemStyle: { color: '#9999ff' } },
+                                    { name: '지방자치단체\n60 (3.7%)', value: 20, symbolSize: 40, itemStyle: { color: '#ff6666' } }
+                                ],
+                                links: [
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '개인과세사업자\n409 (25.3%)', lineStyle:{color:'#ff66cc'} },
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '법인 본점\n456 (28.2%)', lineStyle:{color:'#66ccff'} },
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '다단계판매\n243 (15.0%)', lineStyle:{color:'#ffcc66'} },
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '비영리법인\n238 (14.7%)', lineStyle:{color:'#99ff99'} },
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '개인면세사업자\n173 (10.7%)', lineStyle:{color:'#6699ff'} },
+                                    { source: '서울 은평구\n1,618업종 / 10,951명', target: '지방자치단체\n60 (3.7%)', lineStyle:{color:'#ff9999'} }
+                                ],
+                                lineStyle: {
+                                    width: 2,
+                                    curveness: 0.3
+                                }
+                                }
+                            ]
+                            };
+
+                            chart.setOption(option);
+                        </script>
+                        <!-- //sample data : echarts.js -->
                     </div>
                 </div>
             </div>
@@ -82,22 +236,125 @@
                         <p class="tit">지역별 분포 및 변화 추이</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <!-- sample data : echarts.js -->
+                        <div id="3dBar" style="width:600px;height:200px;"></div>
+                        <script>
+                        var chart = echarts.init(document.getElementById('3dBar'));
+                        chart.setOption({
+                            tooltip: {},
+                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
+                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
+                            zAxis3D: { type: 'value' },
+                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
+                            series: [{
+                                type: 'bar3D',
+                                data: [
+                                    [0,0,12], [0,1,18], [0,2,15],
+                                    [1,0,9],  [1,1,14], [1,2,20],
+                                    [2,0,8],  [2,1,16], [2,2,10]
+                                ],
+                                shading: 'lambert'
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
                     </div>
                 </div>
                 <div class="type_list left">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : echarts.js -->
+                         <div id="scatter2d" style="width:100%;height:250px;"></div>
+                        <script>
+                        var chart = echarts.init(document.getElementById('scatter2d'));
+
+                        function genData() {
+                        let data = [];
+                        for (let i = 0; i < 500; i++) {
+                            data.push([
+                            Math.round(Math.random()*60),  // X
+                            Math.round(Math.random()*60),  // Y
+                            Math.round(Math.random()*61)   // Value (color scale)
+                            ]);
+                        }
+                        return data;
+                        }
+
+                        chart.setOption({
+                        // title: { text: '2D 산점도', left:'center', textStyle:{color:'#fff'} },
+                        xAxis: { type: 'value', axisLabel:{color:'#fff'} },
+                        yAxis: { type: 'value', axisLabel:{color:'#fff'} },
+                        visualMap: {
+                            min: 0, max: 61,
+                            dimension: 2,
+                            right: 10, top: 'middle',
+                            inRange: { color: ['blue','yellow','red'] }
+                        },
+                        series: [{
+                            type: 'scatter',
+                            symbolSize: 8,
+                            data: genData()
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
+                    </div>
                 </div>
                 <div class="type_list right">
                     <div class="title sb">
                         <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : echarts.js -->
+                        <div id="scatter3d" style="width:100%;height:200px;"></div>
+                        
+                        <script>
+                        var chart3d = echarts.init(document.getElementById('scatter3d'));
+
+                        function gen3D() {
+                        let data = [];
+                        for (let i = 0; i < 300; i++) {
+                            data.push([
+                            Math.round(Math.random()*60),  // X
+                            Math.round(Math.random()*60),  // Y
+                            Math.round(Math.random()*61),  // Z
+                            Math.round(Math.random()*61)   // Value (color scale)
+                            ]);
+                        }
+                        return data;
+                        }
+
+                        chart3d.setOption({
+                        // title: { text: '3D 산점도', left:'center', textStyle:{color:'#fff'} },
+                        xAxis3D: { type: 'value' },
+                        yAxis3D: { type: 'value' },
+                        zAxis3D: { type: 'value' },
+                        grid3D: {
+                            boxWidth: 120,
+                            boxDepth: 80,
+                            viewControl: { projection: 'perspective' },
+                            light: { main: { intensity: 1.2 } }
+                        },
+                        visualMap: {
+                            min: 0, max: 61,
+                            dimension: 3,
+                            inRange: { color: ['blue','yellow','red'] }
+                        },
+                        series: [{
+                            type: 'scatter3D',
+                            symbolSize: 6,
+                            data: gen3D()
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
+                    </div>
                 </div>
             </div>
         </div>

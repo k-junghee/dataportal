@@ -158,7 +158,7 @@ html, body {
 .data_area.video_data img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 17px);
 }
 .a_colum.a_center.ac2 .type_list .graph_area {
     height: 100%;

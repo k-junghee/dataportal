@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -38,7 +40,7 @@
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        table
                     </div>
                 </div>
                 <div class="type_list list_board">
@@ -68,11 +70,128 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">은평구 2025년 주요 지원사업 예산 및 집행현황. 7.544억원(64.8%)</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
+                        <style>
+    body {
+      background: #000022;
+      color: #1d1d1d;
+      font-family: sans-serif;
+    }
+    .top-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .text-box {
+      width: 45%;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .highlight {
+      color: yellow;
+      font-weight: bold;
+    }
+  </style>
+                        <!-- <h2 style="text-align:center; color:yellow;">
+                            은평구 2025년 주요 지원사업 예산 및 집행 현황<br>
+                            총 7,544억 (<span class="highlight">64.8%</span>)
+                        </h2> -->
 
+                        <div class="top-section">
+                            <!-- 도넛 그래프 -->
+                            <div id="donut" style="width:45%; height:200px;"></div>
+
+                            <!-- 텍스트 영역 -->
+                            <div class="text-box">
+                            <p>📌 <span class="highlight">은평청 청년실험 지원</span> : 1.7억 (4.15%) → 집행 0.13억 (7.8%)</p>
+                            <p>📌 <span class="highlight">서울형 아이돌봄비 지원 사업</span> : 5.9억 (12.6%) → 집행 0.9억 (15.6%)</p>
+                            <p>📌 <span class="highlight">다함께돌봄센터 운영비 지원</span> : 7.9억 (16.6%) → 집행 2.0억 (25.4%)</p>
+                            <p>📌 <span class="highlight">다함께돌봄센터 인건비 지원</span> : 19.4억 (46.7%) → 집행 5.4억 (28.2%)</p>
+                            <p>📌 <span class="highlight">보호대상아동 지원</span> : 0.8억 (1.97%) → 집행 0.04억 (5.4%)</p>
+                            <p>📌 <span class="highlight">서울형 가사서비스 지원</span> : 3.5억 (8.42%) → 집행 0.09억 (2.6%)</p>
+                            </div>
+                        </div>
+
+                        <!-- 막대그래프 -->
+                        <div id="bar" style="width:95%; height:200px; margin:0 auto;"></div>
+
+                        <script>
+                            // 도넛 차트
+                            Highcharts.chart('donut', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            title: {
+                                text: '예산액 비중',
+                                style: { color: 'white' }
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%',
+                                dataLabels: {
+                                    format: '{point.name}<br>{point.percentage:.1f}%',
+                                    style: { color: 'white', textOutline: 'none' }
+                                }
+                                }
+                            },
+                            series: [{
+                                name: '예산',
+                                data: [
+                                { name: '청년실험', y: 4.15 },
+                                { name: '아이돌봄비', y: 12.60 },
+                                { name: '돌봄 운영비', y: 16.60 },
+                                { name: '돌봄 인건비', y: 46.77 },
+                                { name: '보호대상아동', y: 1.97 },
+                                { name: '가사서비스', y: 8.42 }
+                                ]
+                            }]
+                            });
+
+                            // 막대그래프
+                            Highcharts.chart('bar', {
+                            chart: {
+                                type: 'column',
+                                backgroundColor: 'transparent'
+                            },
+                            title: {
+                                text: '사업별 예산 및 집행액',
+                                style: { color: 'white' }
+                            },
+                            xAxis: {
+                                categories: [
+                                '청년실험',
+                                '아이돌봄비',
+                                '돌봄 운영비',
+                                '돌봄 인건비',
+                                '보호대상아동',
+                                '가사서비스'
+                                ],
+                                labels: { style: { color: 'white' } }
+                            },
+                            yAxis: {
+                                title: { text: '금액 (억)', style: { color: 'white' } },
+                                labels: { style: { color: 'white' } }
+                            },
+                            legend: {
+                                itemStyle: { color: 'white' }
+                            },
+                            series: [{
+                                name: '예산액',
+                                data: [1.7, 5.9, 7.9, 19.4, 0.8, 3.5],
+                                color: '#66ccff'
+                            }, {
+                                name: '집행액',
+                                data: [0.13, 0.9, 2.0, 5.4, 0.04, 0.09],
+                                color: '#ff6699'
+                            }]
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
