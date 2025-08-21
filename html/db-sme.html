@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Portal</title>
-    <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/common.css">
-    <link rel="stylesheet" href="src/css/typeA.css">
-    <script src="./src/js/common.js" defer></script>
-    <script src="./src/js/typeA.js"></script>
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/common.css">
+    <link rel="stylesheet" href="../src/css/typeA.css">
+    <script src="../src/js/common.js" defer></script>
+    <script src="../src/js/typeA.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -20,39 +20,32 @@
 </script>
 <!-- //header -->
 <section>
-    <h1 class="blind">교육현황</h1>
+    <h1 class="blind">서울특별시 소상공인현황</h1>
     <!-- type A -->
     <div class="type_a_wrap layout">
         <div class="type_a_gird">
-            <div class="a_colum a_left ac3">
-                <div class="type_list list_board">
-                    <div class="title sb">
-                        <p class="tit">학생, 교사현황(명)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
-                    </div>
-                    <div class="data_area">
-
-                    </div>
-                </div>
+            <div class="a_colum a_left ac2">
                 <div class="type_list list_keyword">
                     <div class="title sb">
-                        <p class="tit">학급당 학생수(명)</p>
+                        <p class="tit">소상공인 업종별 현황</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area keyword_data"></div>
                 </div>
-                <div class="type_list list_graph">
+                <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">학생수 변동 현황(명)</p>
+                        <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
-                    <div class="data_area graph_data"></div>
+                    <div class="data_area">
+                        가로 2배 wide (추후 수정)
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
                 <div class="type_list list_map">
                     <div class="title">
-                        <p class="tit">map</p>
+                        <p class="tit">종합 map</p>
                         <div class="info_box">
                             <span class="info_icon"></span>
                             <p class="info_tag">각 지역을 클릭하시면, 해당 지역의 데이터를 확인하실 수 있습니다.</p>
@@ -62,7 +55,7 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">서울특별시 초등학교 수</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
@@ -70,10 +63,10 @@
                     </div>
                 </div>
             </div>
-            <div class="a_colum a_right ac3">
-                <div class="type_list news">
+            <div class="a_colum a_right ac2">
+                <div class="type_list news ac_2h">
                     <div class="title sb">
-                        <p class="tit">초,중,고등학교 급식현황</p>
+                        <p class="tit">지역별 소상공인 비중</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area video_data">
@@ -81,14 +74,7 @@
                 </div>
                 <div class="type_list left">
                     <div class="title sb">
-                        <p class="tit">지역별 학생수(명)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
-                    </div>
-                    <div class="box_cont"></div>
-                </div>
-                <div class="type_list right">
-                    <div class="title sb">
-                        <p class="tit">서울시 급식 인력(명)</p>
+                        <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="box_cont"></div>

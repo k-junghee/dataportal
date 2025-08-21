@@ -17,17 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.checked) {
                 const images = ['map01.png', 'map02.png', 'map03.png'];
                 const randomImg = images[Math.floor(Math.random() * images.length)];
-                imageEl.src = './src/assets/images/' + randomImg; // 실제 이미지 경로에 맞게 수정
+                imageEl.src = '../src/assets/images/' + randomImg; // 실제 이미지 경로에 맞게 수정
             }
         });
     });
 
-    // 페이지 로드시 체크된 라디오 있을 경우 → 이미지 먼저 세팅
     const initialChecked = document.querySelector('input.mgl_bubble[type="radio"]:checked');
     if (initialChecked) {
         const images = ['map01.png', 'map02.png', 'map03.png'];
         const randomImg = images[Math.floor(Math.random() * images.length)];
-        document.querySelector('.map_data img').src = './src/assets/images/' + randomImg;
+        document.querySelector('.map_data img').src = '../src/assets/images/' + randomImg;
     }
 
     //test graph height

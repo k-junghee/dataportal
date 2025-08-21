@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
    // **** header **** //
-    fetch('header.inc')
+    fetch('../header.inc')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;

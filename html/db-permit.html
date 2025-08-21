@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Portal</title>
-    <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/common.css">
-    <link rel="stylesheet" href="src/css/typeA.css">
-    <script src="./src/js/common.js" defer></script>
-    <script src="./src/js/typeA.js"></script>
+    <link rel="stylesheet" href="../src/css/reset.css">
+    <link rel="stylesheet" href="../src/css/common.css">
+    <link rel="stylesheet" href="../src/css/typeA.css">
+    <script src="../src/js/common.js" defer></script>
+    <script src="../src/js/typeA.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -20,30 +20,21 @@
 </script>
 <!-- //header -->
 <section>
-    <h1 class="blind">서울특별시 정부보조금</h1>
+    <h1 class="blind">서울특별시 인허가현황</h1>
     <!-- type A -->
     <div class="type_a_wrap layout">
         <div class="type_a_gird">
-            <div class="a_colum a_left ac3">
+            <div class="a_colum a_left ac2">
                 <div class="type_list list_keyword">
                     <div class="title sb">
-                        <p class="tit">select area</p>
+                        <p class="tit">업종별 총 업체수 / 동별 업체 밀집도</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area keyword_data"></div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">검색결과</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
-                    </div>
-                    <div class="data_area">
-
-                    </div>
-                </div>
-                <div class="type_list list_board">
-                    <div class="title sb">
-                        <p class="tit">지원금 검색</p>
+                        <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
@@ -64,7 +55,7 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">은평구 2025년 주요 지원사업 예산 및 집행현황. 7.544억원(64.8%)</p>
+                        <p class="tit">등록인허가 12,601 업체(2025년. 06.기준)</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area">
@@ -72,14 +63,21 @@
                     </div>
                 </div>
             </div>
-            <div class="a_colum a_right ac1">
-                <div class="type_list news">
+            <div class="a_colum a_right ac2">
+                <div class="type_list news ac_2h">
                     <div class="title sb">
-                        <p class="tit">tab</p>
+                        <p class="tit">인허가 현황(은평구 14,691업종)</p>
                         <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
                     </div>
                     <div class="data_area video_data">
                     </div>
+                </div>
+                <div class="type_list left">
+                    <div class="title sb">
+                        <p class="tit">map</p>
+                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                    </div>
+                    <div class="box_cont"></div>
                 </div>
             </div>
         </div>
