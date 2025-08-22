@@ -407,6 +407,36 @@ header:has(.menu-trigger.mo){
     display: none;
 }
 
+/* 레이어팝업 */
+.popup_wrap {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+.popup_inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-height: 90%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.popup_inner  img{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+.popup_close {
+  position: absolute;
+  top: 10px; right: 10px;
+  background-color: transparent;
+}
+
 /*input.search_box{*/
 /*    width: 190px;*/
 /*    border: 1px solid #c8c8c8;*/

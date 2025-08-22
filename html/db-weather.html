@@ -30,7 +30,7 @@
                 <div class="type_list list_board">
                     <div class="title sb">
                         <p class="tit">실시간 날씨(1분)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
                     <div class="data_area">
                         <!-- sample data : echarts.js -->
@@ -61,7 +61,7 @@
                 <div class="type_list list_keyword">
                     <div class="title sb">
                         <p class="tit">실시간 날씨 현황(1분)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
                         <!-- sample data : echarts.js -->
@@ -92,7 +92,7 @@
                 <div class="type_list list_graph">
                     <div class="title sb">
                         <p class="tit">실시간 대기 현황(1분)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area graph_data">
                         table 구분 하고 막대그래프
@@ -117,7 +117,7 @@
                 <div class="type_list list_stats">
                     <div class="title sb">
                         <p class="tit">위치그래프</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
                     <div class="data_area">
                         table
@@ -128,7 +128,7 @@
                 <div class="type_list news">
                     <div class="title sb">
                         <p class="tit">weather information</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
                     <div class="data_area video_data">
                         <img src="../src/assets/images/news_enpyeonggu.gif">
@@ -137,7 +137,7 @@
                 <div class="type_list left">
                     <div class="title sb">
                         <p class="tit">날씨 정보</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp06">더보기</a>
                     </div>
                     <div class="box_cont">
                         <div style="width:300px; padding:15px; background:rgba(255,255,255,0.1); border-radius:10px; color:#555; font-family:Arial;">
@@ -154,7 +154,7 @@
                 <div class="type_list right">
                     <div class="title sb">
                         <p class="tit">날씨 지도(1분)</p>
-                        <a href="javascript:;" onclick="showPopup();" class="more_btn">더보기</a>
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp07">더보기</a>
                     </div>
                     <div class="box_cont">
                         캡쳐대체
@@ -165,17 +165,40 @@
     </div>
     <!-- //type A -->
 </section>
+<!-- layer popup -->
+<div id="layerPopup" class="popup_wrap">
+  <div class="popup_inner">
+    <button class="popup_close" onclick="closePopup()">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+            <line x1="4" y1="4" x2="20" y2="20" stroke="black" stroke-width="2"/>
+            <line x1="20" y1="4" x2="4" y2="20" stroke="black" stroke-width="2"/>
+        </svg>
+    </button>
+    <div id="popupContent"></div>
+  </div>
+</div>
+<!-- //layer popup -->
 
 
 </body>
 <script>
-    //popup
-    function showPopup() {
-        const popupW = 1200;
-        const popupH = 730;
-        const left = Math.ceil((window.screen.width - popupW)/2);
-        const top = Math.ceil((window.screen.height - popupH)/2);
-        window.open('../html/popup.html','','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')
+    // popup
+    const popupData = {
+        lp01: "<img src='../src/assets/images/sample/sample_07_img01.png'>",
+        lp02: "<img src='../src/assets/images/sample/sample_07_img02.png'>",
+        lp03: "<img src='../src/assets/images/sample/sample_07_img03.png'>",
+        lp04: "<img src='../src/assets/images/sample/sample_07_img04.png'>",
+        lp05: "<img src='../src/assets/images/sample/sample_07_img05.png'>",
+        lp06: "<img src='../src/assets/images/sample/sample_07_img06.png'>",
+        lp07: "<img src='../src/assets/images/sample/sample_07_img07.png'>",
+    };
+    function showPopup(el) {
+        const id = el.dataset.id; 
+        document.getElementById('popupContent').innerHTML = popupData[id] || "<p>데이터 없음</p>";
+        document.getElementById('layerPopup').style.display = 'block';
+    }
+    function closePopup() {
+        document.getElementById('layerPopup').style.display = 'none';
     }
 </script>
 </html>
