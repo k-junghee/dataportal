@@ -264,61 +264,88 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp07">더보기</a>
                     </div>
                     <div class="box_cont">
-                        <div id="ageChart" style="height:200px;"></div>
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="barChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                            <div id="pieChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                        </div>
                         <script>
-                        Highcharts.chart('ageChart', {
+                        // 데이터 (연령대별)
+                        const categories = ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'];
+                        const values = [2.34, 13.96, 14.82, 17.85, 19.59, 17.19, 14.24, 2.12];
+
+                        // 가로 막대그래프
+                        Highcharts.chart('barChart', {
                             chart: {
+                                type: 'bar',
                                 backgroundColor: 'transparent'
                             },
-                            // title: { text: '연령대별 분포도' },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
                             title: null,
                             xAxis: {
-                                categories: ['10대','20대','30대','40대','50대','60대']
+                                categories: categories,
+                                title: { text: null }
                             },
                             yAxis: {
                                 min: 0,
-                                title: { text: '인구 수 (천명)' }
+                                title: {
+                                text: '비율 (%)',
+                                align: 'high'
+                                },
+                                reversed: true
+                            },
+                            tooltip: {
+                                valueSuffix: ' %'
                             },
                             plotOptions: {
-                                column: {
-                                    depth: 25
-                                },
-                                pie: {
-                                    allowPointSelect: true,
-                                    cursor: 'pointer',
-                                    showInLegend: true,
-                                    center: ['80%', '30%'],  // 오른쪽 위에 파이 배치
-                                    size: 120,
-                                    dataLabels: { enabled: false }
+                                bar: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{y:.2f} %'
+                                }
                                 }
                             },
-                            series: [
-                                // 1. 막대그래프
-                                {
-                                    type: 'column',
-                                    name: '인구 수',
-                                    data: [12, 19, 14, 18, 22, 15],
-                                    colorByPoint: true,
-                                },
-                                // 2. 원형그래프 (같은 데이터 재사용)
-                                {
-                                    type: 'pie',
-                                    name: '비율',
-                                    data: [
-                                        ['10대', 12],
-                                        ['20대', 19],
-                                        ['30대', 14],
-                                        ['40대', 18],
-                                        ['50대', 22],
-                                        ['60대', 15]
-                                    ],
-                                    showInLegend: false,
-                                    size: 120,
-                                    center: ['80%', '100%'] // 위치 조정
+                            credits: { enabled: false },
+                            series: [{
+                                name: '연령대',
+                                data: values
+                            }]
+                            });
+
+                            // 원형(도넛) 그래프
+                            Highcharts.chart('pieChart', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            tooltip: {
+                                pointFormat: '<b>{point.y:.2f} %</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%', // 도넛 형태
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}: {point.y:.2f} %'
                                 }
-                            ]
-                        });
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '비율',
+                                data: categories.map((c, i) => [c, values[i]])
+                            }]
+                            });
                         </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>

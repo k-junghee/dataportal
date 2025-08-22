@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
 </head>
 <body>
 <!-- header -->
@@ -30,14 +32,158 @@
                         <p class="tit">수요 급증</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <!-- sample data : table -->
+                         <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                <thead>
+                                    <tr>
+                                    <th>순위</th>
+                                    <th>자치구</th>
+                                    <th>생애주기</th>
+                                    <th>프로그램</th>
+                                    <th>전월신청</th>
+                                    <th>금월신청</th>
+                                    <th>증가율%</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <tr>
+                                    <td>1</td>
+                                    <td>성북구</td>
+                                    <td>영유아</td>
+                                    <td>의료급여</td>
+                                    <td>8,407</td>
+                                    <td>13,238</td>
+                                    <td>+57.5</td>
+                                    </tr>
+                                    <tr>
+                                    <td>2</td>
+                                    <td>동대문구</td>
+                                    <td>중장년</td>
+                                    <td>의료급여</td>
+                                    <td>4,736</td>
+                                    <td>7,417</td>
+                                    <td>+56.6</td>
+                                    </tr>
+                                    <tr>
+                                    <td>3</td>
+                                    <td>은평구</td>
+                                    <td>중장년</td>
+                                    <td>보육료 지원</td>
+                                    <td>8,225</td>
+                                    <td>12,708</td>
+                                    <td>+54.5</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        <!-- //sample data : table -->
+                        <!-- sample data : highcharts.js -->
+                        <div id="container01"></div>
+                        <script>
+                        Highcharts.chart('container01', {
+                        chart: { 
+                            type: 'line',
+                            backgroundColor: 'transparent',
+                            height: 200,
+                        },
+                        // title: { text: '학급당 학생수 추이' },
+                        title: null,
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
+                        yAxis: { title: { text: '학생수' } },
+                        series: [{
+                                name: '초등학교',
+                                data: [26.8, 25.7, 23.8, 23.0, 22.8]
+                            }, {
+                                name: '중학교',
+                                data: [22.9, 21.7, 21.0, 20.5, 20.0]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
                 <div class="type_list list_keyword">
                     <div class="title sb">
                         <p class="tit">집행 효율 저조</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <!-- sample data : table -->
+                         <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                <thead>
+                                    <tr>
+                                    <th>순위</th>
+                                    <th>자치구</th>
+                                    <th>생애주기</th>
+                                    <th>프로그램</th>
+                                    <th>전월신청</th>
+                                    <th>금월신청</th>
+                                    <th>증가율%</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <tr>
+                                    <td>1</td>
+                                    <td>성북구</td>
+                                    <td>영유아</td>
+                                    <td>의료급여</td>
+                                    <td>8,407</td>
+                                    <td>13,238</td>
+                                    <td>+57.5</td>
+                                    </tr>
+                                    <tr>
+                                    <td>2</td>
+                                    <td>동대문구</td>
+                                    <td>중장년</td>
+                                    <td>의료급여</td>
+                                    <td>4,736</td>
+                                    <td>7,417</td>
+                                    <td>+56.6</td>
+                                    </tr>
+                                    <tr>
+                                    <td>3</td>
+                                    <td>은평구</td>
+                                    <td>중장년</td>
+                                    <td>보육료 지원</td>
+                                    <td>8,225</td>
+                                    <td>12,708</td>
+                                    <td>+54.5</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        <!-- //sample data : table -->
+                        <!-- sample data : highcharts.js -->
+                        <div id="container02"></div>
+                        <script>
+                        Highcharts.chart('container02', {
+                        chart: { 
+                            type: 'line',
+                            backgroundColor: 'transparent',
+                            height: 200,
+                        },
+                        // title: { text: '학급당 학생수 추이' },
+                        title: null,
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
+                        yAxis: { title: { text: '학생수' } },
+                        series: [{
+                                name: '초등학교',
+                                data: [26.8, 25.7, 23.8, 23.0, 22.8]
+                            }, {
+                                name: '중학교',
+                                data: [22.9, 21.7, 21.0, 20.5, 20.0]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -71,7 +217,56 @@
                         <p class="tit">복지 프로그램 수요-집행 집중도 현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area scroll">
+                        <!-- sample data : table -->
+                        <div class="db-table">
+                        <div class="table-wrap">
+                            <table style="width: 1100px">
+                            <thead>
+                                <tr>
+                                <th>자치구</th>
+                                <th>생애주기</th>
+                                <th>프로그램</th>
+                                <th>예산액<br>(억)</th>
+                                <th>집행액<br>(억)</th>
+                                <th>집행률<br>%</th>
+                                <th>신청수</th>
+                                <th>대기건수</th>
+                                <th>1인당 평균지원(만)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>강남구</td><td>영유아</td><td>기초연금</td><td>1,500</td><td>883</td><td>58.9</td><td>18,000</td><td>864</td><td>52</td></tr>
+                                <tr><td>서초구</td><td>노년</td><td>자활근로사업</td><td>1,450</td><td>933</td><td>64.3</td><td>17,471</td><td>704</td><td>40</td></tr>
+                                <tr><td>송파구</td><td>중장년</td><td>의료급여</td><td>1,400</td><td>782</td><td>55.9</td><td>16,942</td><td>1,211</td><td>54</td></tr>
+                                <tr><td>영등포구</td><td>청년</td><td>자활근로사업</td><td>1,350</td><td>784</td><td>58.1</td><td>16,412</td><td>1,093</td><td>41</td></tr>
+                                <tr><td>강서구</td><td>청년</td><td>자활근로사업</td><td>1,300</td><td>893</td><td>68.7</td><td>15,883</td><td>1,083</td><td>44</td></tr>
+                                <tr><td>노원구</td><td>노년</td><td>자활근로사업</td><td>1,250</td><td>874</td><td>69.9</td><td>15,354</td><td>1,094</td><td>48</td></tr>
+                                <tr><td>관악구</td><td>영유아</td><td>주거급여</td><td>1,200</td><td>892</td><td>74.3</td><td>14,825</td><td>865</td><td>37</td></tr>
+                                <tr><td>구로구</td><td>중장년</td><td>보육료지원</td><td>1,150</td><td>707</td><td>61.5</td><td>14,296</td><td>897</td><td>46</td></tr>
+                                <tr><td>양천구</td><td>영유아</td><td>자활근로사업</td><td>1,100</td><td>687</td><td>62.5</td><td>13,767</td><td>628</td><td>45</td></tr>
+                                <tr><td>성북구</td><td>영유아</td><td>의료급여</td><td>1,050</td><td>676</td><td>64.4</td><td>13,238</td><td>590</td><td>51</td></tr>
+                                <tr><td>은평구</td><td>중장년</td><td>보육료지원</td><td>1,000</td><td>588</td><td>58.8</td><td>12,708</td><td>848</td><td>55</td></tr>
+                                <tr><td>마포구</td><td>노년</td><td>의료급여</td><td>950</td><td>547</td><td>57.6</td><td>12,179</td><td>713</td><td>42</td></tr>
+                                <tr><td>동작구</td><td>중장년</td><td>의료급여</td><td>900</td><td>581</td><td>64.6</td><td>11,650</td><td>729</td><td>43</td></tr>
+                                <tr><td>강동구</td><td>노년</td><td>주거급여</td><td>850</td><td>506</td><td>59.5</td><td>11,121</td><td>785</td><td>43</td></tr>
+                                <tr><td>강북구</td><td>중장년</td><td>기초연금</td><td>800</td><td>547</td><td>68.4</td><td>10,592</td><td>693</td><td>43</td></tr>
+                                <tr><td>광진구</td><td>노년</td><td>보육료지원</td><td>750</td><td>478</td><td>63.7</td><td>10,062</td><td>628</td><td>52</td></tr>
+                                <tr><td>도봉구</td><td>중장년</td><td>기초연금</td><td>700</td><td>502</td><td>71.7</td><td>9,533</td><td>595</td><td>41</td></tr>
+                                <tr><td>서대문구</td><td>영유아</td><td>기초연금</td><td>650</td><td>454</td><td>69.1</td><td>9,004</td><td>470</td><td>38</td></tr>
+                                <tr><td>성동구</td><td>노년</td><td>주거급여</td><td>600</td><td>367</td><td>61.2</td><td>8,475</td><td>349</td><td>42</td></tr>
+                                <tr><td>충장구</td><td>청년</td><td>보육료지원</td><td>550</td><td>394</td><td>71.6</td><td>7,946</td><td>457</td><td>35</td></tr>
+                                <tr><td>동대문구</td><td>중장년</td><td>의료급여</td><td>500</td><td>355</td><td>71.0</td><td>7,417</td><td>360</td><td>37</td></tr>
+                                <tr><td>용산구</td><td>청년</td><td>자활근로사업</td><td>450</td><td>282</td><td>62.7</td><td>6,888</td><td>388</td><td>36</td></tr>
+                                <tr><td>중구</td><td>영유아</td><td>의료급여</td><td>400</td><td>243</td><td>60.8</td><td>6,358</td><td>471</td><td>51</td></tr>
+                                <tr><td>종로구</td><td>노년</td><td>기초연금</td><td>350</td><td>240</td><td>68.6</td><td>5,829</td><td>288</td><td>42</td></tr>
+                                <tr><td>금천구</td><td>노년</td><td>기초연금</td><td>300</td><td>173</td><td>57.7</td><td>5,300</td><td>282</td><td>35</td></tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+
+                        <!-- //sample data : table -->
                     </div>
                 </div>
                 <div class="type_list news">
@@ -79,7 +274,89 @@
                         <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="barChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                            <div id="pieChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                        </div>
+                        <script>
+                        // 데이터 (연령대별)
+                        const categories = ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'];
+                        const values = [2.34, 13.96, 14.82, 17.85, 19.59, 17.19, 14.24, 2.12];
+
+                        // 가로 막대그래프
+                        Highcharts.chart('barChart', {
+                            chart: {
+                                type: 'bar',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            xAxis: {
+                                categories: categories,
+                                title: { text: null }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                text: '비율 (%)',
+                                align: 'high'
+                                },
+                                reversed: true
+                            },
+                            tooltip: {
+                                valueSuffix: ' %'
+                            },
+                            plotOptions: {
+                                bar: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '연령대',
+                                data: values
+                            }]
+                            });
+
+                            // 원형(도넛) 그래프
+                            Highcharts.chart('pieChart', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            tooltip: {
+                                pointFormat: '<b>{point.y:.2f} %</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%', // 도넛 형태
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}: {point.y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '비율',
+                                data: categories.map((c, i) => [c, values[i]])
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>

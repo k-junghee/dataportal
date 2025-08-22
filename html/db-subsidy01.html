@@ -198,10 +198,120 @@
             <div class="a_colum a_right ac1">
                 <div class="type_list news">
                     <div class="title sb">
-                        <p class="tit">tab</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <!-- sample data : tab/table -->
+<div class="db-table">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="tabs">
+        <button data-type="임신">임신</button>
+        <button data-type="출산">출산</button>
+        <button data-type="영유아">영유아</button>
+        <button data-type="아동">아동</button>
+        <button data-type="청소년">청소년</button>
+        <button class="active" data-type="중장년">중장년</button>
+        <button data-type="청년">청년</button>
+        <button data-type="노년">노년</button>
+        <button data-type="기타">기타</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>정책명</th>
+          <th>주관</th>
+          <th>링크</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const tableData = {
+  
+  임신: [
+    { no: 1, title: "고위험 임산부 의료비 지원", agency: "보건복지부", link: "보건복지부" },
+    { no: 2, title: "난임 부부 시술비 지원", agency: "보건복지부", link: "정부24" }
+  ],
+  출산: [
+    { no: 1, title: "첫만남 이용권", agency: "보건복지부", link: "정부24" },
+    { no: 2, title: "산후조리원 바우처 지원", agency: "서울특별시", link: "서울맘케어" }
+  ],
+  영유아: [
+    { no: 1, title: "영유아 건강검진", agency: "국민건강보험", link: "건강iN" },
+    { no: 2, title: "아동수당", agency: "보건복지부", link: "정부24" }
+  ],
+  아동: [
+    { no: 1, title: "초등 돌봄교실", agency: "교육부", link: "에듀팟" },
+    { no: 2, title: "온종일 돌봄체계", agency: "보건복지부", link: "정부24" }
+  ],
+  청소년: [
+    { no: 1, title: "청소년 특별지원", agency: "여성가족부", link: "청소년상담복지센터" },
+    { no: 2, title: "학교 밖 청소년 지원", agency: "여성가족부", link: "꿈드림" }
+  ],
+  청년: [
+    { no: 1, title: "청년 월세 지원", agency: "서울특별시", link: "서울주거포털" },
+    { no: 2, title: "청년 창업 지원", agency: "중소벤처기업부", link: "K-Startup" }
+  ],
+  중장년: [
+    { no: 1, title: "중장년 재취업 지원 서비스", agency: "고용노동부", link: "중장년일자리희망센터" },
+    { no: 2, title: "서울시 중장년 1인 가구 지원", agency: "서울특별시", link: "서울시 복지포털" },
+    { no: 3, title: "중장년 생애설계 서비스", agency: "고용노동부", link: "중장년내일센터" },
+    { no: 4, title: "중장년 창업지원 패키지", agency: "중소벤처기업부", link: "K-Startup" },
+    { no: 5, title: "중장년 전직·전문교육 과정", agency: "고용노동부", link: "직업능력개발원" },
+    { no: 6, title: "서울시 4050 맞춤형 일자리", agency: "서울특별시", link: "서울일자리포털" },
+    { no: 7, title: "중장년 심리·정서 상담 지원", agency: "보건복지부", link: "복지로" },
+    { no: 8, title: "중장년 금융·신용 회복 지원", agency: "금융위원회", link: "서민금융진흥원" }
+  ],
+  노년: [
+    { no: 1, title: "기초연금 제도", agency: "보건복지부", link: "기초연금" },
+    { no: 2, title: "노인 일자리 지원", agency: "보건복지부", link: "노인일자리포털" }
+  ],
+  기타: [
+    { no: 1, title: "다문화가정 지원", agency: "여성가족부", link: "다누리포털" },
+    { no: 2, title: "장애인 고용 지원", agency: "고용노동부", link: "장애인고용공단" }
+  ]
+};
+
+const tbody = document.getElementById('tableBody');
+const tabs = document.querySelectorAll('.tabs button');
+
+function renderTable(type) {
+  tbody.innerHTML = '';
+  const data = tableData[type] || [];
+  data.forEach(row => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${row.no}</td>
+        <td>${row.title}</td>
+        <td>${row.agency}</td>
+        <td><a href="#">${row.link}</a></td>
+      </tr>
+    `;
+  });
+}
+
+// 기본: 중장년 탭 노출
+renderTable('중장년');
+
+tabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable(btn.dataset.type);
+  });
+});
+</script>
+
+<!-- //sample data : tab/table -->
+
                     </div>
                 </div>
             </div>

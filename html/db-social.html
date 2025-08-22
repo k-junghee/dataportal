@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
 </head>
 <body>
 <!-- header -->
@@ -30,14 +32,258 @@
                         <p class="tit">기초생활 수급 현황 요약(2025년 6월 기준)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area scroll">
+                         <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="pieChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                            <div id="barChart" class="chart-box" style="width: 45%; height:200px;"></div>
+                        </div>
+                        <script>
+                        // 데이터 (연령대별)
+                        const categories = ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'];
+                        const values = [2.34, 13.96, 14.82, 17.85, 19.59, 17.19, 14.24, 2.12];
+
+                        // 가로 막대그래프
+                        Highcharts.chart('barChart', {
+                            chart: {
+                                type: 'bar',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            xAxis: {
+                                categories: categories,
+                                title: { text: null }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                text: '비율 (%)',
+                                align: 'high'
+                                }
+                            },
+                            tooltip: {
+                                valueSuffix: ' %'
+                            },
+                            plotOptions: {
+                                bar: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '연령대',
+                                data: values
+                            }]
+                            });
+
+                            // 원형(도넛) 그래프
+                            Highcharts.chart('pieChart', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            tooltip: {
+                                pointFormat: '<b>{point.y:.2f} %</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%', // 도넛 형태
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}: {point.y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '비율',
+                                data: categories.map((c, i) => [c, values[i]])
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="pieChart02" class="chart-box" style="width: 45%; height:200px;"></div>
+                            <div id="barChart02" class="chart-box" style="width: 45%; height:200px;"></div>
+                        </div>
+                        <script>
+                        // 데이터 (연령대별)
+                        const categories02 = ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'];
+                        const values02 = [2.34, 13.96, 14.82, 17.85, 19.59, 17.19, 14.24, 2.12];
+
+                        // 가로 막대그래프
+                        Highcharts.chart('barChart02', {
+                            chart: {
+                                type: 'bar',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            xAxis: {
+                                categories: categories,
+                                title: { text: null }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                text: '비율 (%)',
+                                align: 'high'
+                                }
+                            },
+                            tooltip: {
+                                valueSuffix: ' %'
+                            },
+                            plotOptions: {
+                                bar: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '연령대',
+                                data: values
+                            }]
+                            });
+
+                            // 원형(도넛) 그래프
+                            Highcharts.chart('pieChart02', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            tooltip: {
+                                pointFormat: '<b>{point.y:.2f} %</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%', // 도넛 형태
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}: {point.y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '비율',
+                                data: categories.map((c, i) => [c, values[i]])
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                         <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="pieChart03" class="chart-box" style="width: 45%; height:200px;"></div>
+                            <div id="barChart03" class="chart-box" style="width: 45%; height:200px;"></div>
+                        </div>
+                        <script>
+                        // 데이터 (연령대별)
+                        const categories03 = ['10대', '20대', '30대', '40대', '50대', '60대', '70대', '80대'];
+                        const values03 = [2.34, 13.96, 14.82, 17.85, 19.59, 17.19, 14.24, 2.12];
+
+                        // 가로 막대그래프
+                        Highcharts.chart('barChart03', {
+                            chart: {
+                                type: 'bar',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            xAxis: {
+                                categories: categories,
+                                title: { text: null }
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                text: '비율 (%)',
+                                align: 'high'
+                                }
+                            },
+                            tooltip: {
+                                valueSuffix: ' %'
+                            },
+                            plotOptions: {
+                                bar: {
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '연령대',
+                                data: values
+                            }]
+                            });
+
+                            // 원형(도넛) 그래프
+                            Highcharts.chart('pieChart03', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '연령대별 분포도'
+                            // },
+                            title: null,
+                            tooltip: {
+                                pointFormat: '<b>{point.y:.2f} %</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                innerSize: '50%', // 도넛 형태
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}: {point.y:.2f} %'
+                                }
+                                }
+                            },
+                            credits: { enabled: false },
+                            series: [{
+                                name: '비율',
+                                data: categories.map((c, i) => [c, values[i]])
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
                 <div class="type_list list_keyword">
                     <div class="title sb">
                         <p class="tit">graph</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area"></div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -71,7 +317,66 @@
                         <p class="tit">동별 수급자 비율 현황 map</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area scroll">
+                        <div class="data_inner_tw">
+                            <div class="data_left">
+                                <img src="../src/assets/images/sample/sample_14_img04_01.png" alt="map" style="width :auto;"/>
+                            </div>
+                            <div class="data_right">
+                                <!-- sample data : table -->
+                                <!-- sample data : table 1 -->
+                                <div class="db-table">
+                                <div class="table-wrap">
+                                    <table>
+                                    <thead>
+                                        <tr>
+                                        <th>수급률 %</th>
+                                        <th>행정동</th>
+                                        <th>건강보험 가입자</th>
+                                        <th>기초생활 수급자</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody1"></tbody>
+                                    </table>
+                                </div>
+                                </div>
+
+                                <script>
+                                // 데이터 1
+                                const tableData1 = [
+                                {name:'녹번동', insured:15132, beneficiary:1229, rate:8.19},
+                                {name:'불광제1동', insured:24658, beneficiary:1966, rate:8.19},
+                                {name:'불광제2동', insured:22647, beneficiary:1802, rate:8.19},
+                                {name:'불광제3동', insured:19357, beneficiary:1638, rate:8.19}
+                                ];
+
+                                // bar-cell 생성 함수 (테이블 1)
+                                function barCell1(value, max=10) {
+                                const percent = Math.min((value / max) * 100, 100);
+                                return `
+                                    <div class="bar-cell">
+                                    <div class="bar-fill" style="width:${percent}%;"></div>
+                                    <span class="bar-label">${value.toFixed(2)}</span>
+                                    </div>
+                                `;
+                                }
+
+                                // 테이블 1 렌더링
+                                const tbody1 = document.getElementById('tableBody1');
+                                tableData1.forEach(row => {
+                                tbody1.innerHTML += `
+                                    <tr>
+                                    <td>${barCell1(row.rate, 10)}</td>
+                                    <td>${row.name}</td>
+                                    <td>${row.insured.toLocaleString()}</td>
+                                    <td>${row.beneficiary.toLocaleString()}</td>
+                                    </tr>
+                                `;
+                                });
+                                </script>
+                            <!-- //sample data : table -->
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="type_list news">
@@ -79,7 +384,69 @@
                         <p class="tit">동별 수급자 비율 현황 graph</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area scroll">
+                        <!-- sample data : table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                <thead>
+                                    <tr>
+                                    <th>수급률 %</th>
+                                    <th>행정동</th>
+                                    <th>건강보험 가입자</th>
+                                    <th>기초생활 수급자</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                                </table>
+                            </div>
+                            </div>
+
+                            <script>
+                            const tableData = [
+                            {name:'녹번동', insured:15132, beneficiary:1229, rate:8.19},
+                            {name:'불광제1동', insured:24658, beneficiary:1966, rate:8.19},
+                            {name:'불광제2동', insured:22647, beneficiary:1802, rate:8.19},
+                            {name:'불광제3동', insured:19357, beneficiary:1638, rate:8.19},
+                            {name:'갈현제1동', insured:27123, beneficiary:1874, rate:6.94},
+                            {name:'갈현제2동', insured:38030, beneficiary:2637, rate:6.94},
+                            {name:'구산동', insured:26420, beneficiary:1804, rate:6.94},
+                            {name:'대조동', insured:37768, beneficiary:2567, rate:6.94},
+                            {name:'응암제1동', insured:30135, beneficiary:1793, rate:5.98},
+                            {name:'응암제2동', insured:34694, beneficiary:2032, rate:5.98},
+                            {name:'응암제3동', insured:28544, beneficiary:1673, rate:5.97},
+                            {name:'역촌동', insured:31364, beneficiary:1733, rate:5.59},
+                            {name:'신사제1동', insured:35311, beneficiary:1687, rate:4.82},
+                            {name:'신사제2동', insured:46502, beneficiary:2241, rate:4.82},
+                            {name:'증산동', insured:17365, beneficiary:819, rate:4.82},
+                            {name:'수색동', insured:23068, beneficiary:1108, rate:4.82},
+                            {name:'진관', insured:18046, beneficiary:867, rate:4.82}
+                            ];
+
+                            // bar-cell 생성 함수
+                            function barCell(value, max=10) {
+                            const percent = Math.min((value / max) * 100, 100);
+                            return `
+                                <div class="bar-cell">
+                                <div class="bar-fill" style="width:${percent}%;"></div>
+                                <span class="bar-label">${value.toFixed(2)}</span>
+                                </div>
+                            `;
+                            }
+
+                            const tbody = document.getElementById('tableBody');
+                            tableData.forEach(row => {
+                            tbody.innerHTML += `
+                                <tr>
+                                <td>${barCell(row.rate, 10)}</td>
+                                <td>${row.name}</td>
+                                <td>${row.insured.toLocaleString()}</td>
+                                <td>${row.beneficiary.toLocaleString()}</td>
+                                </tr>
+                            `;
+                            });
+                            </script>
+                            <!-- //sample data : table -->
                     </div>
                 </div>
             </div>

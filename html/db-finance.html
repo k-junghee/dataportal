@@ -37,8 +37,201 @@
                         <p class="tit">우리동네 재정 현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area">
-                        table
+                    <div class="data_area scroll">
+                        <!-- sample data : table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <table style="width: 1000px">
+                                <thead>
+                                    <tr>
+                                    <th>No</th>
+                                    <th>부문별</th>
+                                    <th>예산현액<br>(억원)</th>
+                                    <th>편성액<br>(억원)</th>
+                                    <th>지출액<br>(억원)</th>
+                                    <th>잉여금<br>(억원)</th>
+                                    <th>현예산<br>지급율%</th>
+                                    <th>시군구비<br>(억원)</th>
+                                    <th>국비<br>(억원)</th>
+                                    <th>시도비<br>(억원)</th>
+                                    <th>기타<br>(억원)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>1</td>
+                                    <td>취약계층지원</td>
+                                    <td>7693.59</td>
+                                    <td>7596.15</td>
+                                    <td>2769.01</td>
+                                    <td>4924.58</td>
+                                    <td>36.0%</td>
+                                    <td>36.5</td>
+                                    <td>1379.51</td>
+                                    <td>4216.45</td>
+                                    <td>2064.01</td>
+                                    </tr>
+                                    <tr>
+                                    <td>2</td>
+                                    <td>기타</td>
+                                    <td>1860.26</td>
+                                    <td>1859.10</td>
+                                    <td>679.30</td>
+                                    <td>1180.36</td>
+                                    <td>36.5%</td>
+                                    <td>36.2</td>
+                                    <td>1784.51</td>
+                                    <td>45.2</td>
+                                    <td>70.41</td>
+                                    </tr>
+                                    <tr>
+                                    <td>3</td>
+                                    <td>일반행정</td>
+                                    <td>866.41</td>
+                                    <td>748.86</td>
+                                    <td>181.44</td>
+                                    <td>684.97</td>
+                                    <td>20.9%</td>
+                                    <td>24.2</td>
+                                    <td>843.04</td>
+                                    <td>6.36</td>
+                                    <td>12.53</td>
+                                    </tr>
+                                    <tr>
+                                    <td>4</td>
+                                    <td>폐기물</td>
+                                    <td>862.26</td>
+                                    <td>571.87</td>
+                                    <td>297.06</td>
+                                    <td>565.20</td>
+                                    <td>34.5%</td>
+                                    <td>51.9</td>
+                                    <td>639.90</td>
+                                    <td>9.22</td>
+                                    <td>130.67</td>
+                                    </tr>
+                                    <tr>
+                                    <td>5</td>
+                                    <td>체육</td>
+                                    <td>527.42</td>
+                                    <td>423.71</td>
+                                    <td>107.91</td>
+                                    <td>341.80</td>
+                                    <td>25.5%</td>
+                                    <td>41.9</td>
+                                    <td>370.17</td>
+                                    <td>67.69</td>
+                                    <td>23.87</td>
+                                    </tr>
+                                    <tr>
+                                    <td>6</td>
+                                    <td>도로</td>
+                                    <td>326.61</td>
+                                    <td>256.98</td>
+                                    <td>105.74</td>
+                                    <td>220.87</td>
+                                    <td>32.4%</td>
+                                    <td>41.1</td>
+                                    <td>283.29</td>
+                                    <td>0.27</td>
+                                    <td>2.84</td>
+                                    </tr>
+                                    <tr>
+                                    <td>7</td>
+                                    <td>보건의료</td>
+                                    <td>293.66</td>
+                                    <td>292.64</td>
+                                    <td>108.67</td>
+                                    <td>184.49</td>
+                                    <td>37.1%</td>
+                                    <td>37.1</td>
+                                    <td>111.01</td>
+                                    <td>66.44</td>
+                                    <td>115.52</td>
+                                    </tr>
+                                    <tr>
+                                    <td>8</td>
+                                    <td>지역및도시</td>
+                                    <td>183.68</td>
+                                    <td>154.19</td>
+                                    <td>34.42</td>
+                                    <td>179.19</td>
+                                    <td>18.7%</td>
+                                    <td>33.3</td>
+                                    <td>147.86</td>
+                                    <td>1.45</td>
+                                    <td>0.56</td>
+                                    </tr>
+                                    <tr>
+                                    <td>9</td>
+                                    <td>유아및초중고등교육</td>
+                                    <td>161.79</td>
+                                    <td>150.73</td>
+                                    <td>56.39</td>
+                                    <td>105.40</td>
+                                    <td>34.9%</td>
+                                    <td>37.4</td>
+                                    <td>144.60</td>
+                                    <td>1.87</td>
+                                    <td>2.32</td>
+                                    </tr>
+                                    <tr>
+                                    <td>10</td>
+                                    <td>산업진흥, 고도화</td>
+                                    <td>123.31</td>
+                                    <td>118.57</td>
+                                    <td>44.69</td>
+                                    <td>78.62</td>
+                                    <td>36.2%</td>
+                                    <td>37.7</td>
+                                    <td>87.12</td>
+                                    <td>1.21</td>
+                                    <td>14.99</td>
+                                    </tr>
+                                    <tr>
+                                    <td>11</td>
+                                    <td>에비비비</td>
+                                    <td>65.94</td>
+                                    <td>75.74</td>
+                                    <td>0.00</td>
+                                    <td>65.94</td>
+                                    <td>0.0%</td>
+                                    <td>0.0</td>
+                                    <td>53.24</td>
+                                    <td>9.7</td>
+                                    <td>3.0</td>
+                                    </tr>
+                                    <tr>
+                                    <td>12</td>
+                                    <td>재난방재, 민방위</td>
+                                    <td>35.04</td>
+                                    <td>23.21</td>
+                                    <td>5.07</td>
+                                    <td>28.20</td>
+                                    <td>21.9%</td>
+                                    <td>0.5</td>
+                                    <td>19.42</td>
+                                    <td>5.31</td>
+                                    <td>9.07</td>
+                                    </tr>
+                                    <tr>
+                                    <td>13</td>
+                                    <td>임업, 산촌</td>
+                                    <td>29.89</td>
+                                    <td>25.17</td>
+                                    <td>7.56</td>
+                                    <td>22.33</td>
+                                    <td>25.3%</td>
+                                    <td>3.0</td>
+                                    <td>18.57</td>
+                                    <td>7.01</td>
+                                    <td>3.44</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
                 <div class="type_list list_board ac_2h">
@@ -49,23 +242,21 @@
                     <div class="data_area">
                         <!-- sample data : highcharts.js -->
                          <div class="data_inner_tw">
-                            <!-- 좌측: 텍스트 영역 -->
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:16px; line-height:1.8;">
+                            <div id="donut-container01" style="width: 45%; height: 200px;"></div>
+                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
+                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
                                     <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>
                                     <li><span style="color:#99ff99;">50대</span> : 48,346건 (18.6%)</li>
                                     <li><span style="color:#cc99ff;">60대</span> : 21,524건 (8.8%)</li>
                                 </ul>
-                                <div style="margin-top:10px; font-weight:bold; font-size:18px;">
+                                <!-- <div style="margin-top:10px; font-weight:bold; font-size:18px;">
                                 전체 합계: 3,656건
-                                </div>
+                                </div> -->
                             </div>
-                            <div id="donut-container01" style="width: 45%; height: 200px;"></div>
                         </div>
                         <script>
-                        // 왼쪽: 연령대별 거래 현황
                         Highcharts.chart('donut-container01', {
                         chart: {
                             type: 'pie',
@@ -100,25 +291,24 @@
                         });
                         </script>
                         <!-- //sample data : highcharts.js -->
-                         <!-- sample data : highcharts.js -->
-                         <div class="data_inner_tw">
-                            <!-- 좌측: 텍스트 영역 -->
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:16px; line-height:1.8;">
+                        <!-- sample data : highcharts.js -->
+                        <div class="data_inner_tw">
+                            <div id="donut-container02" style="width: 45%; height: 200px;"></div>
+                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
+                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
                                     <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>
                                     <li><span style="color:#99ff99;">50대</span> : 48,346건 (18.6%)</li>
                                     <li><span style="color:#cc99ff;">60대</span> : 21,524건 (8.8%)</li>
                                 </ul>
-                                <div style="margin-top:10px; font-weight:bold; font-size:18px;">
+                                <!-- <div style="margin-top:10px; font-weight:bold; font-size:18px;">
                                 전체 합계: 3,656건
-                                </div>
+                                </div> -->
                             </div>
-                            <div id="donut-container02" style="width: 45%; height: 200px;"></div>
+                            
                         </div>
                         <script>
-                        // 왼쪽: 연령대별 거래 현황
                         Highcharts.chart('donut-container02', {
                         chart: {
                             type: 'pie',

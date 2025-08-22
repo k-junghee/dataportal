@@ -27,10 +27,158 @@
             <div class="a_colum a_left ac1">
                 <div class="type_list list_keyword">
                     <div class="title sb">
-                        <p class="tit">tab</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area scroll">
+                        <!-- sample data : tab/table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <div class="table-header">
+                                <div class="tabs">
+                                    <button data-type="현금지원">현금지원</button>
+                                    <button data-type="물품지원">물품지원</button>
+                                    <button data-type="상담지원">상담지원</button>
+                                    <button class="active" data-type="일자리지원">일자리지원</button>
+                                </div>
+                                </div>
+
+                                <!-- 콘텐츠 영역 -->
+                                <div id="tabContent"></div>
+                            </div>
+                            </div>
+
+                            <script>
+                            // 데이터 (이미지 기준: 일자리지원 예시만 채움, 나머지는 샘플)
+                            const tabData = {
+                            현금지원: [
+                                {
+                                title: "청년 생활안정 자금지원",
+                                rows: [
+                                    { label: "대상", value: "만 19~34세 미취업 청년" },
+                                    { label: "지원혜택", value: "1회 50만원 지급" },
+                                    { label: "신청방법", value: "온라인 신청" }
+                                ]
+                                }
+                            ],
+                            물품지원: [
+                                {
+                                title: "청년 주거물품 지원",
+                                rows: [
+                                    { label: "대상", value: "독립 청년 (만 19~39세)" },
+                                    { label: "지원혜택", value: "가전·가구 물품 패키지 지원" },
+                                    { label: "신청방법", value: "공고 확인 후 이메일 접수" }
+                                ]
+                                }
+                            ],
+                            상담지원: [
+                                {
+                                title: "청년 심리상담 지원",
+                                rows: [
+                                    { label: "대상", value: "만 19~34세 청년 누구나" },
+                                    { label: "지원혜택", value: "전문가 심리상담, 최대 10회 무료" },
+                                    { label: "신청방법", value: "청년포털 온라인 신청" }
+                                ]
+                                }
+                            ],
+                            일자리지원: [
+                                {
+                                title: "2025년 은평구 청년 일자리사업",
+                                rows: [
+                                    { label: "대상", value: "은평구 거주 19~39세 미취업 청년" },
+                                    { label: "기간/조건", value: "2025년 6월~12월, 8개월 근무" },
+                                    { label: "지원혜택", value: "월 2,461,820원 + 4대 보험 + 직무역량 강화 교육 제공" },
+                                    { label: "규모", value: "구 소재 사회적경제기업, 협동조합, 비영리단체 등 8개 참여 기업" },
+                                    { label: "신청방법", value: "공고문 확인 후 이메일 또는 방문 접수" }
+                                ]
+                                },
+                                {
+                                title: "미취업 청년 취업안정금",
+                                rows: [
+                                    { label: "대상", value: "은평구 거주 만 19~34세 미취업 청년 (졸업 후 2년 내)" },
+                                    { label: "지원혜택", value: "1회 50만원 (은평사랑상품권)" },
+                                    { label: "신청방법", value: "서울청년포털 온라인 신청" }
+                                ]
+                                },
+                                {
+                                title: "2025년 미래 청년 일자리 사업",
+                                rows: [
+                                    { label: "대상", value: "만 19~39세 서울 거주 미취업 청년" },
+                                    { label: "기간/조건", value: "6~12개월 / AI·온라인콘텐츠, 제로웨이스트, 소셜벤처" },
+                                    { label: "지원혜택", value: "참여기업에서 임금형 제공, 월 246만원 수준 임금 + 직무교육" },
+                                    { label: "신청방법", value: "청년몽땅정보통(youth.seoul.go.kr) 온라인 접수" }
+                                ]
+                                },
+                                {
+                                title: "서울형 청년수당",
+                                rows: [
+                                    { label: "대상", value: "만 19~34세 서울 거주 미취업 또는 단기 근로 청년" },
+                                    { label: "지원혜택", value: "최대 50만 원, 최대 6개월 지급 / 멘토링·특강 등 성장지원 프로그램 제공" }
+                                ]
+                                },
+                                {
+                                title: "청년일자리도약장려금",
+                                rows: [
+                                    { label: "대상", value: "만 15~34세 청년(취업애로 청년 포함)" },
+                                    { label: "유형1", value: "우선지원대상기업에서 채용 후 6개월 이상 근무 시 기업에 월 최대 60만 원, 총 720만 원 지급" },
+                                    { label: "유형2", value: "비영리법인·중소기업에서 채용 후 18개월 이상 근속 시 기업 지원 + 청년 월 40만 원 별도 지원" },
+                                    { label: "신청방법", value: "고용24 웹사이트에서 기업이 신청 (PC 전용)" }
+                                ]
+                                },
+                                {
+                                title: "지역주도형 청년일자리사업",
+                                rows: [
+                                    { label: "대상", value: "만 39세 이하 미취업 청년" },
+                                    { label: "내용", value: "자치구 주도로 지역 맞춤형 일자리 및 직무교육, 인건비 지원" },
+                                    { label: "신청방법", value: "구청 또는 협력단체 홈페이지 확인" }
+                                ]
+                                }
+                            ]
+                            };
+
+                            const tabContent = document.getElementById("tabContent");
+                            const tabs = document.querySelectorAll(".tabs button");
+
+                            function renderTab(type) {
+                            tabContent.innerHTML = "";
+                            const data = tabData[type] || [];
+
+                            data.forEach(block => {
+                                let tableHtml = `
+                                <div class="job-block">
+                                    <h3>${block.title}</h3>
+                                    <table cellspacing="0" cellpadding="5">
+                                    <tbody>
+                                `;
+                                block.rows.forEach(r => {
+                                tableHtml += `
+                                    <tr>
+                                    <th>${r.label}</th>
+                                    <td>${r.value}</td>
+                                    </tr>
+                                `;
+                                });
+                                tableHtml += `
+                                    </tbody>
+                                    </table>
+                                </div>
+                                `;
+                                tabContent.innerHTML += tableHtml;
+                            });
+                            }
+
+                            renderTab("일자리지원");
+
+                            tabs.forEach(btn => {
+                            btn.addEventListener("click", () => {
+                                tabs.forEach(b => b.classList.remove("active"));
+                                btn.classList.add("active");
+                                renderTab(btn.dataset.type);
+                            });
+                            });
+                            </script>
+                        <!-- //sample data : tab/table -->
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -50,29 +198,117 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">2025년 은평구 청년 일자리사업</p>
+                        <p class="tit">생애 주기별 맞춤 정보 서울특별시 은평구 청년</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : timeline -->
+                        <div class="d_timeline">
+                            <!-- <div class="title">생애 주기별 맞춤 정보</div>
+                            <div class="subtitle">서울특별시 은평구 청년</div> -->
 
+                            <!-- 타임라인 -->
+                            <div class="timeline">
+                                <div class="stage"><div class="circle"></div><div class="label">임신·출산</div></div>
+                                <div class="stage"><div class="circle"></div><div class="label">영유아<br>(0~5세)</div></div>
+                                <div class="stage"><div class="circle"></div><div class="label">아동<br>(6~12세)</div></div>
+                                <div class="stage"><div class="circle"></div><div class="label">청소년<br>(13~18세)</div></div>
+                                <div class="stage active"><div class="circle"></div><div class="label">청년<br>(19~34세)</div></div>
+                                <div class="stage"><div class="circle"></div><div class="label">중장년<br>(35~64세)</div></div>
+                                <div class="stage"><div class="circle"></div><div class="label">노년·사망<br>(65세~)</div></div>
+                            </div>
+
+                            <!-- 사업명 -->
+                            <div class="project-title">2025년 은평구 청년 일자리사업</div>
+
+                            <!-- 버튼 -->
+                            <div class="btn-area">
+                                <div class="btn">신청하기</div>
+                                <div class="btn">공고문 다운로드</div>
+                                <div class="btn">문의처 안내</div>
+                                <div class="btn">캘린더에 일정 추가</div>
+                            </div>
+                        </div>
+                        <!-- //sample data : timeline -->
                     </div>
                 </div>
             </div>
             <div class="a_colum a_right ac2">
-                <div class="type_list news">
+                <div class="type_list">
                     <div class="title sb">
                         <p class="tit">이 정책을 본 사용자가 함께 본 정책</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <!-- sample data : table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <table cellspacing="0" cellpadding="5">
+                                <thead>
+                                    <tr>
+                                    <th>주제</th>
+                                    <th>정책명</th>
+                                    <th>핵심 혜택</th>
+                                    <th>신청처</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>결혼준비</td>
+                                    <td>신혼부부 전세대출 보증 지원</td>
+                                    <td>전세보증금 최대 3억 원 보증 + 이자 지원</td>
+                                    <td>서울주택도시공사</td>
+                                    </tr>
+                                    <tr>
+                                    <td>출산지원</td>
+                                    <td>서울형 출산 축하금</td>
+                                    <td>200만 원 지급 지원</td>
+                                    <td>주민센터/구청</td>
+                                    </tr>
+                                    <tr>
+                                    <td>내집마련</td>
+                                    <td>청년 임가주택</td>
+                                    <td>시세의 60~80% 가격으로 분양</td>
+                                    <td>SH공사/서울시</td>
+                                    </tr>
+                                    <tr>
+                                    <td>금융지원</td>
+                                    <td>청년 내일 저축 계좌</td>
+                                    <td>3년 납입 시 최대 1,440만 원 적립</td>
+                                    <td>복지로</td>
+                                    </tr>
+                                    <tr>
+                                    <td>자산형성</td>
+                                    <td>청년 도약 계좌</td>
+                                    <td>5년간 월 70만 원 납입 시 정부 매칭 + 이자</td>
+                                    <td>은행/온라인</td>
+                                    </tr>
+                                    <tr>
+                                    <td>교육훈련</td>
+                                    <td>K-디지털 트레이닝</td>
+                                    <td>AI, 코딩 등 무료 직업훈련 + 월 30만 원 훈련 장려금</td>
+                                    <td>HRD-Net</td>
+                                    </tr>
+                                    <tr>
+                                    <td>창업지원</td>
+                                    <td>청년 창업지원 바우처</td>
+                                    <td>창업 준비금, 멘토링, 공간 지원</td>
+                                    <td>서울창업허브</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
-                <div class="type_list news">
+                <div class="type_list">
                     <div class="title sb">
                         <p class="tit">AI Q.</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <img src='../src/assets/images/sample/sample_12_img04.png' style="width: 300px">
                     </div>
                 </div>
             </div>

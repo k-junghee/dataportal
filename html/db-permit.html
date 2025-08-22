@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -30,7 +37,41 @@
                         <p class="tit">업종별 총 업체수 / 동별 업체 밀집도</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div id="container-bar" style=" height:200px;"></div>
+
+                        <script>
+                            Highcharts.chart('container-bar', {
+                            chart: {
+                                type: 'column',   // 막대 그래프 (bar)
+                                backgroundColor: 'transparent'
+                            },
+                            // title: {
+                            //     text: '기본 막대 그래프',
+                            //     style: { color: '#555' }
+                            // },
+                            title: null,
+                            xAxis: {
+                                categories: ['A', 'B', 'C', 'D', 'E', 'F'],
+                                labels: { style: { color: '#555' } }
+                            },
+                            yAxis: {
+                                title: { text: '값', style: { color: '#555' } },
+                                labels: { style: { color: '#555' } }
+                            },
+                            tooltip: {
+                                valueSuffix: ' 개'
+                            },
+                            series: [{
+                                name: '데이터',
+                                data: [12, 23, 18, 34, 45, 20],
+                                color: '#66ccff'
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
@@ -38,7 +79,59 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        <!-- sample data : highcharts.js -->
+                         <div class="data_inner_tw">
+                            <div id="donut-container" style="width: 45%; height: 300px;"></div>
+                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
+                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
+                                    <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
+                                    <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
+                                    <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>
+                                    <li><span style="color:#99ff99;">50대</span> : 48,346건 (18.6%)</li>
+                                    <li><span style="color:#cc99ff;">60대</span> : 21,524건 (8.8%)</li>
+                                </ul>
+                                <!-- <div style="margin-top:10px; font-weight:bold; font-size:18px;">
+                                전체 합계: 3,656건
+                                </div> -->
+                            </div>
+                            
+                        </div>
+                        <script>
+                        // 왼쪽: 연령대별 거래 현황
+                        Highcharts.chart('donut-container', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45
+                            }
+                        },
+                        // title: { text: '연령대별 거래 비율' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.percentage:.1f}%'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            { name: '20대', y: 5669, color: '#ff69b4' },
+                            { name: '30대', y: 79766, color: '#ffcc00' },
+                            { name: '40대', y: 86897, color: '#66ccff' },
+                            { name: '50대', y: 48346, color: '#99ff99' },
+                            { name: '60대', y: 21524, color: '#cc99ff' }
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -63,7 +156,29 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        <!-- sample data : highcharts.js -->
+                        <div id="container02"></div>
+                        <script>
+                        Highcharts.chart('container02', {
+                        chart: { 
+                            type: 'line',
+                            backgroundColor: 'transparent',
+                            height: 330,
+                        },
+                        // title: { text: '학급당 학생수 추이' },
+                        title: null,
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
+                        yAxis: { title: { text: '학생수' } },
+                        series: [{
+                                name: '초등학교',
+                                data: [26.8, 25.7, 23.8, 23.0, 22.8]
+                            }, {
+                                name: '중학교',
+                                data: [22.9, 21.7, 21.0, 20.5, 20.0]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -73,7 +188,95 @@
                         <p class="tit">인허가 현황(은평구 14,691업종)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area scroll">
+                        <!-- sample data : table -->
+                         <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                <thead>
+                                    <tr>
+                                    <th>업종</th>
+                                    <th>인원</th>
+                                    <th>비율</th>
+                                    <th>세부업종</th>
+                                    <th>인원</th>
+                                    <th>비율</th>
+                                    <th>현황(그래프)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                        const tableData = [
+                        {sector:"식품", people:10015, ratio:"68.2%", sub:[
+                            {name:"음식점", people:5162, ratio:"35.1%", color:"#2196f3"},
+                            {name:"식품제조", people:4240, ratio:"28.9%", color:"#4caf50"},
+                            {name:"유흥주점", people:317, ratio:"2.2%", color:"#ff9800"},
+                            {name:"급식", people:296, ratio:"2.0%", color:"#9c27b0"}
+                        ]},
+                        {sector:"생활", people:1653, ratio:"11.3%", sub:[
+                            {name:"미용", people:1403, ratio:"9.6%", color:"#673ab7"},
+                            {name:"이용", people:250, ratio:"1.7%", color:"#3f51b5"}
+                        ]},
+                        {sector:"건강", people:1602, ratio:"10.9%", sub:[
+                            {name:"의료기관", people:951, ratio:"6.5%", color:"#e91e63"},
+                            {name:"의료기기", people:651, ratio:"4.4%", color:"#f06292"}
+                        ]},
+                        {sector:"문화", people:754, ratio:"5.1%", sub:[
+                            {name:"노래방", people:139, ratio:"0.9%", color:"#ff5722"},
+                            {name:"여행사", people:127, ratio:"0.9%", color:"#ff9800"},
+                            {name:"숙박", people:117, ratio:"0.8%", color:"#ffc107"},
+                            {name:"비디오", people:112, ratio:"0.8%", color:"#cddc39"},
+                            {name:"게임", people:92, ratio:"0.6%", color:"#8bc34a"},
+                            {name:"음악", people:74, ratio:"0.5%", color:"#009688"},
+                            {name:"문화기획", people:53, ratio:"0.4%", color:"#00bcd4"},
+                            {name:"관광", people:36, ratio:"0.2%", color:"#03a9f4"},
+                            {name:"공연", people:3, ratio:"0.0%", color:"#9e9e9e"}
+                        ]},
+                        {sector:"자원환경", people:445, ratio:"3.0%", sub:[
+                            {name:"환경관리", people:413, ratio:"3.0%", color:"#4caf50"},
+                            {name:"에너지", people:29, ratio:"2.8%", color:"#8bc34a"},
+                            {name:"지하수", people:3, ratio:"0.2%", color:"#cddc39"}
+                        ]},
+                        {sector:"기타", people:222, ratio:"1.5%", sub:[
+                            {name:"사무지원", people:160, ratio:"1.1%", color:"#795548"},
+                            {name:"목욕탕", people:48, ratio:"0.3%", color:"#607d8b"},
+                            {name:"담배", people:14, ratio:"0.1%", color:"#9e9e9e"}
+                        ]}
+                        ];
+
+                        // bar-cell 생성 함수
+                        function barCell(value, color) {
+                        const num = parseFloat(value);
+                        const percent = Math.min(num, 100);
+                        return `
+                            <div class="bar-cell">
+                            <div class="bar-fill" style="width:${percent}%; background:${color};"></div>
+                            <span class="bar-label">${value}</span>
+                            </div>
+                        `;
+                        }
+
+                        const tbody = document.getElementById('tableBody');
+                        tableData.forEach(group => {
+                        group.sub.forEach((row, idx) => {
+                            tbody.innerHTML += `
+                            <tr>
+                                ${idx === 0 ? `<td rowspan="${group.sub.length}">${group.sector}</td>
+                                            <td rowspan="${group.sub.length}">${group.people.toLocaleString()}</td>
+                                            <td rowspan="${group.sub.length}">${group.ratio}</td>` : ""}
+                                <td>${row.name}</td>
+                                <td>${row.people.toLocaleString()}</td>
+                                <td>${row.ratio}</td>
+                                <td>${barCell(row.ratio.replace("%",""), row.color)}</td>
+                            </tr>
+                            `;
+                        });
+                        });
+                        </script>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
                 <div class="type_list left">
@@ -81,7 +284,52 @@
                         <p class="tit">map</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : echarts.js -->
+                         <div id="treemap" style="width:100%;height:200px;"></div>
+                        <script>
+                        var chart3 = echarts.init(document.getElementById('treemap'));
+
+                        chart3.setOption({
+                        // title: { text: '재정 편성액 Map', left: 'center', textStyle:{color:'#fff'} },
+                        tooltip: { formatter: (info) => info.name + ': ' + info.value },
+                        series: [{
+                            type: 'treemap',
+                            roam: false,
+                            nodeClick: false,
+                            label: { show: true, formatter: '{b}', color:'#fff' },
+                            data: [
+                            {
+                                name: '사회복지',
+                                value: 10000,
+                                children: [
+                                { name: '기초연금', value: 4000 },
+                                { name: '보육지원', value: 2000 },
+                                { name: '장애인복지', value: 1500 }
+                                ]
+                            },
+                            {
+                                name: '교육',
+                                value: 6000,
+                                children: [
+                                { name: '학교지원', value: 3000 },
+                                { name: '급식지원', value: 1000 }
+                                ]
+                            },
+                            {
+                                name: '환경',
+                                value: 3000,
+                                children: [
+                                { name: '대기관리', value: 1000 },
+                                { name: '폐기물', value: 500 }
+                                ]
+                            }
+                            ]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
+                    </div>
                 </div>
             </div>
         </div>

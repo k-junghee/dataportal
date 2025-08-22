@@ -94,8 +94,92 @@
                         <p class="tit">실시간 대기 현황(1분)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
-                    <div class="data_area graph_data">
-                        table 구분 하고 막대그래프
+                    <div class="data_area">
+                        <!-- sample data : tab/table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <div class="table-header">
+                                <div class="tabs">
+                                    <button class="active" data-type="1">1</button>
+                                    <button data-type="2">2</button>
+                                    <button data-type="3">3</button>
+                                    <button data-type="4">4</button>
+                                    <button data-type="5">5</button>
+                                </div>
+                                </div>
+
+                                <table>
+                                <thead>
+                                    <tr>
+                                    <th>No</th>
+                                    <th>자치구</th>
+                                    <th>미세먼지</th>
+                                    <th>초미세먼지</th>
+                                    <th>일산화탄소</th>
+                                    <th>오존</th>
+                                    <th>이산화질소</th>
+                                    <th>아황산가스</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <script>
+                        const tableData = {
+                        1: [
+                            {no:1, name:'종로구', pm10:32, pm25:10, co:0.40, o3:0.04, no2:0.02, so2:0.003},
+                            {no:2, name:'성동구', pm10:28, pm25:12, co:0.42, o3:0.05, no2:0.03, so2:0.004},
+                            {no:3, name:'중랑구', pm10:40, pm25:14, co:0.38, o3:0.03, no2:0.02, so2:0.003}
+                        ],
+                        2: [
+                            {no:1, name:'강남구', pm10:20, pm25:8, co:0.30, o3:0.02, no2:0.01, so2:0.002}
+                        ]
+                        // 3,4,5 도 같은 식으로 추가
+                        };
+
+                        const tbody = document.getElementById('tableBody');
+                        const tabs = document.querySelectorAll('.tabs button');
+
+                        function barCell(value, max=100) {
+                            const percent = Math.min((value / max) * 100, 100); // 최대 100%
+                            return `
+                            <div class="bar-cell">
+                                <div class="bar-fill" style="width:${percent}%;"></div>
+                                <div class="bar-label">${value}</div>
+                            </div>
+                            `;
+                        }
+
+                        function renderTable(type) {
+                            tbody.innerHTML = '';
+                            const data = tableData[type] || [];
+                            data.forEach(row => {
+                            tbody.innerHTML += `
+                                <tr>
+                                <td>${row.no}</td>
+                                <td>${row.name}</td>
+                                <td>${barCell(row.pm10, 100)}</td>
+                                <td>${barCell(row.pm25, 50)}</td>
+                                <td>${barCell(row.co, 1)}</td>
+                                <td>${barCell(row.o3, 0.2)}</td>
+                                <td>${barCell(row.no2, 0.1)}</td>
+                                <td>${barCell(row.so2, 0.01)}</td>
+                                </tr>
+                            `;
+                            });
+                        }
+                        renderTable('1');
+                        tabs.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                            tabs.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            renderTable(btn.dataset.type);
+                            });
+                        });
+                        </script>
+                        <!-- //sample data : tab/table -->
                     </div>
                 </div>
             </div>
@@ -119,8 +203,96 @@
                         <p class="tit">위치그래프</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area">
-                        table
+                    <div class="data_area scroll">
+                        <!-- sample data : table -->
+                         <div class="data_inner">
+                            <div class="db-table" style="border-bottom:1px solid #eee;">
+                                <div class="table-wrap">
+                                    <table>
+                                    <thead>
+                                        <tr>
+                                        <th>시간</th>
+                                        <th>미세먼지<br>(㎍/㎥)</th>
+                                        <th>초미세먼지<br>(㎍/㎥)</th>
+                                        <th>일산화탄소<br>(ppm)</th>
+                                        <th>오존<br>(ppm)</th>
+                                        <th>이산화질소<br>(ppm)</th>
+                                        <th>아황산가스<br>(ppm)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <tr><td>0224 16:00</td><td>32</td><td>10</td><td>0.40</td><td>0.04</td><td>0.02</td><td>0.003</td></tr>
+                                        <tr><td>0224 15:00</td><td>37</td><td>13</td><td>0.40</td><td>0.04</td><td>0.02</td><td>0.003</td></tr>
+                                        <tr><td>0224 14:00</td><td>34</td><td>17</td><td>0.40</td><td>0.04</td><td>0.01</td><td>0.004</td></tr>
+                                        <tr><td>0224 13:00</td><td>34</td><td>17</td><td>0.40</td><td>0.04</td><td>0.01</td><td>0.004</td></tr>
+                                        <tr><td>0224 12:00</td><td>34</td><td> 9</td><td>0.40</td><td>0.03</td><td>0.01</td><td>0.004</td></tr>
+                                        <tr><td>0224 11:00</td><td>36</td><td>15</td><td>0.40</td><td>0.03</td><td>0.01</td><td>0.004</td></tr>
+                                        <tr><td>0224 10:00</td><td>34</td><td>12</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 09:00</td><td>28</td><td> 8</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 08:00</td><td>27</td><td> 8</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 07:00</td><td>24</td><td> 7</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 06:00</td><td>28</td><td>11</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 05:00</td><td>27</td><td>10</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 04:00</td><td>21</td><td> 8</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 03:00</td><td>27</td><td>10</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 02:00</td><td>28</td><td> 8</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0224 01:00</td><td>28</td><td> 8</td><td>0.50</td><td>0.02</td><td>0.01</td><td>0.005</td></tr>
+                                        <tr><td>0223 23:00</td><td>29</td><td>11</td><td>0.40</td><td>0.01</td><td>0.01</td><td>0.003</td></tr>
+                                        <tr><td>0223 22:00</td><td>31</td><td>16</td><td>0.40</td><td>0.03</td><td>0.01</td><td>0.003</td></tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            <div class="db-table-right">
+                                <div class="db-table" >
+                                    <div class="table-wrap">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>좋음</th>
+                                                    <th>매우나쁨</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tableBody">
+                                                <tr>
+                                                    <td>미세먼지</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>초미세먼지</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>일산화탄소</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>오존</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>이산화질소</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>아황산가스</td>
+                                                    <td>0~30이하</td>
+                                                    <td>150이상</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- <img src='../src/assets/images/sample/sample_07_img04_01.png' style="width: auto"> -->
+                            </div>
+                         </div>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
             </div>
@@ -139,16 +311,43 @@
                         <p class="tit">날씨 정보</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp06">더보기</a>
                     </div>
-                    <div class="box_cont">
-                        <div style="width:300px; padding:15px; background:rgba(255,255,255,0.1); border-radius:10px; color:#555; font-family:Arial;">
-                        <h3>서울특별시 본청</h3>
-                        <h1 style="font-size:48px;">8.0°C ☀️</h1>
-                        <p>바람: 2.1 m/s | 습도: 22% | 체감온도: 3.6℃</p>
-                        <p>미세먼지: 나쁨 | 초미세먼지: 좋음</p>
-                        <hr>
-                        <p><b>오늘:</b> 맑음 / 강수확률 10% / 최고 9.1℃ · 최저 1.0℃</p>
-                        <p><b>내일:</b> 흐림 / 강수확률 40% / 최고 8.9℃ · 최저 1.5℃</p>
+                    <div class="box_cont scroll">
+                        <!-- sample data : weather -->
+                        <div class="weather-card">
+                            <div class="location">서울특별시 본청</div>
+                            
+                            <div class="top">
+                                <div class="temp">8.0°C ☀️</div>
+                                <div class="details">
+                                <table>
+                                    <tr><td>남서풍</td><td>2.1 m/s</td></tr>
+                                    <tr><td>습도</td><td>22%</td></tr>
+                                    <tr><td>체감</td><td>3.6℃</td></tr>
+                                    <tr><td>미세먼지</td><td class="bad">나쁨</td></tr>
+                                    <tr><td>초미세먼지</td><td class="good">좋음</td></tr>
+                                    <tr><td>자외선</td><td class="good">좋음</td></tr>
+                                </table>
+                                </div>
+                            </div>
+
+                            <div class="today">
+                                <div class="icon">☀️</div>
+                                <div class="desc">
+                                <div class="label">맑음</div>
+                                <div class="sub">강수확률 10% / 최고 9.1℃ · 최저 1.0℃</div>
+                                </div>
+                            </div>
+
+                            <div class="tomorrow">
+                                <div class="icon">🌦️</div>
+                                <div class="desc">
+                                <div class="label">내일 날씨</div>
+                                <div class="sub">강수확률 40% / 최고 8.9℃ · 최저 1.5℃</div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- //sample data : weather -->
                     </div>
                 </div>
                 <div class="type_list right">
@@ -157,7 +356,7 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp07">더보기</a>
                     </div>
                     <div class="box_cont">
-                        캡쳐대체
+                        <img src='../src/assets/images/sample/sample_07_img07.png' style="width: 300px;">
                     </div>
                 </div>
             </div>

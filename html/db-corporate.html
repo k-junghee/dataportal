@@ -34,13 +34,77 @@
                         <p class="tit">업종 및 산업군 분석</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area">
-                        table
+                    <div class="data_area scroll">
+                        <!-- sample data : 업종 및 산업군 분석 -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                        <th>업종</th>
+                                        <th>종사자</th>
+                                        <th>업체</th>
+                                        <th>비중%</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <td>사회복지업</td>
+                                        <td>9,943</td>
+                                        <td>691</td>
+                                        <td>15.52</td>
+                                        </tr>
+                                        <tr>
+                                        <td>보건업</td>
+                                        <td>8,333</td>
+                                        <td>803</td>
+                                        <td>13.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td>음식점 및 주점업</td>
+                                        <td>6,611</td>
+                                        <td>2,634</td>
+                                        <td>10.32</td>
+                                        </tr>
+                                        <tr>
+                                        <td>소매업</td>
+                                        <td>5,581</td>
+                                        <td>1,909</td>
+                                        <td>1,909</td>
+                                        </tr>
+                                        <tr>
+                                        <td>사회복지업</td>
+                                        <td>9,943</td>
+                                        <td>691</td>
+                                        <td>15.52</td>
+                                        </tr>
+                                        <tr>
+                                        <td>보건업</td>
+                                        <td>8,333</td>
+                                        <td>803</td>
+                                        <td>13.00</td>
+                                        </tr>
+                                        <tr>
+                                        <td>음식점 및 주점업</td>
+                                        <td>6,611</td>
+                                        <td>2,634</td>
+                                        <td>10.32</td>
+                                        </tr>
+                                        <tr>
+                                        <td>소매업</td>
+                                        <td>5,581</td>
+                                        <td>1,909</td>
+                                        <td>1,909</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
@@ -53,17 +117,18 @@
                                 type: 'column',   // 막대 그래프 (bar)
                                 backgroundColor: 'transparent'
                             },
-                            title: {
-                                text: '기본 막대 그래프',
-                                style: { color: '#ffffff' }
-                            },
+                            // title: {
+                            //     text: '기본 막대 그래프',
+                            //     style: { color: '#555' }
+                            // },
+                            title: null,
                             xAxis: {
                                 categories: ['A', 'B', 'C', 'D', 'E', 'F'],
-                                labels: { style: { color: '#ffffff' } }
+                                labels: { style: { color: '#555' } }
                             },
                             yAxis: {
-                                title: { text: '값', style: { color: '#ffffff' } },
-                                labels: { style: { color: '#ffffff' } }
+                                title: { text: '값', style: { color: '#555' } },
+                                labels: { style: { color: '#555' } }
                             },
                             tooltip: {
                                 valueSuffix: ' 개'
@@ -86,11 +151,11 @@
                     <div class="data_area">
                         <!-- sample data : highcharts.js -->
                         <div class="data_inner_tw">
-                            <div id="bar-container" style="width: 55%; height: 200px;"></div>
                             <div id="donut-container02" style="width: 40%; height: 200px;"></div>
+                            <div id="bar-container" style="width: 55%; height: 200px;"></div>
                         </div>
                         <script>
-                        // 왼쪽: 바 차트
+                        // 바 차트
                         Highcharts.chart('bar-container', {
                         chart: { type: 'bar' , backgroundColor: 'transparent'},
                         // title: { text: '서울시 급식 인력' },
@@ -114,7 +179,7 @@
                         }]
                         });
 
-                        // 오른쪽: 3D 도넛
+                        //  3D 도넛
                         Highcharts.chart('donut-container02', {
                         chart: {
                             type: 'pie',
@@ -307,7 +372,7 @@
                 </div>
                 <div class="type_list right">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp07">더보기</a>
                     </div>
                     <div class="box_cont">

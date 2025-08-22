@@ -214,8 +214,97 @@
                         <p class="tit">지역별 학생수(명)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp06">더보기</a>
                     </div>
-                    <div class="box_cont">
-                        탭>테이블
+                    <div class="box_cont scroll">
+                    <!-- sample data : tab/table -->
+                    <div class="db-table">
+                    <div class="table-wrap">
+                        <div class="table-header">
+                        <div class="tabs">
+                            <button class="active" data-type="전체">전체</button>
+                            <button data-type="유치원">유치원</button>
+                            <button data-type="초등">초등</button>
+                            <button data-type="중등">중등</button>
+                            <button data-type="고등">고등</button>
+                        </div>
+                        </div>
+
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>No</th>
+                            <th>자치구</th>
+                            <th>재학생수</th>
+                            <th>교원수</th>
+                            <th>교원 1인당 학생수</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                    </div>
+
+                    <script>
+                    const tableData = {
+                        전체: [
+                        {no:1, name:'종로구', student:975, teacher:94, ratio:9.7},
+                        {no:2, name:'중구', student:897, teacher:90, ratio:10.0},
+                        {no:3, name:'용산구', student:1266, teacher:129, ratio:9.8},
+                        {no:4, name:'성동구', student:1665, teacher:187, ratio:9.8},
+                        {no:5, name:'광진구', student:1978, teacher:188, ratio:8.9},
+                        {no:6, name:'동대문구', student:2375, teacher:237, ratio:10.5},
+                        {no:7, name:'중랑구', student:2516, teacher:274, ratio:10.0},
+                        {no:8, name:'성북구', student:3948, teacher:408, ratio:9.2},
+                        {no:9, name:'강북구', student:1227, teacher:130, ratio:9.7}
+                        ],
+                        유치원: [
+                        {no:1, name:'종로구', student:120, teacher:15, ratio:8.0},
+                        {no:2, name:'중구', student:95, teacher:10, ratio:9.5}
+                        ],
+                        초등: [
+                        {no:1, name:'용산구', student:620, teacher:55, ratio:11.3},
+                        {no:2, name:'성동구', student:850, teacher:70, ratio:12.1}
+                        ],
+                        중등: [
+                        {no:1, name:'광진구', student:910, teacher:88, ratio:10.3},
+                        {no:2, name:'동대문구', student:1020, teacher:97, ratio:10.5}
+                        ],
+                        고등: [
+                        {no:1, name:'중랑구', student:980, teacher:90, ratio:10.8},
+                        {no:2, name:'성북구', student:1100, teacher:100, ratio:11.0}
+                        ]
+                    };
+
+                    const tbody = document.getElementById('tableBody');
+                    const tabs = document.querySelectorAll('.tabs button');
+
+                    function renderTable(type) {
+                        tbody.innerHTML = '';
+                        const data = tableData[type] || [];
+                        data.forEach(row => {
+                        tbody.innerHTML += `
+                            <tr>
+                            <td>${row.no}</td>
+                            <td>${row.name}</td>
+                            <td>${row.student.toLocaleString()}</td>
+                            <td>${row.teacher}</td>
+                            <td>${row.ratio}</td>
+                            </tr>
+                        `;
+                        });
+                    }
+
+                    renderTable('전체');
+
+                    tabs.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                        tabs.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        renderTable(btn.dataset.type);
+                        });
+                    });
+                    </script>
+                    <!-- //sample data : tab/table -->
+
                     </div>
                 </div>
                 <div class="type_list right">

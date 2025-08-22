@@ -32,8 +32,99 @@
                         <p class="tit">서울시 아파트 일간 매매현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area">
-                        table
+                    <div class="data_area scroll">
+                    <!-- sample data : tab/table -->
+                    <div class="db-table">
+                        <div class="table-wrap">
+                            <div class="table-header">
+                            <div class="tabs">
+                                <button class="active" data-type="전체">전체</button>
+                                <button data-type="노원구">노원구</button>
+                                <button data-type="강남구">강남구</button>
+                                <button data-type="서대문구">서대문구</button>
+                                <button data-type="구로구">구로구</button>
+                            </div>
+                            </div>
+
+                            <table>
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>거래일</th>
+                                <th>주소</th>
+                                <th>아파트명</th>
+                                <th>층</th>
+                                <th>평</th>
+                                <th>㎡</th>
+                                <th>금액(만원)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                        <script>
+                        const tableData = {
+                            전체: [
+                            {no:1, date:'2025.02.13(목)', addr:'노원구 중계동 359-4', apt:'주공5', floor:13, py:11.7, m2:38.64, price:37500},
+                            {no:2, date:'2025.02.13(목)', addr:'강북구 미아동 1353', apt:'에스케이북한산시티', floor:19, py:25.7, m2:84.74, price:72500},
+                            {no:3, date:'2025.02.13(목)', addr:'마포구 도화동 550', apt:'삼성', floor:7, py:21.9, m2:72.19, price:120000},
+                            {no:4, date:'2025.02.13(목)', addr:'서초구 서초동 1641-1', apt:'서초삼성래미안', floor:25, py:27.4, m2:84.97, price:187000},
+                            {no:5, date:'2025.02.13(목)', addr:'광진구 자양동 724', apt:'보라매아이어포레', floor:31, py:18.2, m2:59.94, price:118500},
+                            {no:6, date:'2025.02.13(목)', addr:'관악구 봉천동 1712', apt:'관악드림(삼성)', floor:16, py:25.7, m2:84.74, price:94000},
+                            {no:7, date:'2025.02.13(목)', addr:'대덕구 광암동 354-2', apt:'래미안광암', floor:35, py:35.1, m2:115.68, price:109500},
+                            {no:8, date:'2025.02.12(수)', addr:'서대문구 충희동 82', apt:'충희한양', floor:3, py:36.4, m2:120.14, price:80000},
+                            {no:9, date:'2025.02.12(수)', addr:'성북구 석관동 408', apt:'신동아아파트미에', floor:14, py:25.7, m2:84.92, price:97500},
+                            {no:10, date:'2025.02.12(수)', addr:'양천구 신월동 350-2', apt:'신일고', floor:2, py:14.1, m2:46.70, price:28300}
+                            ],
+                            노원구: [
+                            {no:1, date:'2025.02.13(목)', addr:'노원구 중계동 359-4', apt:'주공5', floor:13, py:11.7, m2:38.64, price:37500}
+                            ],
+                            강남구: [
+                            {no:1, date:'2025.02.12(수)', addr:'강남구 자곡동 686', apt:'강남힐스자이(4)', floor:2, py:34.7, m2:114.46, price:190000}
+                            ],
+                            서대문구: [
+                            {no:1, date:'2025.02.12(수)', addr:'서대문구 충희동 82', apt:'충희한양', floor:3, py:36.4, m2:120.14, price:80000}
+                            ],
+                            구로구: [
+                            {no:1, date:'2025.02.10(월)', addr:'구로구 고척동 320', apt:'센트럴', floor:8, py:25.6, m2:84.57, price:63000}
+                            ]
+                        };
+
+                        const tbody = document.getElementById('tableBody');
+                        const tabs = document.querySelectorAll('.tabs button');
+
+                        function renderTable(type) {
+                            tbody.innerHTML = '';
+                            const data = tableData[type] || [];
+                            data.forEach(row => {
+                            tbody.innerHTML += `
+                                <tr>
+                                <td>${row.no}</td>
+                                <td>${row.date}</td>
+                                <td>${row.addr}</td>
+                                <td>${row.apt}</td>
+                                <td>${row.floor}</td>
+                                <td>${row.py}</td>
+                                <td>${row.m2}</td>
+                                <td>${row.price.toLocaleString()}</td>
+                                </tr>
+                            `;
+                            });
+                        }
+
+                        renderTable('전체');
+
+                        tabs.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                            tabs.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            renderTable(btn.dataset.type);
+                            });
+                        });
+                        </script>
+                    <!-- //sample data : tab/table -->
                     </div>
                 </div>
                 <div class="type_list list_keyword">
@@ -115,7 +206,7 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area">
-                        캡쳐화면 대체예정
+                       <img src='../src/assets/images/sample/sample_05_img03.png' style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -134,8 +225,89 @@
                         <p class="tit">서울시 지역별 매매 현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="box_cont">
-                        table
+                    <div class="box_cont scroll">
+                        <!-- sample data : table -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>자치구</th>
+                                            <th>매매대금</th>
+                                            <th>매매건수</th>
+                                            <th>1평당<br>평균가격</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>종로구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>중구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>용산구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>성동구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>광진구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>동대문구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>중랑구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>성북구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>강북구</td>
+                                            <td>53,463</td>
+                                            <td>8,263</td>
+                                            <td>3.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
                 <div class="type_list right">
@@ -147,19 +319,19 @@
                         <!-- sample data : highcharts.js -->
                          <div class="data_inner_tw">
                             <!-- 좌측: 텍스트 영역 -->
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:16px; line-height:1.8;">
+                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
+                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
                                     <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>
                                     <li><span style="color:#99ff99;">50대</span> : 48,346건 (18.6%)</li>
                                     <li><span style="color:#cc99ff;">60대</span> : 21,524건 (8.8%)</li>
                                 </ul>
-                                <div style="margin-top:10px; font-weight:bold; font-size:18px;">
+                                <!-- <div style="margin-top:10px; font-weight:bold; font-size:18px;">
                                 전체 합계: 3,656건
-                                </div>
+                                </div> -->
                             </div>
-                            <div id="donut-container" style="width: 45%; height: 200px;"></div>
+                            <div id="donut-container" style="width: 45%; height: 180px;"></div>
                         </div>
                         <script>
                         // 왼쪽: 연령대별 거래 현황
