@@ -56,6 +56,29 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
     align-items: flex-end;
     gap: 4px;
 }
+.crowd_box{
+    position: relative;
+}
+.crowd_box .bb_tit{
+    position: initial;
+    align-items: center;
+}
+.crowd_box .bb_tit .data_pop{
+    position: absolute;
+    
+    bottom: inherit;
+    top: 12px;
+    right: 12px;
+}
+.crowd_box .bb_tit .value{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.crowd_box .bb_tit .value .place{
+    color: var(--ft-cl-gray);
+}
 .bb_tit .value {
     flex: 1;
 }
@@ -112,13 +135,13 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
     font-size: 25px;
     font-weight: 700;
 }
-.bb_tit.only_txt .level.nor{
+.level.nor{
     color: var(--ft-color-normal);
 }
-.bb_tit.only_txt .level.lit{
+.level.lit{
     color: var(--pt-cl-05);
 }
-.bb_tit.only_txt .level.mor{
+.level.mor{
     color: var(--pt-cl-03);
 }
 .bb_tit.only_txt .value .number{
@@ -227,6 +250,12 @@ html[data-theme="dark"] .bb_tit .data_pop:hover{
     gap: 2px;
     align-items: flex-end;
     /* justify-content: flex-end; */
+}
+.crowd_box .bb_bot .right{
+    width: 100%;
+}
+.crowd_box .bb_bot .right .graph_area{
+    justify-content: center;
 }
 .bb_bot .right .graph_area span{
     opacity: 0.5;
@@ -356,6 +385,9 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
     display: none;
 }
 
+.crowd_box{
+
+}
 
 /*/////////////////////////////////*/
 /*/////////// 반응형 쿼리 ///////////*/

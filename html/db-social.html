@@ -280,10 +280,66 @@
                 </div>
                 <div class="type_list list_keyword">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
-                    <div class="data_area"></div>
+                    <div class="data_area">
+                        <div class="info-bar">
+                            <span>평균 급여: <strong>62.4</strong>만 원</span>
+                        </div>
+                        <div class="info-bar">
+                            <span>평균 의료비 지원: <strong>18.9</strong>만 원</span>
+                        </div>
+                        <!-- sample data : highcharts.js -->
+                         <div id="highcharts-container" style="height: 200px;"></div>
+
+                        <script>
+                        Highcharts.chart('highcharts-container', {
+                        chart: {
+                            type: 'column',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 15,
+                            beta: 15,
+                            depth: 50,
+                            viewDistance: 25
+                            }
+                        },
+                        // title: { text: '서울시 아파트 거래 현황' },
+                        title: null,
+                        xAxis: {
+                            categories: [
+                            '2021년', '2022년', '2023년', '2024년', '2025년'
+                            ],
+                            crosshair: true
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '금액/거래건수' }
+                        },
+                        tooltip: {
+                            shared: true,
+                            valueSuffix: ' 억원'
+                        },
+                        plotOptions: {
+                            column: {
+                            depth: 25,
+                            grouping: true
+                            }
+                        },
+                        series: [{
+                            name: '매매대금(억원)',
+                            data: [51706, 93263, 107933, 671363, 469540]
+                        }, {
+                            name: '아파트 매매건수',
+                            data: [35086, 305103, 38036, 34980, 32624]
+                        }]
+                        });
+                        </script>
+
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
             </div>
             <div class="a_colum a_center ac2">
@@ -303,11 +359,52 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">은평구 기초수급자수 변동 현황</p>
+                        <p class="tit">은평구(2025년 06월 기준)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area">
+                        <div class="info-bar">
+                            <span>총 건강보험 가입자 <strong>471,500</strong>명 (전월 대비 -0.05%)</span>
+                        </div>
+                        <div class="info-bar">
+                            <span>총 기초생활 수급자 <strong>29,470</strong>명 (전월 대비 +0.2%)</span>
+                        </div>
+                        <div class="info-bar">
+                            <span>인구 대비 수급자 비율 <strong>6.25</strong>% (전월 대비 +0.03%)</span>
+                        </div>
+                        <!-- sample data : highcharts.js -->
+                        <div id="container-bar" style=" height:200px; margin-top: 15px;"></div>
 
+                        <script>
+                            Highcharts.chart('container-bar', {
+                            chart: {
+                                type: 'column',   // 막대 그래프 (bar)
+                                backgroundColor: 'transparent'
+                            },
+                            title: {
+                                text: '은평구 기초수급자수 변동 현황',
+                                style: { color: '#555' }
+                            },
+                            // title: null,
+                            xAxis: {
+                                categories: ['A', 'B', 'C', 'D', 'E', 'F'],
+                                labels: { style: { color: '#555' } }
+                            },
+                            yAxis: {
+                                title: { text: '값', style: { color: '#555' } },
+                                labels: { style: { color: '#555' } }
+                            },
+                            tooltip: {
+                                valueSuffix: ' 개'
+                            },
+                            series: [{
+                                name: '데이터',
+                                data: [12, 23, 18, 34, 45, 20],
+                                color: '#66ccff'
+                            }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -400,9 +497,9 @@
                                 <tbody id="tableBody"></tbody>
                                 </table>
                             </div>
-                            </div>
+                        </div>
 
-                            <script>
+                        <script>
                             const tableData = [
                             {name:'녹번동', insured:15132, beneficiary:1229, rate:8.19},
                             {name:'불광제1동', insured:24658, beneficiary:1966, rate:8.19},
@@ -445,8 +542,8 @@
                                 </tr>
                             `;
                             });
-                            </script>
-                            <!-- //sample data : table -->
+                        </script>
+                        <!-- //sample data : table -->
                     </div>
                 </div>
             </div>

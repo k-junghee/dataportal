@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script> <!-- sample data -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -27,17 +32,192 @@
             <div class="a_colum a_left ac3">
                 <div class="type_list list_keyword">
                     <div class="title sb">
-                        <p class="tit">서울특별시 응급의료기관 및 응급의료시설 65개소</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <div class="info-bar">
+                            <span>서울특별시 응급의료기관 및 응급의료시설 <strong>65개소</strong></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">실시간slide</p>
+                        <p class="tit">3d영역 슬라이더로 대체예정</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- <div class="item_3d no-bg">
+                            <div class="item_slider">
+                                <div class="is_top">
+                                    <div class="sel_toggle">
+                                        <div class="st"><button type="button">단위</button></div>
+                                        <div class="st"><button type="button">비율</button></div>
+                                    </div>
+                                    <div class="date_info">
+                                        2025년 5월 기준
+                                    </div>
+                                </div>
+                                <div class="is_con">
+                                    <div class="swiper-data">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move active">
+                                                        <div class="tit">총 세대수</div>
+                                                        <div class="cont">
+                                                            <div class="percent nor">0%</div>
+                                                            <div class="value">
+                                                                <span class="num">4,498,871</span>
+                                                                <span class="unit">세대</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">세대당 인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent nor">0%</div>
+                                                            <div class="value">
+                                                                <span class="num">2.1</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">출생</div>
+                                                        <div class="cont">
+                                                            <div class="percent down">5.75%</div>
+                                                            <div class="value">
+                                                                <span class="num">3,709</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">사망</div>
+                                                        <div class="cont">
+                                                            <div class="percent down">4.24%</div>
+                                                            <div class="value">
+                                                                <span class="num">4,224</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">전입인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent up">0.17%</div>
+                                                            <div class="value">
+                                                                <span class="num">6,432</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">전출인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent up">0.17%</div>
+                                                            <div class="value">
+                                                                <span class="num">5,770</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">총 세대수</div>
+                                                        <div class="cont">
+                                                            <div class="percent nor">0%</div>
+                                                            <div class="value">
+                                                                <span class="num">5,498,871</span>
+                                                                <span class="unit">세대</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">세대당 인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent down">5.75%</div>
+                                                            <div class="value">
+                                                                <span class="num">2.1</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">출생</div>
+                                                        <div class="cont">
+                                                            <div class="percent nor">0%</div>
+                                                            <div class="value">
+                                                                <span class="num">2,709</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">사망</div>
+                                                        <div class="cont">
+                                                            <div class="percent down">4.24%</div>
+                                                            <div class="value">
+                                                                <span class="num">1,224</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">전입인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent up">0.17%</div>
+                                                            <div class="value">
+                                                                <span class="num">1,432</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="data_box">
+                                                    <a href="javascript:;" class="move">
+                                                        <div class="tit">전출인구</div>
+                                                        <div class="cont">
+                                                            <div class="percent down">0.17%</div>
+                                                            <div class="value">
+                                                                <span class="num">6,770</span>
+                                                                <span class="unit">명</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <img src="../src/assets/images/sample/sample_17_img02.png" style="width:300px"/>
                     </div>
                 </div>
                 <div class="type_list list_board">
@@ -46,6 +226,30 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area">
+                        <!-- sample data : highcharts.js -->
+                        <div id="container03"></div>
+                        <script>
+                        Highcharts.chart('container03', {
+                        chart: { type: 'bar',
+                            backgroundColor: 'transparent',
+                            height: 200
+                         },
+                        // title: { text: '학생수 변동 현황' },
+                        title: null,
+                        xAxis: {
+                            categories: ['고등학교', '중학교', '초등학교', '유치원']
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: { text: '학생수 (명)' }
+                        },
+                        series: [{
+                            name: '2024년',
+                            data: [205784, 195738, 363157, 61128]
+                        }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -71,7 +275,30 @@
                         <p class="tit">서울특별시 의료기관 진료과목 현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp04">더보기</a>
                     </div>
-                    <div class="data_area video_data">
+                    <div class="data_area">
+                        <!-- sample data : echarts.js -->
+                        <div id="3dBar" style="width:600px;height:330px;"></div>
+                        <script>
+                        var chart = echarts.init(document.getElementById('3dBar'));
+                        chart.setOption({
+                            tooltip: {},
+                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
+                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
+                            zAxis3D: { type: 'value' },
+                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
+                            series: [{
+                                type: 'bar3D',
+                                data: [
+                                    [0,0,12], [0,1,18], [0,2,15],
+                                    [1,0,9],  [1,1,14], [1,2,20],
+                                    [2,0,8],  [2,1,16], [2,2,10]
+                                ],
+                                shading: 'lambert'
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
                     </div>
                 </div>
                 <div class="type_list left">
@@ -79,7 +306,31 @@
                         <p class="tit">서울특별시 실시간 응급실 현황</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp05">더보기</a>
                     </div>
-                    <div class="box_cont"></div>
+                    <div class="box_cont">
+                        <!-- sample data : echarts.js -->
+                        <div id="3dLine" style="width:600px;height:330px;"></div>
+                        <script>
+                        var chart = echarts.init(document.getElementById('3dLine'));
+                        chart.setOption({
+                            tooltip: {},
+                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
+                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
+                            zAxis3D: { type: 'value' },
+                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
+                            series: [{
+                                type: 'Line3D',
+                                data: [
+                                    [0,0,12], [0,1,18], [0,2,15],
+                                    [1,0,9],  [1,1,14], [1,2,20],
+                                    [2,0,8],  [2,1,16], [2,2,10]
+                                ],
+                                shading: 'lambert'
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : echarts.js -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,5 +370,18 @@
     function closePopup() {
         document.getElementById('layerPopup').style.display = 'none';
     }
+
+    /*** Swiper ***/
+    new Swiper('.swiper-data', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
+    });
 </script>
 </html>

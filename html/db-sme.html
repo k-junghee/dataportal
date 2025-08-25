@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
 </head>
 <body>
 <!-- header -->
@@ -48,7 +50,7 @@
                                     alpha: 45,
                                     beta: 0
                                 },
-                                height: 200
+                                height: 350
                             },
                             title: null,
                             subtitle: null,
@@ -63,12 +65,12 @@
                             },
                             series: [{
                                 data: [
-                                    ['10대', 12],
-                                    ['20대', 19],
-                                    ['30대', 14],
-                                    ['40대', 18],
-                                    ['50대', 22],
-                                    ['60대', 15]
+                                    ['기타', 12],
+                                    ['소매', 19],
+                                    ['음식', 14],
+                                    ['생활서비스', 18],
+                                    ['숙박업', 22],
+                                    ['부동산', 15]
                                 ]
                             }]
                         });
@@ -78,15 +80,15 @@
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit">가로 2배 wide (추후 수정)</p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
-                        가로 2배 wide (추후 수정)
+                        <img src='../src/assets/images/sample/sample_16_img02.png' style="width: 100%">
                     </div>
                 </div>
             </div>
-            <div class="a_colum a_center ac2">
+            <div class="a_colum a_center ac1">
                 <div class="type_list list_map">
                     <div class="title">
                         <p class="tit">종합 map</p>
@@ -101,15 +103,15 @@
                         <!-- //smaple data : img -->
                     </div>
                 </div>
-                <div class="type_list list_stats">
+                <!-- <div class="type_list list_stats">
                     <div class="title sb">
                         <p class="tit"></p>
-                        <!-- <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a> -->
+                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
                     <div class="data_area">
 
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="a_colum a_right ac2">
                 <div class="type_list news ac_2h">

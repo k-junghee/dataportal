@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../src/css/typeA.css">
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/typeA.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> <!-- sample data -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script> <!-- sample data -->
 <body>
 <!-- header -->
 <div id="header"></div>
@@ -26,18 +28,84 @@
             <div class="a_colum a_left ac2">
                 <div class="type_list list_keyword ac_2h">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
-                    <div class="data_area keyword_data"></div>
+                    <div class="data_area">
+                        <div class="info-bar">
+                            <span>총 보조금 예산액 <strong>53조 1,609억원</strong></span>
+                        </div>
+                        <div class="info-bar">
+                            <span>현 집행 예산액 <strong>18조 3,512억원</strong></span>
+                        </div>
+                        <div class="info-bar">
+                            <span>미 집행 예산액 <strong>34조 8,097억원</strong></span>
+                        </div>
+                        <!-- sample data : highcharts.js -->
+                        <div id="container01"></div>
+                        <script>
+                        Highcharts.chart('container01', {
+                            chart: {
+                                type: 'pie',
+                                backgroundColor: 'transparent',
+                                options3d: {
+                                    enabled: true,
+                                    alpha: 45,
+                                    beta: 0
+                                },
+                                height: 350
+                            },
+                            title: null,
+                            subtitle: null,
+                            plotOptions: {
+                                pie: {
+                                    innerSize: 100,   // 도넛 두께
+                                    depth: 45,        // 원통 높이
+                                    //startAngle: -90,  // 시작 각도 (위쪽 반 잘라냄)
+                                    //endAngle: 90,     // 끝 각도
+                                    //center: ['50%', '75%'] // 아래쪽으로 내림
+                                }
+                            },
+                            series: [{
+                                data: [
+                                    ['집행 예산액', 34.5],
+                                    ['미 집행 예산액', 65.5],
+                                ]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
+                    </div>
                 </div>
                 <div class="type_list list_board">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
                     </div>
                     <div class="data_area">
-
+                        <!-- sample data : highcharts.js -->
+                        <div id="container02"></div>
+                        <script>
+                        Highcharts.chart('container02', {
+                        chart: { 
+                            type: 'line',
+                            backgroundColor: 'transparent',
+                            height: 200,
+                        },
+                        // title: { text: '학급당 학생수 추이' },
+                        title: null,
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
+                        yAxis: { title: { text: '학생수' } },
+                        series: [{
+                                name: '초등학교',
+                                data: [26.8, 25.7, 23.8, 23.0, 22.8]
+                            }, {
+                                name: '중학교',
+                                data: [22.9, 21.7, 21.0, 20.5, 20.0]
+                            }]
+                        });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
@@ -58,11 +126,95 @@
                 </div>
                 <div class="type_list list_stats">
                     <div class="title sb">
-                        <p class="tit">graph</p>
+                        <p class="tit"></p>
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
                     </div>
-                    <div class="data_area">
+                    <div class="data_area scroll">
+                        <!-- sample data : highcharts.js -->
+                        <!-- 박스 1 -->
+                        <div class="chart-box">
+                            <div class="chart-info">
+                            <div class="chart-title">주거취약층 냉방비</div>
+                            <div class="highlight">강서구 106.23%</div>
+                            </div>
+                            <div class="chart-area">
+                            <div id="chart1"></div>
+                            </div>
+                        </div>
 
+                        <!-- 박스 2 -->
+                        <div class="chart-box">
+                            <div class="chart-info">
+                            <div class="chart-title">청년복지 바우처</div>
+                            <div class="highlight">종로구 106.00%</div>
+                            </div>
+                            <div class="chart-area">
+                            <div id="chart2"></div>
+                            </div>
+                        </div>
+
+                        <!-- 박스 3 -->
+                        <div class="chart-box">
+                            <div class="chart-info">
+                            <div class="chart-title">어르신 돌봄 예산</div>
+                            <div class="highlight">송파구 98.76%</div>
+                            </div>
+                            <div class="chart-area">
+                            <div id="chart3"></div>
+                            </div>
+                        </div>
+
+                        <!-- 박스 4 -->
+                        <div class="chart-box">
+                            <div class="chart-info">
+                            <div class="chart-title">청소년 장학금</div>
+                            <div class="highlight">마포구 112.45%</div>
+                            </div>
+                            <div class="chart-area">
+                            <div id="chart4"></div>
+                            </div>
+                        </div>
+                                                <script>
+                            // 샘플 데이터 공통
+                            const categories = ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+
+                            Highcharts.chart('chart1', {
+                            chart: { type: 'column', backgroundColor: 'transparent' },
+                            title: { text: '' },
+                            xAxis: { categories, labels: { style: { color: '#fff' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            legend: { enabled: false },
+                            series: [{ name: '냉방비', data: [50, 120, 150, 180, 130, 100, 90, 110, 140, 200], color: '#4fd1c5' }]
+                            });
+
+                            Highcharts.chart('chart2', {
+                            chart: { type: 'column', backgroundColor: 'transparent' },
+                            title: { text: '' },
+                            xAxis: { categories, labels: { style: { color: '#fff' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            legend: { enabled: false },
+                            series: [{ name: '바우처', data: [100, 200, 180, 150, 130, 90, 60, 80, 120, 250], color: '#f6e05e' }]
+                            });
+
+                            Highcharts.chart('chart3', {
+                            chart: { type: 'column', backgroundColor: 'transparent' },
+                            title: { text: '' },
+                            xAxis: { categories, labels: { style: { color: '#fff' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            legend: { enabled: false },
+                            series: [{ name: '돌봄 예산', data: [80, 90, 100, 110, 105, 95, 115, 120, 125, 130], color: '#63b3ed' }]
+                            });
+
+                            Highcharts.chart('chart4', {
+                            chart: { type: 'column', backgroundColor: 'transparent' },
+                            title: { text: '' },
+                            xAxis: { categories, labels: { style: { color: '#fff' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            legend: { enabled: false },
+                            series: [{ name: '장학금', data: [70, 75, 90, 95, 100, 110, 120, 130, 140, 160], color: '#fc8181' }]
+                            });
+                        </script>
+                        <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
             </div>
