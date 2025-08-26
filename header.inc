@@ -123,6 +123,7 @@
                                 <li><a href="./main.html">종합</a></li>
                                 <li><a href="./db-emergency.html">실시간 응급 의료 현황판</a></li>
                                 <li><a href="./db-crowd.html">실시간 인구 혼잡도 현황판</a></li>
+                                <li><a href="./db-farm.html">실시간 농산물 도매시장</a></li>
                             </ul>
                         </div>
                     </li>

@@ -45,50 +45,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // test graph : data 넣기
     const allGraphData = [
-        // 01
-        [5350000, 2250000, 3200000, 4150000, 1386705,
-        5350000, 3310000, 4280000, 2250000, 3200000,
-        4150000, 1386705, 5350000, 2250000, 3200000,
-        4150000, 8100000],
-
+        //01
+        [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+        2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
         // 02
-        [9476, 10500, 9200, 8900, 9500, 10200, 9800, 10000,
-        9700, 9600, 9900, 10100, 9400, 9700, 9800, 9600, 10200],
-
+        [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+        22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
         // 03
-        [5350000, 2250000, 3200000, 4150000, 1386705,
-        5350000, 3310000, 4280000, 2250000, 3200000,
-        4150000, 1386705, 5350000, 2250000, 3200000,
-        4150000, 8100000],
-
-        // 필요하면 카드 30개까지 추가
+        [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+        22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+        //04
+        [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+        2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
+        // 05
+        [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+        22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+        // 06
+        [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+        22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
     ];
 
-    // tooltip
     const tooltip = document.getElementById('tooltip');
     const allGraphAreas = document.querySelectorAll('.graph_area');
+
     allGraphAreas.forEach((graphArea, graphIndex) => {
         const bars = graphArea.querySelectorAll('span');
-        const data = allGraphData[graphIndex]; 
-        const maxValue = Math.max(...data); 
+        const data = allGraphData[graphIndex];
+        const maxAbs = Math.max(...data.map(v => Math.abs(v))); 
+        const totalHeight = 60; // graph_area 높이
+        const zeroLine = totalHeight / 2; 
 
-        bars.forEach((bar, index) => {
-            const value = data[index] || 0;
-            bar.style.height = `${(value / maxValue) * 100}%`;
-            bar.dataset.value = value;
-            bar.addEventListener('mouseenter', () => {
-                tooltip.style.display = 'block';
-                tooltip.textContent = `${value.toLocaleString()}명`;
-            });
+        bars.forEach((bar, i) => {
+            const value = data[i] || 0;
+            const height = (Math.abs(value) / maxAbs) * (totalHeight / 2);
 
-            bar.addEventListener('mousemove', (e) => {
-                tooltip.style.left = `${e.clientX + 10}px`;
-                tooltip.style.top = `${e.clientY + 10}px`;
-            });
-
-            bar.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
-            });
+            bar.style.height = `${height}px`;
+            if(value >= 0){
+                bar.style.bottom = `${zeroLine}px`; 
+            } else {
+                bar.style.bottom = `${zeroLine - height}px`; 
+            }
         });
     });
 
