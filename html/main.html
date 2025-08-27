@@ -13,7 +13,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-    //main grid height
+    // main grid height
     const windowHeight = window.innerHeight;
     const remainingHeight = windowHeight - 168;
     const contentHeight = remainingHeight / 6;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         content.style.minHeight = contentHeight + 'px';
     });
 
-    //test data map
+    // test data map
     const radios = document.querySelectorAll('input.mgl_bubble[type="radio"]');
     const imageEl = document.querySelector('.map_data img');
 
@@ -43,52 +43,55 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.map_data img').src = '../src/assets/images/' + randomImg;
     }
 
-    // test graph : data 넣기
-    const allGraphData = [
-        //01
-        [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
-        2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
-        // 02
-        [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
-        22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
-        // 03
-        [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
-        22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
-        //04
-        [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
-        2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
-        // 05
-        [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
-        22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
-        // 06
-        [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
-        22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
-    ];
+    // ✅ main_grid_list.total 이 있는 경우만 실행
+    const totalGrid = document.querySelector('.main_grid_list.total');
+    if (totalGrid) {
 
-    const tooltip = document.getElementById('tooltip');
-    const allGraphAreas = document.querySelectorAll('.graph_area');
+        const allGraphData = [
+            [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+            2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
 
-    allGraphAreas.forEach((graphArea, graphIndex) => {
-        const bars = graphArea.querySelectorAll('span');
-        const data = allGraphData[graphIndex];
-        const maxAbs = Math.max(...data.map(v => Math.abs(v))); 
-        const totalHeight = 60; // graph_area 높이
-        const zeroLine = totalHeight / 2; 
+            [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+            22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
 
-        bars.forEach((bar, i) => {
-            const value = data[i] || 0;
-            const height = (Math.abs(value) / maxAbs) * (totalHeight / 2);
+            [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+            22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
 
-            bar.style.height = `${height}px`;
-            if(value >= 0){
-                bar.style.bottom = `${zeroLine}px`; 
-            } else {
-                bar.style.bottom = `${zeroLine - height}px`; 
-            }
+            [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+            2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
+
+            [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+            22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+
+            [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+            22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+        ];
+
+        // total 안에 있는 그래프 영역만 처리
+        const allGraphAreas = totalGrid.querySelectorAll('.graph_area');
+
+        allGraphAreas.forEach((graphArea, graphIndex) => {
+            const bars = graphArea.querySelectorAll('span');
+            const data = allGraphData[graphIndex];
+            const maxAbs = Math.max(...data.map(v => Math.abs(v))); 
+            const totalHeight = 60; // graph_area 높이
+            const zeroLine = totalHeight / 2; 
+
+            bars.forEach((bar, i) => {
+                const value = data[i] || 0;
+                const height = (Math.abs(value) / maxAbs) * (totalHeight / 2);
+
+                bar.style.height = `${height}px`;
+                if(value >= 0){
+                    bar.style.bottom = `${zeroLine}px`; 
+                } else {
+                    bar.style.bottom = `${zeroLine - height}px`; 
+                }
+            });
         });
-    });
-
+    }
 });
+
 </script>
 <body>
 <!-- header -->
@@ -104,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h1 class="blind">현황판</h1>
     <!-- main grid -->
     <div class="main_grid_wrap layout">
-        <div class="main_grid_list">
+        <div class="main_grid_list total">
             <!--1-->
             <div class="mgl">
                 <input class="mgl_bubble" type="radio" id="bb_box01" name="status" checked>

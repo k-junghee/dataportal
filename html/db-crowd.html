@@ -11,6 +11,7 @@
     <script src="../src/js/common.js" defer></script>
     <script src="../src/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -54,52 +55,83 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.map_data img').src = '../src/assets/images/' + randomImg;
     }
 
-    // test graph : data 넣기
-    const allGraphData = [
-        // 01
-        [5350000, 2250000, 3200000, 4150000, 1386705,
-        5350000, 3310000, 4280000, 2250000, 3200000,
-        4150000, 1386705, 5350000, 2250000, 3200000,
-        4150000, 8100000],
-
-        // 02
-        [9476, 10500, 9200, 8900, 9500, 10200, 9800, 10000,
-        9700, 9600, 9900, 10100, 9400, 9700, 9800, 9600, 10200],
-
-        // 03
-        [5350000, 2250000, 3200000, 4150000, 1386705,
-        5350000, 3310000, 4280000, 2250000, 3200000,
-        4150000, 1386705, 5350000, 2250000, 3200000,
-        4150000, 8100000],
-
-        // 필요하면 카드 30개까지 추가
+     
+    // 라인그래프 영역
+    if (!document.querySelector(".main_grid_list.line")) {
+        return; 
+    }
+    const chartConfigs = [
+        {
+        id: "crowdChart1",
+        label: "구로디지털단지역",
+        crowdData: [28000, 30000, 27000, 32000, 35000, 37000, 38000, 40000],
+        avgData:   [30000, 31000, 30500, 33000, 34000, 35000, 35500, 36000]
+        },
+        {
+        id: "crowdChart2",
+        label: "서울역",
+        crowdData: [15000, 16000, 18000, 22000, 25000, 24000, 23000, 21000],
+        avgData:   [18000, 18500, 19000, 20000, 21000, 22000, 21500, 20000]
+        },
+        {
+        id: "crowdChart3",
+        label: "선릉역",
+        crowdData: [10000, 12000, 13000, 15000, 17000, 16000, 18000, 19000],
+        avgData:   [11000, 11500, 12500, 14000, 15000, 15500, 16000, 16500]
+        }
     ];
 
-    // tooltip
-    const tooltip = document.getElementById('tooltip');
-    const allGraphAreas = document.querySelectorAll('.graph_area');
-    allGraphAreas.forEach((graphArea, graphIndex) => {
-        const bars = graphArea.querySelectorAll('span');
-        const data = allGraphData[graphIndex]; 
-        const maxValue = Math.max(...data); 
+    const labels = ["09", "10", "11", "12", "13", "14", "15", "16"];
 
-        bars.forEach((bar, index) => {
-            const value = data[index] || 0;
-            bar.style.height = `${(value / maxValue) * 100}%`;
-            bar.dataset.value = value;
-            bar.addEventListener('mouseenter', () => {
-                tooltip.style.display = 'block';
-                tooltip.textContent = `${value.toLocaleString()}명`;
-            });
+    chartConfigs.forEach(cfg => {
+        const ctx = document.getElementById(cfg.id)?.getContext("2d");
+        if (!ctx) return;
 
-            bar.addEventListener('mousemove', (e) => {
-                tooltip.style.left = `${e.clientX + 10}px`;
-                tooltip.style.top = `${e.clientY + 10}px`;
-            });
-
-            bar.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
-            });
+        new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [
+            {
+                label: "혼잡도",
+                data: cfg.crowdData,
+                borderColor: "#6100de",
+                backgroundColor: "rgba(97, 0, 222, 0.3)",
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0
+            },
+            {
+                label: "평균",
+                data: cfg.avgData,
+                borderColor: "#ff3de5",
+                borderDash: [5, 5],
+                fill: false,
+                tension: 0.4,
+                pointRadius: 0
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+            legend: { display: false }
+            },
+            scales: {
+            x: {
+                ticks: { color: "#e8e8e8" },
+                grid: { display: false }
+            },
+            y: {
+                ticks: {
+                color: "#e8e8e8",
+                callback: value => value.toLocaleString()
+                },
+                grid: { color: "rgba(255,255,255,0.1)" }
+            }
+            }
+        }
         });
     });
 
@@ -532,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="main_grid_list">
+                    <div class="main_grid_list line">
                         <!--1-->
                         <div class="mgl">
                             <input class="mgl_bubble" type="radio" id="bb_box32" name="status00" checked>
@@ -544,13 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
-                                        <div class="tooltip" id="tooltip">24년 06월 : 9,386,705명</div>
+                                        <canvas id="crowdChart1"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -572,12 +598,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart2"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -599,12 +620,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년01월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart3"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -626,12 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart4"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -653,12 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년01월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart5"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -680,12 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart6"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -707,12 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart7"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -736,12 +732,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart8"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -763,12 +754,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart9"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -805,12 +791,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년01월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart10"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -832,12 +813,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년01월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart11"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -861,12 +837,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">24년10월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart12"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -888,12 +859,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">24년10월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart13"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -915,12 +881,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">24년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart14"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -942,12 +903,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">24년02월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart15"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -971,12 +927,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart16"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -998,12 +949,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart17"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1025,12 +971,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart18"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1052,12 +993,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart19"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1081,12 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart20"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1108,12 +1039,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart21"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1135,12 +1061,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart22"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1162,12 +1083,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart23"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1191,12 +1107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart24"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1218,12 +1129,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart25"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1246,12 +1152,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart26"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1273,12 +1174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart27"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1301,12 +1197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart28"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1328,12 +1219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart29"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">
@@ -1355,12 +1241,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="date">25년03월</div>
                                     </div> -->
                                     <div class="right">
-                                        <div class="graph_area">
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span><span></span><span></span><span></span>
-                                            <span></span><span></span>
-                                        </div>
+                                        <canvas id="crowdChart30"></canvas>
                                     </div>
                                 </div>
                                 <div class="bb_tit">

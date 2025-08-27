@@ -9,6 +9,15 @@
 .mgl {
     align-self: stretch;
 }
+.main_grid_list.line .mgl .right {
+  width: 100%;
+  height: 80px;  /* 원하는 높이값 */
+  position: relative;
+}
+.main_grid_list.line .mgl .right canvas {
+  width: 100% !important;  
+  height: 100% !important; 
+}
 .mgl:nth-child(10) {
     grid-column: 3 / span 3;
     grid-row: 2 / span 4;
@@ -75,9 +84,23 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    font-size: 14px;
 }
 .crowd_box .bb_tit .value .place{
     color: var(--ft-cl-gray);
+}
+.crowd_box .bb_tit .value.farm{
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.crowd_box .bb_tit .value.farm .level{
+    font-size: 23px;
+    font-weight: 700;
+}
+.crowd_box .bb_tit .value.farm .level .unit{
+    font-size: 12px;
+    color: var(--bg-gray-04);
+    font-weight: 500;
 }
 .bb_tit .value {
     flex: 1;
@@ -398,11 +421,30 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
 .swiper.main_slider .swiper-button-next:after{
     display: none;
 }
-
-.crowd_box{
-
+.map_select{
+    position: absolute;
+    top: 0;  
+    left: 0;
+    width: 100%;
 }
-
+.map_select .d-select{
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.map_select .d-select .align{
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+}
+.map_select .d-select .align  .form-group{
+    flex: 1;
+    
+}
+.map_select .d-select .align  .form-group select{
+   min-width: 100px;
+}
 /*/////////////////////////////////*/
 /*/////////// 반응형 쿼리 ///////////*/
 /*/////////////////////////////////*/
@@ -427,6 +469,10 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
     }
     .bb_bot .right{
         max-width: 50%;
+    }
+    .main_grid_list.line .bb_bot .right,
+    .main_grid_list.bar .bb_bot .right{
+        max-width: 100%;
     }
 }
 @media (max-width: 1660px) {
@@ -498,6 +544,10 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
     .bb_bot .right{
         max-width: 50%;
     }
+    .main_grid_list.line .bb_bot .right,
+    .main_grid_list.bar .bb_bot .right{
+        max-width: 100%;
+    }
 }
 @media (max-width: 767px) {
     /* main grid*/
@@ -546,12 +596,25 @@ input.mgl_bubble[type="radio"]:checked + label.mgl_bb .graph_area span{
     .bb_bot .right{
         max-width: 50%;
     }
+    .main_grid_list.line .bb_bot .right,
+    .main_grid_list.bar .bb_bot .right{
+        max-width: 100%;
+    }
     .map_area .title{
         margin-top: 0;
     }
     .swiper.main_slider .swiper-button-prev,
     .swiper.main_slider .swiper-button-next{
         display: none;
+    }
+    .map_select .d-select{
+        align-items: flex-start;
+    }
+    .map_select .d-select .align{
+        display: block;
+    }
+    .map_select .d-select .align .form-group + .form-group{
+        margin-top: 10px;
     }
 
 }

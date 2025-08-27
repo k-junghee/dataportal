@@ -31,87 +31,90 @@
     <!-- type A -->
     <div class="type_a_wrap layout">
         <div class="type_a_gird">
-            <div class="a_colum a_left ac2">
-                <div class="type_list list_keyword">
-                    <div class="title sb">
-                        <p class="tit">소상공인 업종별 현황</p>
-                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
-                    </div>
-                    <div class="data_area keyword_data">
-                        <!-- sample data : highcharts.js -->
-                        <div id="container"></div>
-                        <script>
-                        Highcharts.chart('container', {
-                            chart: {
-                                type: 'pie',
-                                backgroundColor: 'transparent',
-                                options3d: {
-                                    enabled: true,
-                                    alpha: 45,
-                                    beta: 0
+            <div class="a_colum a_left w2">
+                <div class="a_colum wc_2">
+                    <div class="type_list list_keyword">
+                        <div class="title sb">
+                            <p class="tit">소상공인 업종별 현황</p>
+                            <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
+                        </div>
+                        <div class="data_area keyword_data">
+                            <!-- sample data : highcharts.js -->
+                            <div id="container"></div>
+                            <script>
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'pie',
+                                    backgroundColor: 'transparent',
+                                    options3d: {
+                                        enabled: true,
+                                        alpha: 45,
+                                        beta: 0
+                                    },
+                                    height: 350
                                 },
-                                height: 350
-                            },
-                            title: null,
-                            subtitle: null,
-                            plotOptions: {
-                                pie: {
-                                    innerSize: 100,   // 도넛 두께
-                                    depth: 45,        // 원통 높이
-                                    //startAngle: -90,  // 시작 각도 (위쪽 반 잘라냄)
-                                    //endAngle: 90,     // 끝 각도
-                                    //center: ['50%', '75%'] // 아래쪽으로 내림
-                                }
-                            },
-                            series: [{
-                                data: [
-                                    ['기타', 12],
-                                    ['소매', 19],
-                                    ['음식', 14],
-                                    ['생활서비스', 18],
-                                    ['숙박업', 22],
-                                    ['부동산', 15]
-                                ]
-                            }]
-                        });
-                        </script>
-                        <!-- //sample data : highcharts.js -->
-                    </div>
-                </div>
-                <div class="type_list list_board">
-                    <div class="title sb">
-                        <p class="tit">가로 2배 wide (추후 수정)</p>
-                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
-                    </div>
-                    <div class="data_area">
-                        <img src='../src/assets/images/sample/sample_16_img02.png' style="width: 100%">
-                    </div>
-                </div>
-            </div>
-            <div class="a_colum a_center ac1">
-                <div class="type_list list_map">
-                    <div class="title">
-                        <p class="tit">종합 map</p>
-                        <div class="info_box">
-                            <span class="info_icon"></span>
-                            <p class="info_tag">각 지역을 클릭하시면, 해당 지역의 데이터를 확인하실 수 있습니다.</p>
+                                title: null,
+                                subtitle: null,
+                                plotOptions: {
+                                    pie: {
+                                        innerSize: 100,   // 도넛 두께
+                                        depth: 45,        // 원통 높이
+                                        //startAngle: -90,  // 시작 각도 (위쪽 반 잘라냄)
+                                        //endAngle: 90,     // 끝 각도
+                                        //center: ['50%', '75%'] // 아래쪽으로 내림
+                                    }
+                                },
+                                series: [{
+                                    data: [
+                                        ['기타', 12],
+                                        ['소매', 19],
+                                        ['음식', 14],
+                                        ['생활서비스', 18],
+                                        ['숙박업', 22],
+                                        ['부동산', 15]
+                                    ]
+                                }]
+                            });
+                            </script>
+                            <!-- //sample data : highcharts.js -->
                         </div>
                     </div>
-                    <div class="data_area map_data">
-                        <!-- smaple data : img -->
-                        <img src="../src/assets/images/map01.png" alt="map" style="display: block;width: 100%; height: 100%;"/>
-                        <!-- //smaple data : img -->
+                    <div class="type_list list_map">
+                        <div class="title">
+                            <p class="tit">종합 map</p>
+                            <div class="info_box">
+                                <span class="info_icon"></span>
+                                <p class="info_tag">각 지역을 클릭하시면, 해당 지역의 데이터를 확인하실 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="data_area map_data">
+                            <!-- smaple data : img -->
+                            <img src="../src/assets/images/map01.png" alt="map" style="display: block;width: 100%; height: 100%;"/>
+                            <!-- //smaple data : img -->
+                        </div>
                     </div>
+                    
                 </div>
-                <!-- <div class="type_list list_stats">
-                    <div class="title sb">
-                        <p class="tit"></p>
-                        <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
+                <div class="a_colum wc_1">
+                    <div class="type_list list_board">
+                        <div class="title sb">
+                            <p class="tit">가로 2배 wide (추후 수정)</p>
+                            <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp02">더보기</a>
+                        </div>
+                        <div class="data_area">
+                            <img src='../src/assets/images/sample/sample_16_img02.png' style="width: 100%">
+                        </div>
                     </div>
-                    <div class="data_area">
+                    <!-- <div class="type_list list_stats">
+                        <div class="title sb">
+                            <p class="tit"></p>
+                            <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp03">더보기</a>
+                        </div>
+                        <div class="data_area">
 
-                    </div>
-                </div> -->
+                        </div>
+                    </div> -->
+                </div>
             </div>
             <div class="a_colum a_right ac2">
                 <div class="type_list news ac_2h">

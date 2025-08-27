@@ -36,40 +36,55 @@
                     </div>
                     <div class="data_area">
                         <!-- sample data : highcharts.js -->
-                        <div id="container"></div>
+                         <div class="data_inner_tw">
+                            <!-- 좌측: 텍스트 영역 -->
+                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
+                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
+                                    <li><span style="color:#ff69b4;">출생</span> : 5,669건 (3.2%)</li>
+                                    <li><span style="color:#ffcc00;">사망</span> : 79,766건 (36.1%)</li>
+                                    <li><span style="color:#66ccff;">전출</span> : 86,897건 (33.3%)</li>
+                                    <li><span style="color:#99ff99;">전입</span> : 48,346건 (18.6%)</li>
+                                    <li><span style="color:#cc99ff;">총인구</span> : 21,524건 (8.8%)</li>
+                                </ul>
+                                <!-- <div style="margin-top:10px; font-weight:bold; font-size:18px;">
+                                전체 합계: 3,656건
+                                </div> -->
+                            </div>
+                            <div id="donut-container" style="width: 45%; height: 180px;"></div>
+                        </div>
                         <script>
-                        Highcharts.chart('container', {
-                            chart: {
-                                type: 'pie',
-                                backgroundColor: 'transparent',
-                                options3d: {
-                                    enabled: true,
-                                    alpha: 45,
-                                    beta: 0
-                                },
-                                height: 200
-                            },
-                            title: null,
-                            subtitle: null,
-                            plotOptions: {
-                                pie: {
-                                    innerSize: 100,   // 도넛 두께
-                                    depth: 45,        // 원통 높이
-                                    //startAngle: -90,  // 시작 각도 (위쪽 반 잘라냄)
-                                    //endAngle: 90,     // 끝 각도
-                                    //center: ['50%', '75%'] // 아래쪽으로 내림
-                                }
-                            },
-                            series: [{
-                                data: [
-                                    ['10대', 12],
-                                    ['20대', 19],
-                                    ['30대', 14],
-                                    ['40대', 18],
-                                    ['50대', 22],
-                                    ['60대', 15]
-                                ]
-                            }]
+                        // 왼쪽: 연령대별 거래 현황
+                        Highcharts.chart('donut-container', {
+                        chart: {
+                            type: 'pie',
+                            backgroundColor: 'transparent',
+                            options3d: {
+                            enabled: true,
+                            alpha: 45
+                            }
+                        },
+                        // title: { text: '연령대별 거래 비율' },
+                        title: null,
+                        plotOptions: {
+                            pie: {
+                            innerSize: 50,
+                            depth: 45,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.percentage:.1f}%'
+                            }
+                            }
+                        },
+                        series: [{
+                            name: '비율',
+                            data: [
+                            { name: '출생', y: 5669, color: '#ff69b4' },
+                            { name: '사망', y: 79766, color: '#ffcc00' },
+                            { name: '전출', y: 86897, color: '#66ccff' },
+                            { name: '전입', y: 48346, color: '#99ff99' },
+                            { name: '총인구', y: 21524, color: '#cc99ff' }
+                            ]
+                        }]
                         });
                         </script>
                         <!-- //sample data : highcharts.js -->
@@ -187,25 +202,59 @@
                     </div>
                     <div class="data_area">
                         <!-- sample data : echarts.js -->
-                        <div id="3dBar" style="width:600px;height:330px;"></div>
+                        <div id="bar3d" style="width: 100%; height: 330px;"></div>
+
                         <script>
-                        var chart = echarts.init(document.getElementById('3dBar'));
-                        chart.setOption({
-                            tooltip: {},
-                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
-                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
-                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
-                            zAxis3D: { type: 'value' },
-                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
-                            series: [{
-                                type: 'bar3D',
-                                data: [
-                                    [0,0,12], [0,1,18], [0,2,15],
-                                    [1,0,9],  [1,1,14], [1,2,20],
-                                    [2,0,8],  [2,1,16], [2,2,10]
-                                ],
-                                shading: 'lambert'
-                            }]
+                        window.addEventListener('load', function() {
+                            var container = document.getElementById('bar3d');
+                            var chart = echarts.init(container);
+
+                            var xData = ['강남구','서초구','송파구'];
+                            var yData = ['2022','2023','2024'];
+                            var seriesData = [
+                                [0,0,12],[0,1,18],[0,2,15],
+                                [1,0,9],[1,1,14],[1,2,20],
+                                [2,0,8],[2,1,16],[2,2,10]
+                            ];
+
+                            function getOption() {
+                                var w = container.offsetWidth;
+                                var h = container.offsetHeight;
+
+                                return {
+                                    tooltip: {},
+                                    visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                                    xAxis3D: { type: 'category', data: xData },
+                                    yAxis3D: { type: 'category', data: yData },
+                                    zAxis3D: { type: 'value' },
+                                    grid3D: {
+                                        boxWidth: 200,
+                                        boxDepth: 80,
+                                        boxHeight: 200,
+                                        viewControl: {
+                                            alpha: 30,
+                                            beta: 0,
+                                            center: [0,0,0],
+                                            distance: 200,
+                                            zoomSensitivity: 2 // 기본 1, 값을 키우면 휠 반응 빨라짐
+                                        },
+                                        light: { main: { intensity: 1.2 } }
+                                    },
+                                    series: [{
+                                        type: 'bar3D',
+                                        data: seriesData,
+                                        shading: 'lambert'
+                                    }],
+                                    tooltip: { show: false }
+                                };
+                            }
+
+                            chart.setOption(getOption());
+
+                            window.addEventListener('resize', function() {
+                                chart.resize();
+                                chart.setOption(getOption());
+                            });
                         });
                         </script>
                         <!-- //sample data : echarts.js -->

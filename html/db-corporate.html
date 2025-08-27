@@ -303,25 +303,59 @@
                     </div>
                     <div class="data_area">
                         <!-- sample data : echarts.js -->
-                        <div id="3dBar" style="width:600px;height:200px;"></div>
+                        <div id="bar3d" style="width: 100%; height: 330px;"></div>
+
                         <script>
-                        var chart = echarts.init(document.getElementById('3dBar'));
-                        chart.setOption({
-                            tooltip: {},
-                            visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
-                            xAxis3D: { type: 'category', data: ['강남구','서초구','송파구'] },
-                            yAxis3D: { type: 'category', data: ['2022','2023','2024'] },
-                            zAxis3D: { type: 'value' },
-                            grid3D: { boxWidth: 200, boxDepth: 80, light: { main: { intensity: 1.2 } } },
-                            series: [{
-                                type: 'bar3D',
-                                data: [
-                                    [0,0,12], [0,1,18], [0,2,15],
-                                    [1,0,9],  [1,1,14], [1,2,20],
-                                    [2,0,8],  [2,1,16], [2,2,10]
-                                ],
-                                shading: 'lambert'
-                            }]
+                        window.addEventListener('load', function() {
+                            var container = document.getElementById('bar3d');
+                            var chart = echarts.init(container);
+
+                            var xData = ['강남구','서초구','송파구'];
+                            var yData = ['2022','2023','2024'];
+                            var seriesData = [
+                                [0,0,12],[0,1,18],[0,2,15],
+                                [1,0,9],[1,1,14],[1,2,20],
+                                [2,0,8],[2,1,16],[2,2,10]
+                            ];
+
+                            function getOption() {
+                                var w = container.offsetWidth;
+                                var h = container.offsetHeight;
+
+                                return {
+                                    tooltip: {},
+                                    visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
+                                    xAxis3D: { type: 'category', data: xData },
+                                    yAxis3D: { type: 'category', data: yData },
+                                    zAxis3D: { type: 'value' },
+                                    grid3D: {
+                                        boxWidth: 200,
+                                        boxDepth: 80,
+                                        boxHeight: 200,
+                                        viewControl: {
+                                            alpha: 30,
+                                            beta: 0,
+                                            center: [0,0,0],
+                                            distance: 200,
+                                            zoomSensitivity: 2 // 기본 1, 값을 키우면 휠 반응 빨라짐
+                                        },
+                                        light: { main: { intensity: 1.2 } }
+                                    },
+                                    series: [{
+                                        type: 'bar3D',
+                                        data: seriesData,
+                                        shading: 'lambert'
+                                    }],
+                                    tooltip: { show: false }
+                                };
+                            }
+
+                            chart.setOption(getOption());
+
+                            window.addEventListener('resize', function() {
+                                chart.resize();
+                                chart.setOption(getOption());
+                            });
                         });
                         </script>
                         <!-- //sample data : echarts.js -->

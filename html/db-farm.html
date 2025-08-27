@@ -21,6 +21,7 @@
     }, 50);
 </script>
 <!-- //header -->
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -75,33 +76,38 @@ document.addEventListener('DOMContentLoaded', function() {
         // 필요하면 카드 30개까지 추가
     ];
 
-    // tooltip
-    const tooltip = document.getElementById('tooltip');
-    const allGraphAreas = document.querySelectorAll('.graph_area');
-    allGraphAreas.forEach((graphArea, graphIndex) => {
-        const bars = graphArea.querySelectorAll('span');
-        const data = allGraphData[graphIndex]; 
-        const maxValue = Math.max(...data); 
+    if (document.querySelector(".main_grid_list.bar")) {
+        const tooltip = document.getElementById('tooltip');
+        const allGraphAreas = document.querySelectorAll('.graph_area');
 
-        bars.forEach((bar, index) => {
-            const value = data[index] || 0;
-            bar.style.height = `${(value / maxValue) * 100}%`;
-            bar.dataset.value = value;
-            bar.addEventListener('mouseenter', () => {
-                tooltip.style.display = 'block';
-                tooltip.textContent = `${value.toLocaleString()}명`;
-            });
+        allGraphAreas.forEach((graphArea, graphIndex) => {
+            const bars = graphArea.querySelectorAll('span');
+            const data = allGraphData[graphIndex];
+            if (!data) return; // 데이터가 없으면 스킵
 
-            bar.addEventListener('mousemove', (e) => {
-                tooltip.style.left = `${e.clientX + 10}px`;
-                tooltip.style.top = `${e.clientY + 10}px`;
-            });
+            const maxValue = Math.max(...data);
 
-            bar.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
+            bars.forEach((bar, index) => {
+                const value = data[index] || 0;
+                bar.style.height = `${(value / maxValue) * 100}%`;
+                bar.dataset.value = value;
+
+                bar.addEventListener('mouseenter', () => {
+                    tooltip.style.display = 'block';
+                    tooltip.textContent = `${value.toLocaleString()}명`;
+                });
+
+                bar.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = `${e.clientX + 10}px`;
+                    tooltip.style.top = `${e.clientY + 10}px`;
+                });
+
+                bar.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
             });
         });
-    });
+    }
 
 });
 </script>
@@ -112,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="swiper main_slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="main_grid_list">
+                    <div class="main_grid_list bar">
                         <!--1-->
                         <div class="mgl">
                             <input class="mgl_bubble" type="radio" id="bb_box32" name="status00" checked>
@@ -134,9 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level mor">매우혼잡</div>
-                                        <span class="place">구로디지털단지역</span>
+                                    <div class="value farm">
+                                        <span class="prod">홍고추</span>
+                                        <div class="level mor">4,290<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -161,9 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">서울역</span>
+                                    <div class="value farm">
+                                        <span class="prod">호박</span>
+                                        <div class="level lit">1,260<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -188,9 +194,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">선릉역</span>
+                                    <div class="value farm">
+                                        <span class="prod">풋고추</span>
+                                        <div class="level mor">3,150<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -215,9 +221,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">충정로역</span>
+                                    <div class="value farm">
+                                        <span class="prod">포도</span>
+                                        <div class="level mor">6,010<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -242,9 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">광화문,덕수궁</span>
+                                    <div class="value farm">
+                                        <span class="prod">팽이버섯</span>
+                                        <div class="level lit">1,260<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -269,9 +275,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">강남역</span>
+                                    <div class="value farm">
+                                        <span class="prod">파프리카</span>
+                                        <div class="level lit">4,430<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -296,9 +302,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">역삼역</span>
+                                    <div class="value farm">
+                                        <span class="prod">파인애플</span>
+                                        <div class="level lit">2,060<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -325,9 +331,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">용산역</span>
+                                    <div class="value farm">
+                                        <span class="prod">토마토</span>
+                                        <div class="level mor">1,870<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -352,9 +358,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level lit">혼잡</div>
-                                        <span class="place">강남 MICE 관광특구</span>
+                                    <div class="value farm">
+                                        <span class="prod">콩</span>
+                                        <div class="level mor">8,330<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -372,102 +378,51 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="map_select">
                                 <!-- sample data : select -->
                                     <div class="form-container d-select">
-                                        <div class="form-group">
-                                        <label>연령 확인</label>
-                                        <select>
-                                            <option>1988.06</option>
-                                            <option>1989.01</option>
-                                            <option>1990.03</option>
-                                        </select>
-                                        </div>
-                                        <div class="form-group">
-                                        <label>성별</label>
-                                        <select>
-                                            <option>남자</option>
-                                            <option>여자</option>
-                                        </select>
-                                        </div>
+                                        <div class="s_left align">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select>
+                                                    <option>서울가락</option>
+                                                    <option>서울가락</option>
+                                                    <option>서울가락</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select>
+                                                    <option>중앙청과</option>
+                                                    <option>중앙청과</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="form-group">
-                                        <label>새대주</label>
-                                        <select>
-                                            <option>본인</option>
-                                            <option>배우자</option>
-                                        </select>
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select>
+                                                    <option>가격(kg당)</option>
+                                                    <option>가격(kg당)</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                        <label>주소지</label>
-                                        <select>
-                                            <option>서울시 은평구</option>
-                                            <option>서울시 강남구</option>
-                                            <option>경기도 고양시</option>
-                                        </select>
-                                        </div>
+                                        <div class="s_right align">
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select>
+                                                    <option>주산지</option>
+                                                    <option>주산지</option>
+                                                    <option>주산지</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="form-group">
-                                        <label>혼인</label>
-                                        <select>
-                                            <option>O</option>
-                                            <option>X</option>
-                                        </select>
+                                            <div class="form-group">
+                                                <label></label>
+                                                <select>
+                                                    <option>품목별</option>
+                                                    <option>품목별</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                        <label>주거 형태</label>
-                                        <select>
-                                            <option>전세</option>
-                                            <option>자가</option>
-                                            <option>월세</option>
-                                        </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                        <label>자녀 수</label>
-                                        <select>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                        </div>
-                                        <div class="form-group">
-                                        <label>가구 월소득</label>
-                                        <select>
-                                            <option>500만원</option>
-                                            <option>300만원</option>
-                                            <option>700만원</option>
-                                        </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                        <label>고용 정보</label>
-                                        <select>
-                                            <option>중소기업</option>
-                                            <option>대기업</option>
-                                            <option>자영업</option>
-                                        </select>
-                                        </div>
-                                        <div class="form-group">
-                                        <label>자산 규모</label>
-                                        <select>
-                                            <option>1,000만원</option>
-                                            <option>5,000만원</option>
-                                            <option>1억원</option>
-                                        </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                        <label>4대 보험</label>
-                                        <select>
-                                            <option>O</option>
-                                            <option>X</option>
-                                        </select>
-                                        </div>
-                                        <div class="form-group">
-                                        <label>맞벌이</label>
-                                        <select>
-                                            <option>O</option>
-                                            <option>X</option>
-                                        </select>
-                                        </div>
+                                        
+                                        
                                     </div>
                                     <!-- //sample data : select -->
                             </div>
@@ -496,9 +451,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">가산디지털단지역</span>
+                                    <div class="value farm">
+                                        <span class="prod">참외</span>
+                                        <div class="level lit">2,050<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -523,9 +478,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">DMC(디지털미디어시티)</span>
+                                    <div class="value farm">
+                                        <span class="prod">참다래</span>
+                                        <div class="level lit">6,250<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -552,9 +507,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">잠실 관광특구</span>
+                                    <div class="value farm">
+                                        <span class="prod">수박</span>
+                                        <div class="level lit">1,750<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -579,9 +534,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">서울식물원, 마곡나루역</span>
+                                    <div class="value farm">
+                                        <span class="prod">오이</span>
+                                        <div class="level lit">1,570<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -606,9 +561,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">명동 관광특구</span>
+                                    <div class="value farm">
+                                        <span class="prod">양파</span>
+                                        <div class="level lit">930<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -633,9 +588,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">여의도</span>
+                                    <div class="value farm">
+                                        <span class="prod">대피</span>
+                                        <div class="level lit">1,610<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -662,9 +617,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">용리단길</span>
+                                    <div class="value farm">
+                                        <span class="prod">생강</span>
+                                        <div class="level lit">7,220<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -689,9 +644,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">고속터미널역</span>
+                                    <div class="value farm">
+                                        <span class="prod">배추</span>
+                                        <div class="level lit">1,460<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -716,9 +671,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">양재역</span>
+                                    <div class="value farm">
+                                        <span class="prod">무</span>
+                                        <div class="level mor">540<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -743,9 +698,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">종로,청계 관광특구</span>
+                                    <div class="value farm">
+                                        <span class="prod">감자</span>
+                                        <div class="level mor">1,330<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -772,9 +727,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">교대역</span>
+                                    <div class="value farm">
+                                        <span class="prod">깻잎</span>
+                                        <div class="level mor">8,360<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -799,9 +754,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">덕수궁길,정동길</span>
+                                    <div class="value farm">
+                                        <span class="prod">상추</span>
+                                        <div class="level mor">3,440<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -826,9 +781,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">장지역</span>
+                                    <div class="value farm">
+                                        <span class="prod">얼갈이배추</span>
+                                        <div class="level mor">1,610<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -853,9 +808,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">동대문역</span>
+                                    <div class="value farm">
+                                        <span class="prod">딸기</span>
+                                        <div class="level mor">9,750<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -882,9 +837,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">청량리</span>
+                                    <div class="value farm">
+                                        <span class="prod">파프리카</span>
+                                        <div class="level lit">4,430<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -909,9 +864,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">광장(전통)시장</span>
+                                    <div class="value farm">
+                                        <span class="prod">방욽토마토</span>
+                                        <div class="level mor">3,680<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -937,9 +892,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">회기역</span>
+                                    <div class="value farm">
+                                        <span class="prod">부추</span>
+                                        <div class="level mor">2,560<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -964,9 +919,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">노량진</span>
+                                    <div class="value farm">
+                                        <span class="prod">양배추</span>
+                                        <div class="level lit">790<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -992,9 +947,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">홍대입구역(2호선)</span>
+                                    <div class="value farm">
+                                        <span class="prod">열무</span>
+                                        <div class="level mor">1,770<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -1019,9 +974,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">홍대 관광특구</span>
+                                    <div class="value farm">
+                                        <span class="prod">사과</span>
+                                        <div class="level mor">3,340<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -1046,9 +1001,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                 </div>
                                 <div class="bb_tit">
-                                    <div class="value">
-                                        <div class="level nor">약간혼잡</div>
-                                        <span class="place">신림역</span>
+                                    <div class="value farm">
+                                        <span class="prod">고구마</span>
+                                        <div class="level lit">2,600<span class="unit">원(kg당)</span></div>
                                     </div>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
@@ -1056,96 +1011,246 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    //막대그래프
+                    document.addEventListener('DOMContentLoaded', function() {
+                        //main_grid_list.total
+                        const totalGrid = document.querySelector('.main_grid_list.total');
+                        if (totalGrid) {
+
+                            const allGraphData = [
+                                [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+                                2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
+
+                                [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+                                22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+
+                                [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+                                22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+
+                                [5350000, -2250000, 3200000, -4150000, 1386705, 5350000, 3310000, -4280000, 
+                                2250000, -3200000, 4150000, 1386705, -5350000, 2250000, 3200000, 4150000, -8100000],
+
+                                [50000, 22500, 32000, 41500, 13865, 53500, 10000, 42000, 
+                                22000, -32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+
+                                [-50000, -22500, -32000, -41500, -13865, 53500, 10000, 42000, 
+                                22000, 32000, 41500, 13805, -53500, 20000, 32000, 41500, -80000],
+                            ];
+
+                            const allGraphAreas = totalGrid.querySelectorAll('.graph_area');
+                            allGraphAreas.forEach((graphArea, graphIndex) => {
+                                const bars = graphArea.querySelectorAll('span');
+                                const data = allGraphData[graphIndex];
+                                const maxAbs = Math.max(...data.map(v => Math.abs(v))); 
+                                const totalHeight = 60; // graph_area 높이
+                                const zeroLine = totalHeight / 2; 
+                                bars.forEach((bar, i) => {
+                                    const value = data[i] || 0;
+                                    const height = (Math.abs(value) / maxAbs) * (totalHeight / 2);
+
+                                    bar.style.height = `${height}px`;
+                                    if(value >= 0){
+                                        bar.style.bottom = `${zeroLine}px`; 
+                                    } else {
+                                        bar.style.bottom = `${zeroLine - height}px`; 
+                                    }
+                                });
+                            });
+                        }
+                    });
+
+                    </script>
                 <div class="swiper-slide">
-                    <div class="main_grid_list crowd">
+                    <div class="main_grid_list total">
                         <!--1-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box01" name="status_1" checked>
+                            <input class="mgl_bubble" type="radio" id="bb_box01" name="status" checked>
                             <label class="mgl_bb" for="bb_box01">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">1총인구</p>
+                                        <div class="state increase">4170</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                        <div class="tooltip" id="tooltip">24년 06월 : 9,386,705명</div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">8,000 - 8,500</span>
+                                        <span class="number">10,511,847</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">신촌,이대역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box02" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box02" name="status">
                             <label class="mgl_bb" for="bb_box02">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">2총세대수</p>
+                                        <div class="state increase">9476</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">36,000 - 38,000</span>
+                                        <span class="number">4,492,425</span>
+                                        <span class="unit">세대</span>
                                     </p>
-                                    <p class="place">성수카페거리</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box03" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box03" name="status">
                             <label class="mgl_bb" for="bb_box03">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">3남자인구</p>
+                                        <div class="state increase">980</div>
+                                        <div class="date">25년01월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">80,000 - 82,000</span>
+                                        <span class="number">4,505,412</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">강남역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box04" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box04" name="status">
                             <label class="mgl_bb" for="bb_box04">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">4여자인구</p>
+                                        <div class="state increase">3190</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">26,000 - 28,000</span>
+                                        <span class="number">4,829,416</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">압구정로데오거리</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box05" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box05" name="status">
                             <label class="mgl_bb" for="bb_box05">
-                                <div class="bb_tit only_txt">
-                                    <p class="level mor">붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">5출생</p>
+                                        <div class="state decrease">157</div>
+                                        <div class="date">25년01월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">50,000 - 52,000</span>
+                                        <span class="number">3,754</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">강남 MICE 관광특구</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box06" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box06" name="status">
                             <label class="mgl_bb" for="bb_box06">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">6사망</p>
+                                        <div class="state increase">935</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">9,000 - 9,500</span>
+                                        <span class="number">5,504</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">청담동 명품거리</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box07" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box07" name="status">
                             <label class="mgl_bb" for="bb_box07">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">7세대당인구</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">12,000 - 14,000</span>
+                                        <span class="number">2.1</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">신논현역, 논현역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1153,27 +1258,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!--2-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box08" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box08" name="status">
                             <label class="mgl_bb" for="bb_box08">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">외국인거소</p>
+                                        <div class="state decrease">2718</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">10,000 - 12,000</span>
+                                        <span class="number">262,734</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">이태원 관광특구</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box09" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box09" name="status">
                             <label class="mgl_bb" for="bb_box09">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">외국인등록</p>
+                                        <div class="state decrease">61</div>
+                                        <div class="date">25년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">22,000 - 24,000</span>
+                                        <span class="number">147,443</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">용산역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1194,27 +1327,55 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <!-- //map area -->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box11" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box11" name="status">
                             <label class="mgl_bb" for="bb_box11">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">인구소멸지수</p>
+                                        <div class="state increase">0.9</div>
+                                        <div class="date">25년01월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">14,000 - 16,000</span>
+                                        <span class="number">129.3</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">합정역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box12" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box12" name="status">
                             <label class="mgl_bb" for="bb_box12">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">유소년부양비율</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년01월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">40,000 - 42,000</span>
+                                        <span class="number">12.5</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">역삼역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1222,53 +1383,109 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!--3-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box13" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box13" name="status">
                             <label class="mgl_bb" for="bb_box13">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">전입인구</p>
+                                        <div class="state increase">1492</div>
+                                        <div class="date">24년10월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">28,000 - 30,000</span>
+                                        <span class="number">6,432</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">가로수길</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box14" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box14" name="status">
                             <label class="mgl_bb" for="bb_box14">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">전출인구</p>
+                                        <div class="state increase">1210</div>
+                                        <div class="date">24년10월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">36,000 - 38,000</span>
+                                        <span class="number">5,770</span>
+                                        <span class="unit">명</span>
                                     </p>
-                                    <p class="place">구로디지털단지역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box15" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box15" name="status">
                             <label class="mgl_bb" for="bb_box15">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">15~64세 고용율</p>
+                                        <div class="state decrease">0.2</div>
+                                        <div class="date">24년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">64,000 - 66,000</span>
+                                        <span class="number">67.44</span>
+                                        <span class="unit">%</span>
                                     </p>
-                                    <p class="place">잠실관광특구 </p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box16" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box16" name="status">
                             <label class="mgl_bb" for="bb_box16">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">경제활동인구</p>
+                                        <div class="state decrease">0.5</div>
+                                        <div class="date">24년02월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">14,000 - 16,000</span>
+                                        <span class="number">5,202</span>
+                                        <span class="unit">천명</span>
                                     </p>
-                                    <p class="place">보신각</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1276,53 +1493,109 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!--4-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box17" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box17" name="status">
                             <label class="mgl_bb" for="bb_box17">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">유아및초중등교육</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">42,000 - 44,000</span>
+                                        <span class="number">41,680.87</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">가산디지털단지역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box18" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box18" name="status">
                             <label class="mgl_bb" for="bb_box18">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">잉여금</p>
+                                        <div class="state decrease">9738.79</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">42,000 - 44,000</span>
+                                        <span class="number">432,060.24</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">DMC(디지털미디어시티)</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box19" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box19" name="status">
                             <label class="mgl_bb" for="bb_box19">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">도로</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">20,000 - 22,000</span>
+                                        <span class="number">10,244.87</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">영등포 타임스퀘어</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box20" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box20" name="status">
                             <label class="mgl_bb" for="bb_box20">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">일반행정</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">12,000 - 14,000</span>
+                                        <span class="number">7,014.54</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">김포공항</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1330,53 +1603,109 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!--5-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box21" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box21" name="status">
                             <label class="mgl_bb" for="bb_box21">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">대중교통&middot;물류등기타</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">5,000 - 5,500</span>
+                                        <span class="number">33,038.83</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">DDP(동대문디자인플라자)</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box22" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box22" name="status">
                             <label class="mgl_bb" for="bb_box22">
-                                <div class="bb_tit only_txt">
-                                    <p class="level nor">보통</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">지급율</p>
+                                        <div class="state increase">1.9</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">10,000 - 12,000</span>
+                                        <span class="number">15.588</span>
+                                        <span class="unit">%</span>
                                     </p>
-                                    <p class="place">발산역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box23" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box23" name="status">
                             <label class="mgl_bb" for="bb_box23">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">지출액</p>
+                                        <div class="state increase">9738.79</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">10,000 - 12,000</span>
+                                        <span class="number">79,787.6</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">서울식물원, 마곡나루역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box24" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box24" name="status">
                             <label class="mgl_bb" for="bb_box24">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">재난방재&middot;민방위</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">78,000 - 80,000</span>
+                                        <span class="number">6,050.67</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">명동 관광특구</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
@@ -1384,91 +1713,193 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         <!--6-->
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box25" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box25" name="status">
                             <label class="mgl_bb" for="bb_box25">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">산업진흥&middot;고도화</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">6,000 - 6,500</span>
+                                        <span class="number">5,404.07</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">용리단길</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box26" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box26" name="status">
                             <label class="mgl_bb" for="bb_box26">
-                                <div class="bb_tit only_txt">
-                                    <p class="level mor">붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">문화예술</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">68,000 - 70,000</span>
+                                        <span class="number">4,142.49</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">선릉역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
+
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box27" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box27" name="status">
                             <label class="mgl_bb" for="bb_box27">
-                                <div class="bb_tit only_txt">
-                                    <p class="level mor">붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">대기</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
+
                                     <p class="value">
-                                        <span class="number">18,000 - 20,000</span>
+                                        <span class="number">3,347.1</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">충정로역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box28" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box28" name="status">
                             <label class="mgl_bb" for="bb_box28">
-                                <div class="bb_tit only_txt">
-                                    <p class="level mor">붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">폐기물</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">75,000 - 80,000</span>
+                                        <span class="number">3,006.9</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">쌍문역</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
+
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box29" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box29" name="status">
                             <label class="mgl_bb" for="bb_box29">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">산업금융지원</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">40,000 - 42,000</span>
+                                        <span class="number">2,944.15</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">종로,청계 관광특구</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box30" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box30" name="status">
                             <label class="mgl_bb" for="bb_box30">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">노동</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">18,000 - 20,000</span>
+                                        <span class="number">2,699.66</span>
+                                        <span class="unit">억원</span>
                                     </p>
-00                                    <button class="data_pop" onclick="showPopup();"></button>
+                                    <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>
                         </div>
                         <div class="mgl">
-                            <input class="mgl_bubble" type="radio" id="bb_box31" name="status_1">
+                            <input class="mgl_bubble" type="radio" id="bb_box31" name="status">
                             <label class="mgl_bb" for="bb_box31">
-                                <div class="bb_tit only_txt">
-                                    <p class="level lit">약간붐빔</p>
+                                <div class="bb_bot">
+                                    <div class="left">
+                                        <p class="title">문화재</p>
+                                        <div class="state normal">0.0</div>
+                                        <div class="date">25년03월</div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="graph_area">
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span><span></span><span></span><span></span>
+                                            <span></span><span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bb_tit">
                                     <p class="value">
-                                        <span class="number">175,000 - 180,000</span>
+                                        <span class="number">2,460.43</span>
+                                        <span class="unit">억원</span>
                                     </p>
-                                    <p class="place">여의도</p>
                                     <button class="data_pop" onclick="showPopup();"></button>
                                 </div>
                             </label>

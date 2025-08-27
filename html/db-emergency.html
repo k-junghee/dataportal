@@ -75,33 +75,38 @@ document.addEventListener('DOMContentLoaded', function() {
         // 필요하면 카드 30개까지 추가
     ];
 
-    // tooltip
-    const tooltip = document.getElementById('tooltip');
-    const allGraphAreas = document.querySelectorAll('.graph_area');
-    allGraphAreas.forEach((graphArea, graphIndex) => {
-        const bars = graphArea.querySelectorAll('span');
-        const data = allGraphData[graphIndex]; 
-        const maxValue = Math.max(...data); 
+    if (document.querySelector(".main_grid_list.bar")) {
+        const tooltip = document.getElementById('tooltip');
+        const allGraphAreas = document.querySelectorAll('.graph_area');
 
-        bars.forEach((bar, index) => {
-            const value = data[index] || 0;
-            bar.style.height = `${(value / maxValue) * 100}%`;
-            bar.dataset.value = value;
-            bar.addEventListener('mouseenter', () => {
-                tooltip.style.display = 'block';
-                tooltip.textContent = `${value.toLocaleString()}명`;
-            });
+        allGraphAreas.forEach((graphArea, graphIndex) => {
+            const bars = graphArea.querySelectorAll('span');
+            const data = allGraphData[graphIndex];
+            if (!data) return; // 데이터가 없으면 스킵
 
-            bar.addEventListener('mousemove', (e) => {
-                tooltip.style.left = `${e.clientX + 10}px`;
-                tooltip.style.top = `${e.clientY + 10}px`;
-            });
+            const maxValue = Math.max(...data);
 
-            bar.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
+            bars.forEach((bar, index) => {
+                const value = data[index] || 0;
+                bar.style.height = `${(value / maxValue) * 100}%`;
+                bar.dataset.value = value;
+
+                bar.addEventListener('mouseenter', () => {
+                    tooltip.style.display = 'block';
+                    tooltip.textContent = `${value.toLocaleString()}명`;
+                });
+
+                bar.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = `${e.clientX + 10}px`;
+                    tooltip.style.top = `${e.clientY + 10}px`;
+                });
+
+                bar.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
             });
         });
-    });
+    }
 
 });
 </script>
@@ -112,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="swiper main_slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="main_grid_list">
+                    <div class="main_grid_list bar">
                         <!--1-->
                         <div class="mgl">
                             <input class="mgl_bubble" type="radio" id="bb_box32" name="status00" checked>
