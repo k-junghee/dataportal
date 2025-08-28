@@ -140,7 +140,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="gnb_item dr" id="health-link">
+                    <li class="gnb_item dr" id="finance-link">
                         <a href="./db-finance.html">재정</a>
                         <div class="dr_menu_wrap">
                             <ul class="dr_menu">
@@ -153,7 +153,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="gnb_item dr" id="abode-link">
+                    <li class="gnb_item dr" id="social-link">
                         <a href="./db-social.html">사회안전망 현황</a>
                         <div class="dr_menu_wrap">
                             <ul class="dr_menu">
