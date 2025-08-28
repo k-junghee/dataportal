@@ -234,11 +234,19 @@
                         // title: { text: '학생수 변동 현황' },
                         title: null,
                         xAxis: {
-                            categories: ['고등학교', '중학교', '초등학교', '유치원']
+                            categories: ['고등학교', '중학교', '초등학교', '유치원'],
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '학생수 (명)' }
+                            title: { text: '학생수 (명)' , style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         series: [{
                             name: '2024년',

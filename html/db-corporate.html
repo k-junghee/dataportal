@@ -124,11 +124,18 @@
                             title: null,
                             xAxis: {
                                 categories: ['A', 'B', 'C', 'D', 'E', 'F'],
-                                labels: { style: { color: '#555' } }
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             yAxis: {
-                                title: { text: '값', style: { color: '#555' } },
-                                labels: { style: { color: '#555' } }
+                                title: { text: '값', style: { color: 'var(--ft-cl-gray)' } },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
                             },
                             tooltip: {
                                 valueSuffix: ' 개'
@@ -162,11 +169,19 @@
                         title: null,
                         xAxis: {
                             categories: ['외지인', '현지인', '외국인'],
-                            title: { text: null }
+                            title: { text: null },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '명', align: 'high' }
+                            title: { text: '명', align: 'high' , style: { color: 'var(--ft-cl-gray)' }},
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         plotOptions: {
                             bar: {
@@ -448,7 +463,7 @@
                         series: [{
                             type: 'scatter3D',
                             symbolSize: 6,
-                            data: gen3D()
+                            data: gen3D(),
                         }]
                         });
                         </script>

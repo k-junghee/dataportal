@@ -48,11 +48,21 @@
                         title: null,
                         xAxis: {
                             categories: ['감기', '눈병', '식중독'],
-                            title: { text: null }
+                            title: { text: null },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '%', align: 'high' }
+                            title: { text: '%', align: 'high', style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         plotOptions: {
                             bar: {
@@ -119,12 +129,21 @@
                             '언어', '뇌전증', '호흡기', '간', '강직', '언어',
                             '자폐성', '정신', '신장', '지적', '뇌병변', '시각', '청각', '지체'
                             ],
-                            title: { text: null }
+                            title: { text: null },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '인원 수 (명)', align: 'high' },
-                            labels: { overflow: 'justify' }
+                            title: { text: '인원 수 (명)', align: 'high', style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { overflow: 'justify', style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         tooltip: { valueSuffix: ' 명' },
                         plotOptions: {
@@ -164,11 +183,21 @@
                         // title: { text: '학생수 변동 현황' },
                         title: null,
                         xAxis: {
-                            categories: ['응급실 일반', '응급실 소아', '입원실', '중환자실']
+                            categories: ['응급실 일반', '응급실 소아', '입원실', '중환자실'],
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '학생수 (명)' }
+                            title: { text: '학생수 (명)' , style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         series: [{
                             name: '2024년',
@@ -304,8 +333,20 @@
                                 chart: { type: 'areaspline', backgroundColor: 'transparent' },
                                 // title: { text: '연령대별 추세 (샘플)' },
                                 title: null,
-                                xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], gridLineWidth: 0 },
-                                yAxis: { title: { text: '인구 수 (천명)' }, gridLineWidth: 0 },
+                                xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], 
+                                            gridLineWidth: 0,
+                                            style: { color: 'var(--ft-cl-gray)' },
+                                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                            lineColor: 'var(--ft-cl-gray)',
+                                            tickColor: 'var(--ft-cl-gray)' 
+                                        },
+                                yAxis: { title: { text: '인구 수 (천명)' , style: { color: 'var(--ft-cl-gray)' } }, 
+                                        gridLineWidth: 0 ,
+                                        style: { color: 'var(--ft-cl-gray)' },
+                                        labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                        lineColor: 'var(--ft-cl-gray)',
+                                        tickColor: 'var(--ft-cl-gray)' 
+                                        },
                                 tooltip: { valueSuffix: '천명' },
                                 plotOptions: { areaspline: { fillOpacity: 0.4, marker: { enabled: true, radius: 4 }, lineWidth: 3 } },
                                 series: [{ name: '2024', data: allChartData[idx], color: '#4FC3F7' }]
@@ -334,12 +375,21 @@
                             '상급종합병원', '종합병원', '병원', '요양병원', '의원', '치과병원',
                             '치과의원', '조산원', '보건기관', '한방병원', '한의원', '약국', '청각', '지체'
                             ],
-                            title: { text: null }
+                            title: { text: null },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '인원 수 (명)', align: 'high' },
-                            labels: { overflow: 'justify' }
+                            title: { text: '인원 수 (명)', align: 'high' , style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: {  overflow: 'justify',style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         tooltip: { valueSuffix: ' 명' },
                         plotOptions: {

@@ -92,8 +92,19 @@
                         },
                         // title: { text: '학급당 학생수 추이' },
                         title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
-                        yAxis: { title: { text: '학생수' } },
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                                    style: { color: 'var(--ft-cl-gray)' },
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)' 
+
+                                },
+                        yAxis: { title: { text: '학생수', color: 'var(--ft-cl-gray)' },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+                                },
                         series: [{
                                 name: '초등학교',
                                 data: [26.8, 25.7, 23.8, 23.0, 22.8]
@@ -171,8 +182,19 @@
                         },
                         // title: { text: '학급당 학생수 추이' },
                         title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
-                        yAxis: { title: { text: '학생수' } },
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                                    style: { color: 'var(--ft-cl-gray)' },
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)' 
+
+                                },
+                        yAxis: { title: { text: '학생수',color: 'var(--ft-cl-gray)' },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+                                },
                         series: [{
                                 name: '초등학교',
                                 data: [26.8, 25.7, 23.8, 23.0, 22.8]
@@ -210,8 +232,8 @@
                         <!-- sample data : highcharts.js -->
                          <div class="data_inner_tw">
                             <div id="donut-container" style="width: 45%; height: 180px;"></div>
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
+                            <div class="txt_graph">
+                                <ul>
                                     <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>
@@ -401,15 +423,24 @@
                             title: null,
                             xAxis: {
                                 categories: categories,
-                                title: { text: null }
+                                title: { text: null },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
                             },
                             yAxis: {
                                 min: 0,
                                 title: {
                                 text: '비율 (%)',
-                                align: 'high'
+                                align: 'high', 
+                                style: { color: 'var(--ft-cl-gray)' }
                                 },
-                                reversed: true
+                                reversed: true,
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
                             },
                             tooltip: {
                                 valueSuffix: ' %'

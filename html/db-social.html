@@ -55,14 +55,24 @@
                             title: null,
                             xAxis: {
                                 categories: categories,
-                                title: { text: null }
+                                title: { text: null },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             yAxis: {
                                 min: 0,
                                 title: {
                                 text: '비율 (%)',
-                                align: 'high'
-                                }
+                                align: 'high' , style: { color: 'var(--ft-cl-gray)' }
+                                },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             tooltip: {
                                 valueSuffix: ' %'
@@ -136,14 +146,24 @@
                             title: null,
                             xAxis: {
                                 categories: categories,
-                                title: { text: null }
-                            },
+                                title: { text: null },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
+                                },
                             yAxis: {
                                 min: 0,
                                 title: {
                                 text: '비율 (%)',
-                                align: 'high'
-                                }
+                                align: 'high',  style: { color: 'var(--ft-cl-gray)' }
+                                },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             tooltip: {
                                 valueSuffix: ' %'
@@ -217,14 +237,24 @@
                             title: null,
                             xAxis: {
                                 categories: categories,
-                                title: { text: null }
-                            },
+                                title: { text: null },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
+                                },
                             yAxis: {
                                 min: 0,
                                 title: {
                                 text: '비율 (%)',
-                                align: 'high'
-                                }
+                                align: 'high',  style: { color: 'var(--ft-cl-gray)' }
+                                },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             tooltip: {
                                 valueSuffix: ' %'
@@ -312,11 +342,21 @@
                             categories: [
                             '2021년', '2022년', '2023년', '2024년', '2025년'
                             ],
-                            crosshair: true
+                            crosshair: true,
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '금액/거래건수' }
+                            title: { text: '금액/거래건수', style: { color: 'var(--ft-cl-gray)' } },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
+
                         },
                         tooltip: {
                             shared: true,
@@ -383,16 +423,24 @@
                             },
                             title: {
                                 text: '은평구 기초수급자수 변동 현황',
-                                style: { color: '#555' }
+                                style: { color:  'var(--ft-cl-gray)' }
                             },
                             // title: null,
                             xAxis: {
                                 categories: ['A', 'B', 'C', 'D', 'E', 'F'],
-                                labels: { style: { color: '#555' } }
+                                labels: { style: { color:  'var(--ft-cl-gray)'} },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             yAxis: {
-                                title: { text: '값', style: { color: '#555' } },
-                                labels: { style: { color: '#555' } }
+                                title: { text: '값', style: { color:  'var(--ft-cl-gray)' } },
+                                labels: { style: { color:  'var(--ft-cl-gray)' } },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+
                             },
                             tooltip: {
                                 valueSuffix: ' 개'

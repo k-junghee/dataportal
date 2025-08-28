@@ -46,8 +46,15 @@
                         chart: { type: 'line', backgroundColor: 'transparent' },
                         // title: { text: '학생·교사 현황 (추세)' },
                         title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
-                        yAxis: { title: { text: '명' } },
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                            labels: { style: { color: 'var(--ft-cl-gray)' } },      
+                                lineColor: 'var(--ft-cl-gray)',                        
+                                tickColor: 'var(--ft-cl-gray)'
+                         },
+                        yAxis: { title: { text: '명', style: { color: 'var(--ft-cl-gray)' } },},
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)',
                         series: [{
                             name: '학생수',
                             data: [1400000, 1350000, 1300000, 1250000, 1200000, 1150000, 1100000, 1050000, 1000000, 950000]
@@ -105,8 +112,16 @@
                         },
                         // title: { text: '학급당 학생수 추이' },
                         title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
-                        yAxis: { title: { text: '학생수' } },
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)'
+                         },
+                        yAxis: { title: { text: '학생수', style: { color: 'var(--ft-cl-gray)' } },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                            lineColor: 'var(--ft-cl-gray)',
+                                            tickColor: 'var(--ft-cl-gray)' },
                         series: [{
                                 name: '초등학교',
                                 data: [26.8, 25.7, 23.8, 23.0, 22.8]
@@ -136,11 +151,19 @@
                         // title: { text: '학생수 변동 현황' },
                         title: null,
                         xAxis: {
-                            categories: ['고등학교', '중학교', '초등학교', '유치원']
+                            categories: ['고등학교', '중학교', '초등학교', '유치원'],
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '학생수 (명)' }
+                            title: { text: '학생수 (명)' , style: { color: 'var(--ft-cl-gray)' }},
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         series: [{
                             name: '2024년',
@@ -360,11 +383,19 @@
                         title: null,
                         xAxis: {
                             categories: ['조리원', '조리사', '영양사'],
-                            title: { text: null }
+                            title: { text: null },
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)'
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '명', align: 'high' }
+                            title: { text: '명', align: 'high' , style: { color: 'var(--ft-cl-gray)' }},
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)'
                         },
                         plotOptions: {
                             bar: {

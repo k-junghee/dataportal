@@ -155,11 +155,19 @@
                             categories: [
                             '2021년', '2022년', '2023년', '2024년', '2025년'
                             ],
-                            crosshair: true
+                            crosshair: true,
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         yAxis: {
                             min: 0,
-                            title: { text: '금액/거래건수' }
+                            title: { text: '금액/거래건수'  , style: { color: 'var(--ft-cl-gray)' }},
+                            style: { color: 'var(--ft-cl-gray)' },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                            lineColor: 'var(--ft-cl-gray)',
+                            tickColor: 'var(--ft-cl-gray)' 
                         },
                         tooltip: {
                             shared: true,
@@ -319,8 +327,8 @@
                         <!-- sample data : highcharts.js -->
                          <div class="data_inner_tw">
                             <!-- 좌측: 텍스트 영역 -->
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
+                            <div class="txt_graph">
+                                <ul>
                                     <li><span style="color:#ff69b4;">20대</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">30대</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">40대</span> : 86,897건 (33.3%)</li>

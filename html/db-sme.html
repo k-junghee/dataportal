@@ -170,10 +170,20 @@
                         var chart2 = echarts.init(document.getElementById('barLineChart'));
 
                         chart2.setOption({
-                        title: { text: '재정 자립도', left:'center', textStyle:{color:'#fff'} },
+                        title: { text: '재정 자립도', left:'center', textStyle:{color: 'var(--ft-cl-gray)' } },
                         tooltip: { trigger: 'axis' },
-                        xAxis: { type: 'category', data: ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'], axisLabel:{color:'#fff'} },
-                        yAxis: { type: 'value', axisLabel:{color:'#fff'} },
+                        xAxis: { type: 'category', data: ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'], 
+                                // axisLabel:{color: 'var(--ft-cl-gray)' },
+                                style: { color: 'var(--ft-cl-gray)' },
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)'  },
+                        yAxis: { type: 'value', 
+                                // axisLabel:{color: 'var(--ft-cl-gray)' } ,
+                                style: { color: 'var(--ft-cl-gray)' },
+                                        labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                        lineColor: 'var(--ft-cl-gray)',
+                                        tickColor: 'var(--ft-cl-gray)' },
                         series: [
                             {
                             name: '자립도',

@@ -94,8 +94,19 @@
                         },
                         // title: { text: '학급당 학생수 추이' },
                         title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024] },
-                        yAxis: { title: { text: '학생수' } },
+                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+                                    style: { color: 'var(--ft-cl-gray)' },
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)' 
+
+                                },
+                        yAxis: { title: { text: '학생수'  , style: { color: 'var(--ft-cl-gray)' }} ,
+                                style: { color: 'var(--ft-cl-gray)' },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)' 
+                                },
                         series: [{
                                 name: '초등학교',
                                 data: [26.8, 25.7, 23.8, 23.0, 22.8]
@@ -181,8 +192,8 @@
                             Highcharts.chart('chart1', {
                             chart: { type: 'column', backgroundColor: 'transparent' },
                             title: { text: '' },
-                            xAxis: { categories, labels: { style: { color: '#fff' } } },
-                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            xAxis: { categories, labels: { style: { color: 'var(--ft-cl-gray)' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: 'var(--ft-cl-gray)' } } },
                             legend: { enabled: false },
                             series: [{ name: '냉방비', data: [50, 120, 150, 180, 130, 100, 90, 110, 140, 200], color: '#4fd1c5' }]
                             });
@@ -190,8 +201,8 @@
                             Highcharts.chart('chart2', {
                             chart: { type: 'column', backgroundColor: 'transparent' },
                             title: { text: '' },
-                            xAxis: { categories, labels: { style: { color: '#fff' } } },
-                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            xAxis: { categories, labels: { style: { color: 'var(--ft-cl-gray)' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: 'var(--ft-cl-gray)' } } },
                             legend: { enabled: false },
                             series: [{ name: '바우처', data: [100, 200, 180, 150, 130, 90, 60, 80, 120, 250], color: '#f6e05e' }]
                             });
@@ -199,8 +210,8 @@
                             Highcharts.chart('chart3', {
                             chart: { type: 'column', backgroundColor: 'transparent' },
                             title: { text: '' },
-                            xAxis: { categories, labels: { style: { color: '#fff' } } },
-                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            xAxis: { categories, labels: { style: { color: 'var(--ft-cl-gray)' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: 'var(--ft-cl-gray)' } } },
                             legend: { enabled: false },
                             series: [{ name: '돌봄 예산', data: [80, 90, 100, 110, 105, 95, 115, 120, 125, 130], color: '#63b3ed' }]
                             });
@@ -208,8 +219,8 @@
                             Highcharts.chart('chart4', {
                             chart: { type: 'column', backgroundColor: 'transparent' },
                             title: { text: '' },
-                            xAxis: { categories, labels: { style: { color: '#fff' } } },
-                            yAxis: { title: { text: null }, labels: { style: { color: '#fff' } } },
+                            xAxis: { categories, labels: { style: { color: 'var(--ft-cl-gray)' } } },
+                            yAxis: { title: { text: null }, labels: { style: { color: 'var(--ft-cl-gray)' } } },
                             legend: { enabled: false },
                             series: [{ name: '장학금', data: [70, 75, 90, 95, 100, 110, 120, 130, 140, 160], color: '#fc8181' }]
                             });
