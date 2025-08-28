@@ -368,48 +368,35 @@
                     </div>
                     <div class="data_area">
                         <!-- sample data : echarts.js -->
-                        <div id="sankeyChart" style="width:600px;height:350px;"></div>
+                        <div id="sankeyChart"></div>
                         <script>
                         var chart = echarts.init(document.getElementById('sankeyChart'));
 
                         chart.setOption({
-                        // title: {
-                        //     text: '예산 흐름도 (Sankey)',
-                        //     left: 'center',
-                        //     textStyle: { color: '#fff' }
-                        // },
-                        tooltip: {
-                            trigger: 'item',
-                            triggerOn: 'mousemove'
-                        },
-                        series: {
+                            tooltip: { trigger: 'item', triggerOn: 'mousemove' },
+                            series: {
                             type: 'sankey',
                             layout: 'none',
                             emphasis: { focus: 'adjacency' },
-                            lineStyle: {
-                            color: 'gradient',
-                            curveness: 0.5
-                            },
+                            lineStyle: { color: 'gradient', curveness: 0.5 },
                             data: [
-                            // 좌측 (출발 지점)
-                            { name: '강남구' },
-                            { name: '은평구' },
-                            { name: '송파구' },
-                            // 우측 (도착 지점)
-                            { name: '사회복지' },
-                            { name: '환경' },
-                            { name: '교육' },
-                            { name: '산업·중소기업' }
+                                { name: '강남구' }, { name: '은평구' }, { name: '송파구' },
+                                { name: '사회복지' }, { name: '환경' }, { name: '교육' }, { name: '산업·중소기업' }
                             ],
                             links: [
-                            { source: '강남구', target: '사회복지', value: 20 },
-                            { source: '강남구', target: '환경', value: 5 },
-                            { source: '은평구', target: '사회복지', value: 13 },
-                            { source: '은평구', target: '교육', value: 3 },
-                            { source: '송파구', target: '산업·중소기업', value: 7 },
-                            { source: '송파구', target: '사회복지', value: 10 },
+                                { source: '강남구', target: '사회복지', value: 20 },
+                                { source: '강남구', target: '환경', value: 5 },
+                                { source: '은평구', target: '사회복지', value: 13 },
+                                { source: '은평구', target: '교육', value: 3 },
+                                { source: '송파구', target: '산업·중소기업', value: 7 },
+                                { source: '송파구', target: '사회복지', value: 10 }
                             ]
-                        }
+                            }
+                        });
+
+                        // 반응형 resize
+                        window.addEventListener('resize', function() {
+                            chart.resize();
                         });
                         </script>
                     <!-- //sample data : echarts.js -->

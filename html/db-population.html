@@ -38,8 +38,8 @@
                         <!-- sample data : highcharts.js -->
                          <div class="data_inner_tw">
                             <!-- 좌측: 텍스트 영역 -->
-                            <div style="width: 50%; font-family: Arial, sans-serif; color: #555;padding-left: 20px;">
-                                <ul style="list-style:none; padding:0; margin:0; font-size:14px; line-height:1.8;display: flex;flex-direction: column; justify-content: center; height: 100%; gap: 10px;">
+                            <div class="txt_graph">
+                                <ul>
                                     <li><span style="color:#ff69b4;">출생</span> : 5,669건 (3.2%)</li>
                                     <li><span style="color:#ffcc00;">사망</span> : 79,766건 (36.1%)</li>
                                     <li><span style="color:#66ccff;">전출</span> : 86,897건 (33.3%)</li>
@@ -98,39 +98,80 @@
                     <div class="data_area scroll">
                         <!-- sample data : highcharts.js -->
                         <div class="data_inner_tw">
-                            <div id="lineChart1" class="chartBox"></div>
-                            <div id="lineChart2" class="chartBox"></div>
-                            <div id="lineChart3" class="chartBox"></div>
-                            <div id="lineChart4" class="chartBox"></div>
-                            <div id="lineChart5" class="chartBox"></div>
-                            <div id="lineChart6" class="chartBox"></div>
-                        </div>
+                        <div id="lineChart1" class="chartBox"></div>
+                        <div id="lineChart2" class="chartBox"></div>
+                        <div id="lineChart3" class="chartBox"></div>
+                        <div id="lineChart4" class="chartBox"></div>
+                        <div id="lineChart5" class="chartBox"></div>
+                        <div id="lineChart6" class="chartBox"></div>
+                    </div>
 
-                        <script>
-                        const allChartData = [
-                            [12, 19, 14, 18, 22, 15],   // lineChart1
-                            [8, 11, 17, 13, 9, 16],     // lineChart2
-                            [20, 14, 18, 12, 15, 10],   // lineChart3
-                            [5, 9, 12, 8, 11, 7],       // lineChart4
-                            [14, 16, 13, 19, 17, 15],   // lineChart5
-                            [10, 12, 8, 14, 9, 11]      // lineChart6
-                        ];
+                    <script>
+                    const allChartData = [
+                        [12, 19, 14, 18, 22, 15],   // lineChart1
+                        [8, 11, 17, 13, 9, 16],     // lineChart2
+                        [20, 14, 18, 12, 15, 10],   // lineChart3
+                        [5, 9, 12, 8, 11, 7],       // lineChart4
+                        [14, 16, 13, 19, 17, 15],   // lineChart5
+                        [10, 12, 8, 14, 9, 11]      // lineChart6
+                    ];
 
-                        const chartIds = ['lineChart1','lineChart2','lineChart3','lineChart4','lineChart5','lineChart6'];
+                    const chartTitles = [
+                        '송파구', 
+                        '관악구', 
+                        '강서구', 
+                        '강남구', 
+                        '노원구', 
+                        '은평구'
+                    ];
 
-                        chartIds.forEach((chartId, idx) => {
-                            Highcharts.chart(chartId, {
-                                chart: { type: 'areaspline', backgroundColor: 'transparent' },
-                                // title: { text: '연령대별 추세 (샘플)' },
-                                title: null,
-                                xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], gridLineWidth: 0 },
-                                yAxis: { title: { text: '인구 수 (천명)' }, gridLineWidth: 0 },
-                                tooltip: { valueSuffix: '천명' },
-                                plotOptions: { areaspline: { fillOpacity: 0.4, marker: { enabled: true, radius: 4 }, lineWidth: 3 } },
-                                series: [{ name: '2024', data: allChartData[idx], color: '#4FC3F7' }]
-                            });
+                    const chartIds = ['lineChart1','lineChart2','lineChart3','lineChart4','lineChart5','lineChart6'];
+
+                    chartIds.forEach((chartId, idx) => {
+                        Highcharts.chart(chartId, {
+                            chart: { 
+                                type: 'areaspline', 
+                                backgroundColor: 'transparent',
+                                // margin: [10, 10, 10, 10],   
+                                // spacing: [0, 0, 0, 0]       
+                            },
+                            title: { 
+                                text: chartTitles[idx],
+                                align: 'left',           
+                                style: {
+                                    color: 'var(--ft-cl-gray)',    
+                                    fontSize: '14px',      
+                                    fontWeight: 'bold',   
+                                    fontFamily: 'Arial, sans-serif' 
+                                }
+                            },
+                            xAxis: { 
+                                categories: ['10대','20대','30대','40대','50대','60대'],
+                                lineColor: '#888888',         
+                                tickColor: '#888888',         
+                                labels: { style: { color: 'var(--ft-cl-gray)', fontSize: '12px' } },
+                                gridLineColor: '#CCCCCC'     
+                            },
+                            yAxis: { 
+                                title: { text: '인구 수 (천명)', style: { color: 'var(--ft-cl-gray)' } },
+                                lineColor: '#888888',
+                                tickColor: '#888888',
+                                labels: { style: { color: 'var(--ft-cl-gray)', fontSize: '12px' } },
+                                gridLineColor: '#EEEEEE'
+                            },
+                            tooltip: { valueSuffix: '천명' },
+                            plotOptions: { 
+                                areaspline: { 
+                                    fillOpacity: 0.4, 
+                                    marker: { enabled: true, radius: 4 }, 
+                                    lineWidth: 3 
+                                } 
+                            },
+                            series: [{ name: '2024', data: allChartData[idx], color: '#4FC3F7' }]
                         });
-                        </script>
+                    });
+                    </script>
+
                         <!-- //sample data : highcharts.js -->
                     </div>
                 </div>
@@ -145,36 +186,44 @@
 
                         <script>
                         Highcharts.chart('populationPyramid', {
-                            chart: { type: 'bar', backgroundColor: 'transparent' },
-                            // title: { text: '서울시 1세대 인구분포도 (연령/성별)' },
-                            title: null,
-                            xAxis: {
-                                categories: ['0-9','10-19','20-29','30-39','40-49','50-59','60-69','70-79','80-89','90+'],
-                                reversed: false,
-                                labels: { step: 1 }
+                        chart: { type: 'bar', backgroundColor: 'transparent' },
+                        title: null,
+                        xAxis: {
+                            categories: ['0-9','10-19','20-29','30-39','40-49','50-59','60-69','70-79','80-89','90+'],
+                            reversed: false,
+                            labels: { 
+                                step: 1,
+                                style: { color: 'var(--ft-cl-gray)' }   
                             },
-                            yAxis: {
-                                title: { text: '인구 수' },
-                                labels: {
-                                    formatter: function () {
-                                        return Math.abs(this.value);
-                                    }
-                                }
+                            lineColor: 'var(--ft-cl-gray)',  
+                            tickColor: 'var(--ft-cl-gray)'   
+                        },
+                        yAxis: {
+                            title: { 
+                                text: '인구 수', 
+                                style: { color: 'var(--ft-cl-gray)' }  
                             },
-                            plotOptions: {
-                                series: { stacking: 'normal' }
-                            },
-                            tooltip: {
+                            labels: {
                                 formatter: function () {
-                                    return '<b>' + this.series.name + ', ' + this.point.category + '</b>: ' +
-                                        Highcharts.numberFormat(Math.abs(this.point.y), 0);
-                                }
+                                    return Math.abs(this.value);
+                                },
+                                style: { color: 'var(--ft-cl-gray)' }   
                             },
-                            series: [
-                                { name: '남성', data: [-58482, -193862, -129241, -64621, -30000, -25000, -20000, -15000, -10000, -5000], color: '#4CAF50' },
-                                { name: '여성', data: [63189, 126378, 189567, 252756, 200000, 180000, 150000, 120000, 80000, 30000], color: '#F06292' }
-                            ]
-                        });
+                            lineColor: 'var(--ft-cl-gray)',  
+                            tickColor: 'var(--ft-cl-gray)'   
+                        },
+                        plotOptions: { series: { stacking: 'normal' } },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + ', ' + this.point.category + '</b>: ' +
+                                    Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                            }
+                        },
+                        series: [
+                            { name: '남성', data: [-58482, -193862, -129241, -64621, -30000, -25000, -20000, -15000, -10000, -5000], color: '#4CAF50' },
+                            { name: '여성', data: [63189, 126378, 189567, 252756, 200000, 180000, 150000, 120000, 80000, 30000], color: '#F06292' }
+                        ]
+                    });
                         </script>
                         <!-- //sample data : highcharts.js -->
                     </div>   
@@ -216,17 +265,32 @@
                                 [1,0,9],[1,1,14],[1,2,20],
                                 [2,0,8],[2,1,16],[2,2,10]
                             ];
+                            
 
                             function getOption() {
-                                var w = container.offsetWidth;
-                                var h = container.offsetHeight;
-
                                 return {
                                     tooltip: {},
                                     visualMap: { max: 20, inRange: { color: ['#87CEFA','#FF69B4'] } },
-                                    xAxis3D: { type: 'category', data: xData },
-                                    yAxis3D: { type: 'category', data: yData },
-                                    zAxis3D: { type: 'value' },
+                                    xAxis3D: { 
+                                        type: 'category', 
+                                        data: xData,
+                                        axisLabel: { color: 'var(--ft-cl-gray)' }, // x축 글자색
+                                        axisLine: { lineStyle: { color: 'var(--ft-cl-gray)' } }, // x축 선 색
+                                        axisTick: { lineStyle: { color: 'var(--ft-cl-gray)' } }   // x축 눈금선 색
+                                    },
+                                    yAxis3D: { 
+                                        type: 'category', 
+                                        data: yData,
+                                        axisLabel: { color: 'var(--ft-cl-gray)' }, // y축 글자색
+                                        axisLine: { lineStyle: { color: 'var(--ft-cl-gray)' } }, // y축 선 색
+                                        axisTick: { lineStyle: { color: 'var(--ft-cl-gray)' } }   // y축 눈금선 색
+                                    },
+                                    zAxis3D: { 
+                                        type: 'value',
+                                        axisLabel: { color: 'var(--ft-cl-gray)' }, // z축 글자색
+                                        axisLine: { lineStyle: { color: 'var(--ft-cl-gray)' } },
+                                        axisTick: { lineStyle: { color: 'var(--ft-cl-gray)' } }
+                                    },
                                     grid3D: {
                                         boxWidth: 200,
                                         boxDepth: 80,
@@ -236,7 +300,7 @@
                                             beta: 0,
                                             center: [0,0,0],
                                             distance: 200,
-                                            zoomSensitivity: 2 // 기본 1, 값을 키우면 휠 반응 빨라짐
+                                            zoomSensitivity: 2
                                         },
                                         light: { main: { intensity: 1.2 } }
                                     },
@@ -248,6 +312,8 @@
                                     tooltip: { show: false }
                                 };
                             }
+
+
 
                             chart.setOption(getOption());
 
@@ -292,15 +358,56 @@
 
                         const chartIds_r = ['lineChart1_r','lineChart2_r','lineChart3_r','lineChart4_r','lineChart5_r','lineChart6_r'];
 
+                        const chartTitles_r = [
+                        '총인구', 
+                        '출생', 
+                        '사망', 
+                        '1인가구', 
+                        '전입', 
+                        '전출'
+                    ];
+
                         chartIds_r.forEach((chartId, idx) => {
                             Highcharts.chart(chartId, {
-                                chart: { type: 'areaspline', backgroundColor: 'transparent' },
-                                title: null,
-                                xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], gridLineWidth: 0 },
-                                yAxis: { title: { text: '인구 수 (천명)' }, gridLineWidth: 0 },
-                                tooltip: { valueSuffix: '천명' },
-                                plotOptions: { areaspline: { fillOpacity: 0.4, marker: { enabled: true, radius: 4 }, lineWidth: 3 } },
-                                series: [{ name: '2024', data: allChartData_r[idx], color: '#4FC3F7' }]
+                                chart: { 
+                                type: 'areaspline', 
+                                backgroundColor: 'transparent',
+                                // margin: [10, 10, 10, 10],   
+                                // spacing: [0, 0, 0, 0]       
+                            },
+                            title: { 
+                                text: chartTitles_r[idx],
+                                align: 'left',           
+                                style: {
+                                    color: 'var(--ft-cl-gray)',    
+                                    fontSize: '14px',      
+                                    fontWeight: 'bold',   
+                                    fontFamily: 'Arial, sans-serif' 
+                                }
+                            },
+                            xAxis: { 
+                                categories: ['10대','20대','30대','40대','50대','60대'],
+                                lineColor: '#888888',         
+                                tickColor: '#888888',         
+                                labels: { style: { color: 'var(--ft-cl-gray)', fontSize: '12px' } },
+                                gridLineColor: '#CCCCCC'     
+                            },
+                            yAxis: { 
+                                title: { text: '인구 수 (천명)', style: { color: 'var(--ft-cl-gray)' } },
+                                lineColor: '#888888',
+                                tickColor: '#888888',
+                                labels: { style: { color: 'var(--ft-cl-gray)', fontSize: '12px' } },
+                                gridLineColor: '#EEEEEE'
+                            },
+                            tooltip: { valueSuffix: '천명' },
+                            plotOptions: { 
+                                areaspline: { 
+                                    fillOpacity: 0.4, 
+                                    marker: { enabled: true, radius: 4 }, 
+                                    lineWidth: 3 
+                                } 
+                            },
+                            series: [{ name: '2024', data: allChartData[idx], color: '#4FC3F7' }]
                             });
                         });
                         </script>
@@ -335,15 +442,22 @@
                             title: null,
                             xAxis: {
                                 categories: categories,
-                                title: { text: null }
+                                title: { text: null },
+                                labels: { style: { color: 'var(--ft-cl-gray)' } },      
+                                lineColor: 'var(--ft-cl-gray)',                        
+                                tickColor: 'var(--ft-cl-gray)'
                             },
                             yAxis: {
                                 min: 0,
                                 title: {
                                 text: '비율 (%)',
-                                align: 'high'
+                                align: 'high',
+                                style: { color: 'var(--ft-cl-gray)' }
                                 },
-                                reversed: true
+                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                reversed: true,
+                                lineColor: 'var(--ft-cl-gray)',
+                                tickColor: 'var(--ft-cl-gray)'
                             },
                             tooltip: {
                                 valueSuffix: ' %'
@@ -359,7 +473,7 @@
                             credits: { enabled: false },
                             series: [{
                                 name: '연령대',
-                                data: values
+                                data: values,
                             }]
                             });
 

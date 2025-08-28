@@ -535,6 +535,12 @@ html, body {
     .type_a_gird .a_colum.w2.a_left{
         height: auto;
     }
+    .data_inner_tw{
+        display: block;
+    }
+    .data_inner_tw div{
+        width: 100% !important;
+    }
 }
 /*@media (max-width: 669px) {*/
 /*    .stats_data ul{*/
