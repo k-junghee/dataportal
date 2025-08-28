@@ -325,14 +325,30 @@
                             [14, 16, 13, 19, 17, 15],   // lineChart5
                             [10, 12, 8, 14, 9, 11]      // lineChart6
                         ];
+                        const chartTitles = [
+                            '항악성종양제', 
+                            '동맥경화용제', 
+                            '혈압', 
+                            '당뇨병용제', 
+                            '기타중추신경용', 
+                            '기타화확요법제'
+                        ];
 
                         const chartIds = ['lineChart1','lineChart2','lineChart3','lineChart4','lineChart5','lineChart6'];
 
                         chartIds.forEach((chartId, idx) => {
                             Highcharts.chart(chartId, {
                                 chart: { type: 'areaspline', backgroundColor: 'transparent' },
-                                // title: { text: '연령대별 추세 (샘플)' },
-                                title: null,
+                                title: { 
+                                    text: chartTitles[idx],
+                                    align: 'left',           
+                                    style: {
+                                        color: 'var(--ft-cl-gray)',    
+                                        fontSize: '14px',      
+                                        fontWeight: 'bold',   
+                                        fontFamily: 'Arial, sans-serif' 
+                                    }
+                                },
                                 xAxis: { categories: ['10대','20대','30대','40대','50대','60대'], 
                                             gridLineWidth: 0,
                                             style: { color: 'var(--ft-cl-gray)' },

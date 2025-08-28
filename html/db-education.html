@@ -35,64 +35,79 @@
                         <a href="javascript:;" onclick="showPopup(this);" class="more_btn" data-id="lp01">더보기</a>
                     </div>
                     <div class="data_area">
-                        <!-- sample data : highcharts.js -->
-                        <div class="data_inner_tw">
-                            <div id="line-container" style="width: 55%; height: 200px;"></div>
-                            <div id="donut-container" style="width: 40%; height: 200px;"></div>
-                        </div>
-                        <script>
-                        // 왼쪽: 라인 그래프
-                        Highcharts.chart('line-container', {
-                        chart: { type: 'line', backgroundColor: 'transparent' },
-                        // title: { text: '학생·교사 현황 (추세)' },
-                        title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
-                            labels: { style: { color: 'var(--ft-cl-gray)' } },      
-                                lineColor: 'var(--ft-cl-gray)',                        
-                                tickColor: 'var(--ft-cl-gray)'
-                         },
-                        yAxis: { title: { text: '명', style: { color: 'var(--ft-cl-gray)' } },},
-                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
-                                lineColor: 'var(--ft-cl-gray)',
-                                tickColor: 'var(--ft-cl-gray)',
-                        series: [{
-                            name: '학생수',
-                            data: [1400000, 1350000, 1300000, 1250000, 1200000, 1150000, 1100000, 1050000, 1000000, 950000]
-                        }, {
-                            name: '교원수',
-                            data: [95000, 94000, 92000, 91000, 90000, 89000, 88000, 87000, 86500, 86165]
-                        }]
-                        });
+                       <!-- sample data : tab/table - highcharts.js -->
+                        <div class="db-table">
+                            <div class="table-wrap">
+                                <div class="table-header">
+                                <div class="tabs graph-tabs">
+                                    <button class="active" data-type="전체">전체</button>
+                                    <button data-type="유치원">유치원</button>
+                                    <button data-type="초등">초등</button>
+                                    <button data-type="중등">중등</button>
+                                    <button data-type="고등">고등</button>
+                                </div>
+                                </div>
+                                <div class="data_inner_tw">
+                                <div id="line-container" style="width:55%; height:150px;"></div>
+                                <div id="donut-container" style="width:40%; height:150px;"></div>
+                                </div>
+                            </div>
+                            </div>
 
-                        // 오른쪽: 3D 도넛 (원통형)
-                        Highcharts.chart('donut-container', {
-                        chart: {
-                            type: 'pie',
-                            backgroundColor: 'transparent',
-                            options3d: {
-                            enabled: true,
-                            alpha: 45,
-                            beta: 0
+                            <script>
+                            const graphTabs = document.querySelectorAll('.graph-tabs button');
+
+                            graphTabs.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                graphTabs.forEach(b => b.classList.remove('active'));
+                                btn.classList.add('active');
+                                renderGraph(btn.dataset.type);
+                            });
+                            });
+
+                            function renderGraph(type) {
+                            const lineData = {
+                                '전체': [1400000,1350000,1300000,1250000,1200000,1150000,1100000,1050000,1000000,950000],
+                                '유치원': [300000,290000,280000,270000,260000,250000,240000,230000,220000,210000],
+                                '초등': [600000,590000,580000,570000,560000,550000,540000,530000,520000,510000],
+                                '중등': [300000,295000,290000,285000,280000,275000,270000,265000,260000,255000],
+                                '고등': [200000,190000,185000,180000,175000,170000,165000,160000,155000,150000]
+                            };
+
+                            // 라인 차트
+                            Highcharts.chart('line-container', {
+                                chart: { type: 'line', backgroundColor: 'transparent' },
+                                title: null,
+                                xAxis: { categories: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024] ,
+                                    style: { color: 'var(--ft-cl-gray)' },
+                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                    lineColor: 'var(--ft-cl-gray)',
+                                    tickColor: 'var(--ft-cl-gray)' 
+                                },
+                                yAxis: { title: { text: '명' , style: { color: 'var(--ft-cl-gray)' }},
+                                            style: { color: 'var(--ft-cl-gray)' },
+                                            labels: { style: { color: 'var(--ft-cl-gray)' } }, 
+                                            lineColor: 'var(--ft-cl-gray)',
+                                            tickColor: 'var(--ft-cl-gray)' 
+                                        },
+                                series: [{ name: type + ' 학생수', data: lineData[type] || [] }]
+                            });
+
+                            // 도넛 차트
+                            Highcharts.chart('donut-container', {
+                                chart: { type: 'pie', backgroundColor: 'transparent' },
+                                title: null,
+                                plotOptions: { pie: { innerSize: 50, depth: 45 } },
+                                series: [{
+                                name: '비율',
+                                data: [['학생', (lineData[type]||[]).reduce((a,b)=>a+b,0)], ['교원', 90000]]
+                                }]
+                            });
                             }
-                        },
-                        // title: { text: '교원 1인당 학생수' },
-                        title: null,
-                        plotOptions: {
-                            pie: {
-                            innerSize: 50,
-                            depth: 45
-                            }
-                        },
-                        series: [{
-                            name: '비율',
-                            data: [
-                            ['학생', 1335257],
-                            ['교원', 89165]
-                            ]
-                        }]
-                        });
-                        </script>
-                        <!-- //sample data : highcharts.js -->
+
+                            renderGraph('전체');
+                            </script>
+                        <!-- //sample data : tab/table - highcharts.js -->
                     </div>
                 </div>
                 <div class="type_list list_keyword">
@@ -102,34 +117,55 @@
                     </div>
                     <div class="data_area">
                         <!-- sample data : highcharts.js -->
-                        <div id="container02"></div>
+                        <div class="db-graph">
+                        <div class="graph-header">
+                            <div class="tabs line-tabs">
+                            <button class="active" data-type="초등학교">초등학교</button>
+                            <button data-type="중학교">중학교</button>
+                            <button data-type="고등학교">고등학교</button>
+                            </div>
+                        </div>
+
+                        <div id="container02" style="height:200px;"></div>
+                        </div>
+
                         <script>
+                        const graphTabs00 = document.querySelectorAll('.line-tabs button');
+
+                        graphTabs00.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            graphTabs00.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            renderLineGraph(btn.dataset.type);
+                        });
+                        });
+
+                        function renderLineGraph(type) {
+                        const seriesData = {
+                            '초등학교': [26.8, 25.7, 23.8, 23.0, 22.8],
+                            '중학교': [22.9, 21.7, 21.0, 20.5, 20.0],
+                            '고등학교': [20.5, 19.8, 19.2, 18.7, 18.3]
+                        };
+
                         Highcharts.chart('container02', {
-                        chart: { 
-                            type: 'line',
-                            backgroundColor: 'transparent',
-                            height: 200,
-                        },
-                        // title: { text: '학급당 학생수 추이' },
-                        title: null,
-                        xAxis: { categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
-                                    labels: { style: { color: 'var(--ft-cl-gray)' } }, 
-                                    lineColor: 'var(--ft-cl-gray)',
-                                    tickColor: 'var(--ft-cl-gray)'
-                         },
-                        yAxis: { title: { text: '학생수', style: { color: 'var(--ft-cl-gray)' } },
-                                style: { color: 'var(--ft-cl-gray)' },
-                                labels: { style: { color: 'var(--ft-cl-gray)' } }, 
-                                            lineColor: 'var(--ft-cl-gray)',
-                                            tickColor: 'var(--ft-cl-gray)' },
-                        series: [{
-                                name: '초등학교',
-                                data: [26.8, 25.7, 23.8, 23.0, 22.8]
-                            }, {
-                                name: '중학교',
-                                data: [22.9, 21.7, 21.0, 20.5, 20.0]
+                            chart: { type: 'line', backgroundColor: 'transparent', height: 170 },
+                            title: null,
+                            xAxis: { categories: [2015, 2016, 2017, 2018, 2019],
+                            labels: { style: { color: 'var(--ft-cl-gray)' } },
+                            lineColor: 'var(--ft-cl-gray)', tickColor: 'var(--ft-cl-gray)'
+                            },
+                            yAxis: { title: { text: '학생수', style: { color: 'var(--ft-cl-gray)' } },
+                            labels: { style: { color: 'var(--ft-cl-gray)' } },
+                            lineColor: 'var(--ft-cl-gray)', tickColor: 'var(--ft-cl-gray)'
+                            },
+                            series: [{
+                            name: type,
+                            data: seriesData[type] || []
                             }]
                         });
+                        }
+
+                        renderLineGraph('초등학교');
                         </script>
                         <!-- //sample data : highcharts.js -->
                     </div>
@@ -274,92 +310,80 @@
                     <div class="box_cont scroll">
                     <!-- sample data : tab/table -->
                     <div class="db-table">
-                    <div class="table-wrap">
-                        <div class="table-header">
-                        <div class="tabs">
-                            <button class="active" data-type="전체">전체</button>
-                            <button data-type="유치원">유치원</button>
-                            <button data-type="초등">초등</button>
-                            <button data-type="중등">중등</button>
-                            <button data-type="고등">고등</button>
+                        <div class="table-wrap">
+                            <div class="table-header">
+                            <div class="tabs table-tabs">
+                                <button class="active" data-type="전체">전체</button>
+                                <button data-type="유치원">유치원</button>
+                                <button data-type="초등">초등</button>
+                                <button data-type="중등">중등</button>
+                                <button data-type="고등">고등</button>
+                            </div>
+                            </div>
+
+                            <table>
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>자치구</th>
+                                <th>재학생수</th>
+                                <th>교원수</th>
+                                <th>교원 1인당 학생수</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                            </table>
                         </div>
                         </div>
 
-                        <table>
-                        <thead>
-                            <tr>
-                            <th>No</th>
-                            <th>자치구</th>
-                            <th>재학생수</th>
-                            <th>교원수</th>
-                            <th>교원 1인당 학생수</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody"></tbody>
-                        </table>
-                    </div>
-                    </div>
-
-                    <script>
-                    const tableData = {
+                        <script>
+                        const tableData = {
                         전체: [
-                        {no:1, name:'종로구', student:975, teacher:94, ratio:9.7},
-                        {no:2, name:'중구', student:897, teacher:90, ratio:10.0},
-                        {no:3, name:'용산구', student:1266, teacher:129, ratio:9.8},
-                        {no:4, name:'성동구', student:1665, teacher:187, ratio:9.8},
-                        {no:5, name:'광진구', student:1978, teacher:188, ratio:8.9},
-                        {no:6, name:'동대문구', student:2375, teacher:237, ratio:10.5},
-                        {no:7, name:'중랑구', student:2516, teacher:274, ratio:10.0},
-                        {no:8, name:'성북구', student:3948, teacher:408, ratio:9.2},
-                        {no:9, name:'강북구', student:1227, teacher:130, ratio:9.7}
+                            {no:1, name:'종로구', student:975, teacher:94, ratio:9.7},
+                            {no:2, name:'중구', student:897, teacher:90, ratio:10.0}
                         ],
                         유치원: [
-                        {no:1, name:'종로구', student:120, teacher:15, ratio:8.0},
-                        {no:2, name:'중구', student:95, teacher:10, ratio:9.5}
+                            {no:1, name:'종로구', student:120, teacher:15, ratio:8.0}
                         ],
                         초등: [
-                        {no:1, name:'용산구', student:620, teacher:55, ratio:11.3},
-                        {no:2, name:'성동구', student:850, teacher:70, ratio:12.1}
+                            {no:1, name:'용산구', student:620, teacher:55, ratio:11.3}
                         ],
                         중등: [
-                        {no:1, name:'광진구', student:910, teacher:88, ratio:10.3},
-                        {no:2, name:'동대문구', student:1020, teacher:97, ratio:10.5}
+                            {no:1, name:'광진구', student:910, teacher:88, ratio:10.3}
                         ],
                         고등: [
-                        {no:1, name:'중랑구', student:980, teacher:90, ratio:10.8},
-                        {no:2, name:'성북구', student:1100, teacher:100, ratio:11.0}
+                            {no:1, name:'중랑구', student:980, teacher:90, ratio:10.8}
                         ]
-                    };
+                        };
 
-                    const tbody = document.getElementById('tableBody');
-                    const tabs = document.querySelectorAll('.tabs button');
+                        const tbody = document.getElementById('tableBody');
+                        const tableTabs = document.querySelectorAll('.table-tabs button');
 
-                    function renderTable(type) {
+                        function renderTable(type) {
                         tbody.innerHTML = '';
-                        const data = tableData[type] || [];
-                        data.forEach(row => {
-                        tbody.innerHTML += `
+                        (tableData[type] || []).forEach(row => {
+                            tbody.innerHTML += `
                             <tr>
-                            <td>${row.no}</td>
-                            <td>${row.name}</td>
-                            <td>${row.student.toLocaleString()}</td>
-                            <td>${row.teacher}</td>
-                            <td>${row.ratio}</td>
+                                <td>${row.no}</td>
+                                <td>${row.name}</td>
+                                <td>${row.student.toLocaleString()}</td>
+                                <td>${row.teacher}</td>
+                                <td>${row.ratio}</td>
                             </tr>
-                        `;
+                            `;
                         });
-                    }
+                        }
 
-                    renderTable('전체');
+                        renderTable('전체');
 
-                    tabs.forEach(btn => {
+                        tableTabs.forEach(btn => {
                         btn.addEventListener('click', () => {
-                        tabs.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        renderTable(btn.dataset.type);
+                            tableTabs.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            renderTable(btn.dataset.type);
                         });
-                    });
-                    </script>
+                        });
+                        </script>
                     <!-- //sample data : tab/table -->
 
                     </div>

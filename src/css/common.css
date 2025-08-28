@@ -454,12 +454,12 @@ header:has(.menu-trigger.mo){
     margin-bottom: 15px;
   }
 
-.db-table .table-wrap  .tabs {
+.tabs {
     display: flex;
     gap: 15px;
   }
 
-.db-table .table-wrap  .tabs button {
+.tabs button {
     background: transparent;
     border: none;
     color: var(--ft-color-normal);
@@ -467,7 +467,7 @@ header:has(.menu-trigger.mo){
     cursor: pointer;
     padding: 5px 10px;
   }
-.db-table .table-wrap  .tabs button.active {
+.tabs button.active {
     border-bottom: 2px solid var(--pt-cl-01);
   }
 
